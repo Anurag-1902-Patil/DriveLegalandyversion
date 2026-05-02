@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "keywords": ["red light", "signal", "jump signal", "pune"],
+    "answer": "Jumping a red light in Pune carries a fine of ₹1,000 under the Motor Vehicles (Amendment) Act 2019. Repeat offenders may face higher penalties and licence suspension. Always stop at red signals."
+  },
+  {
+    "id": 2,
+    "keywords": ["helmet", "no helmet", "bike", "two wheeler"],
+    "answer": "Riding a two-wheeler without a helmet attracts a fine of ₹1,000 under Section 129 of the Motor Vehicles Act 1988 (amended 2019). The rider and pillion both must wear ISI-certified helmets."
+  },
+  {
+    "id": 3,
+    "keywords": ["seatbelt", "seat belt", "car"],
+    "answer": "Not wearing a seatbelt in a car is punishable with a fine of ₹1,000 under MV Act Section 194B. This applies to both the driver and front-seat passenger."
+  },
+  {
+    "id": 4,
+    "keywords": ["drunk driving", "drink and drive", "alcohol", "dui"],
+    "answer": "Drunk driving (BAC > 30 mg/100 ml blood) attracts a fine of ₹10,000 and/or 6 months imprisonment for the first offence. Repeat offence: ₹15,000 and/or 2 years imprisonment under MV Act Section 185."
+  },
+  {
+    "id": 5,
+    "keywords": ["mobile phone", "phone", "talking while driving"],
+    "answer": "Using a mobile phone while driving is penalised with ₹1,000 for the first offence and ₹5,000 for repeat offences under MV Act Section 184. This includes handheld calls and texting."
+  },
+  {
+    "id": 6,
+    "keywords": ["speeding", "over speed", "speed limit"],
+    "answer": "Speeding fines under MV Act 2019: Light Motor Vehicles – ₹1,000 (first) / ₹2,000 (repeat). Medium Passenger Vehicles – ₹2,000 / ₹4,000. Heavy vehicles – ₹4,000 / licence suspension."
+  },
+  {
+    "id": 7,
+    "keywords": ["insurance", "no insurance", "without insurance"],
+    "answer": "Driving without valid motor insurance is an offence under MV Act Section 196. Fine: ₹2,000 or 3 months imprisonment (first offence). Repeat: ₹4,000 or 3 months imprisonment."
+  },
+  {
+    "id": 8,
+    "keywords": ["license", "licence", "no license", "without license"],
+    "answer": "Driving without a valid driving licence attracts a fine of ₹5,000 under MV Act Section 181. A person must hold a valid DL for the specific class of vehicle being driven."
+  },
+  {
+    "id": 9,
+    "keywords": ["registration", "rc book", "no registration"],
+    "answer": "Driving an unregistered vehicle is punishable with a fine of ₹2,000–₹5,000 or imprisonment for first offence under MV Act Section 192. The vehicle must have a valid Registration Certificate (RC)."
+  },
+  {
+    "id": 10,
+    "keywords": ["triple riding", "three persons", "three on bike"],
+    "answer": "Carrying more than one pillion rider on a two-wheeler (triple riding) is illegal under MV Act Section 128. Fine: ₹1,000. A two-wheeler is designed for a maximum of two persons."
+  },
+  {
+    "id": 11,
+    "keywords": ["pollution", "puc", "emission certificate"],
+    "answer": "Driving without a valid Pollution Under Control (PUC) certificate attracts a fine of ₹1,000 (first offence) / ₹10,000 (repeat) under MV Act Section 190(2). PUC certificates must be renewed periodically."
+  },
+  {
+    "id": 12,
+    "keywords": ["wrong way", "wrong side", "one way"],
+    "answer": "Driving on the wrong side of the road or in the wrong direction on a one-way street is penalised with ₹1,000–₹5,000 under MV Act Section 184 (dangerous driving)."
+  },
+  {
+    "id": 13,
+    "keywords": ["overloading", "excess load", "overloaded"],
+    "answer": "Vehicle overloading (beyond registered capacity) attracts a fine of ₹20,000 plus ₹2,000 per extra tonne under MV Act Section 194. The vehicle may also be detained until excess load is removed."
+  },
+  {
+    "id": 14,
+    "keywords": ["challan", "e-challan", "how to pay"],
+    "answer": "E-challans can be paid online at https://echallan.parivahan.gov.in or through state-specific traffic police portals. You will need your vehicle number or challan number. Payment can be made via net banking, UPI, or debit/credit card."
+  },
+  {
+    "id": 15,
+    "keywords": ["traffic rules", "laws", "india", "motor vehicles act"],
+    "answer": "Indian traffic laws are primarily governed by the Motor Vehicles Act 1988, amended significantly in 2019 with heavier penalties. States can also impose additional rules. Key categories: licencing, insurance, speed limits, helmet/seatbelt use, and drunk driving."
+  },
+  {
+    "id": 16,
+    "keywords": ["parking", "no parking", "illegal parking"],
+    "answer": "Illegal parking fines typically range from ₹500 to ₹2,000 depending on the city. In metro cities like Mumbai and Delhi, towing charges of ₹2,000–₹5,000 may also apply. Always park in designated areas."
+  },
+  {
+    "id": 17,
+    "keywords": ["lane cutting", "lane change", "overtaking"],
+    "answer": "Improper lane changes or dangerous overtaking falls under Section 184 (dangerous driving) of the MV Act. Penalties range from ₹1,000 to ₹5,000 and can include licence cancellation for severe violations."
+  },
+  {
+    "id": 18,
+    "keywords": ["learner license", "learner licence", "l board"],
+    "answer": "A learner's licence holder must display an 'L' board on the vehicle and must be accompanied by a licenced driver. Violations can attract a fine of ₹500–₹1,000 under MV Act Section 3."
+  },
+  {
+    "id": 19,
+    "keywords": ["minor driving", "underage", "age"],
+    "answer": "A minor (below 18) caught driving attracts a fine of ₹25,000 on the registered owner/guardian under MV Act Section 199A (2019 amendment). The vehicle registration may also be cancelled."
+  },
+  {
+    "id": 20,
+    "keywords": ["no horn zone", "horn", "honking", "silence zone"],
+    "answer": "Unnecessary honking or using horn in a no-horn (silence) zone attracts a fine of ₹1,000–₹2,000. Silence zones typically include hospitals, schools, courts, and areas marked with signage."
+  },
+  {
+    "id": 21,
+    "keywords": ["speed limit", "highway", "expressway", "nh"],
+    "answer": "National Highway speed limits: Cars – 100 km/h, Motorcycles – 80 km/h, Buses – 100 km/h, Trucks – 80 km/h. City speed limits are typically 40–60 km/h. School zone limits are 25 km/h."
+  },
+  {
+    "id": 22,
+    "keywords": ["accident", "hit and run", "flee"],
+    "answer": "Fleeing the scene of an accident (hit and run) is a criminal offence under MV Act Section 134 and IPC Section 304A. The driver is liable for imprisonment of up to 2 years and/or a fine. Always stop and assist the injured."
+  },
+  {
+    "id": 23,
+    "keywords": ["tinted glass", "sun film", "window film"],
+    "answer": "Using prohibited tinted glass/film that falls below VLT (Visual Light Transmission) limits is an offence. Front windscreen must have ≥70% VLT; side and rear windows ≥50% VLT. Fine: ₹100–₹500."
+  },
+  {
+    "id": 24,
+    "keywords": ["fancy number plate", "number plate", "non-standard"],
+    "answer": "Using non-standard (fancy) number plates is illegal. Vehicles must display High Security Registration Plates (HSRP) with IND marking, laser code, and chromium hologram. Fine: ₹500–₹1,000."
+  },
+  {
+    "id": 25,
+    "keywords": ["zebra crossing", "pedestrian crossing", "stopline"],
+    "answer": "Stopping on a zebra crossing or beyond the stop line when the signal is red is a traffic violation. Fine: ₹500–₹1,000. Always stop before the stop line at traffic signals."
+  }
+]
