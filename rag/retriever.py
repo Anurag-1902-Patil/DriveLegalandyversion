@@ -1,32 +1,36 @@
 """
-DriveLegal – FAISS Retriever
-Loads the pre-built FAISS index from disk (once at startup) and exposes
-a retrieve() function that returns the top-k most relevant law chunks,
-filtered by location metadata.
+DriveLegal – rag/retriever.py
+Loads the FAISS index using FREE local sentence-transformers embeddings.
+No OpenAI API key needed for retrieval.
 """
 
-import os
 import logging
+import os
 from typing import List, Optional
 
 from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.schema import Document
 
 logger = logging.getLogger("drivelegal.retriever")
 
 INDEX_PATH = os.path.join("data", "faiss_index")
-_vectorstore: Optional[FAISS] = None          # module-level singleton
+_vectorstore: Optional[FAISS] = None   # singleton
 
 
 def load_index() -> None:
-    """Load (or reload) the FAISS index from disk into the singleton."""
+    """Load FAISS index from disk using local embeddings (no API key needed)."""
     global _vectorstore
-    embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
+    logger.info("Loading local embedding model...")
+    embeddings = HuggingFaceEmbeddings(
+        model_name="all-MiniLM-L6-v2",
+        model_kwargs={"device": "cpu"},
+        encode_kwargs={"normalize_embeddings": True},
+    )
     _vectorstore = FAISS.load_local(
         INDEX_PATH,
         embeddings,
-        allow_dangerous_deserialization=True,   # safe: we own the index
+        allow_dangerous_deserialization=True,
     )
     logger.info(f"FAISS index loaded from {INDEX_PATH}")
 
@@ -37,21 +41,16 @@ def retrieve(
     city: str = "",
     state: str = "",
     country: str = "India",
-    similarity_threshold: float = 0.75,
 ) -> List[Document]:
     """
-    Return top-k relevant law chunks for `query`, filtered by location.
-
-    Location fallback cascade:
-        city  →  state  →  country  →  no filter (national rules)
+    Return top-k relevant law chunks, filtered by location.
+    Fallback cascade: city -> state -> country -> no filter
     """
     if _vectorstore is None:
         raise RuntimeError("FAISS index not loaded. Call load_index() first.")
 
-    # Retrieve more than k so we can apply metadata filter afterwards
     candidates: List[Document] = _vectorstore.similarity_search(query, k=k * 3)
 
-    # ── Location filter (cascade) ──────────────────────────────────────────
     def matches(doc: Document, scope: str) -> bool:
         return doc.metadata.get("region", "").lower() == scope.lower()
 
