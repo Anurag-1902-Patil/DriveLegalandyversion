@@ -39,9 +39,10 @@ echo [4/6] Setting up .env file...
 if not exist .env (
     copy .env.example .env
     echo.
-    echo [ACTION REQUIRED] Open .env and add your ZHIPUAI_API_KEY
-    echo Press any key once you have saved your API key...
-    notepad .env
+    echo [INFO] You do not need an API key since the app runs 100%% locally.
+    echo Please make sure you have Ollama installed and have pulled the mistral model.
+    echo Example: ollama run mistral
+    echo Press any key to continue...
     pause
 ) else (
     echo .env already exists, skipping...

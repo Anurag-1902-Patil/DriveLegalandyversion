@@ -33,4 +33,4 @@ class ChatResponse(BaseModel):
         "This information is indicative and for awareness only. "
         "Fine amounts may vary. Please verify with the official RTO or traffic authority."
     )
-    offline_fallback: bool = False         # True when Zhipu AI was unavailable
+    offline_fallback: bool = False         # True when Ollama/Mistral was unavailable

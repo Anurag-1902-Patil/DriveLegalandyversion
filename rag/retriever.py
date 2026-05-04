@@ -1,7 +1,7 @@
 """
 DriveLegal – rag/retriever.py
 Loads the FAISS index using FREE local sentence-transformers embeddings.
-No Zhipu AI API key needed for retrieval.
+No external API key needed for retrieval.
 """
 
 import logging

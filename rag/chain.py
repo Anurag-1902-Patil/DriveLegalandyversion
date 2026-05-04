@@ -1,6 +1,6 @@
 """
 DriveLegal – rag/chain.py
-RAG chain using Zhipu AI GLM-4-flash (Z.AI) with offline fallback and fuzzy keyword matching.
+RAG chain using local Ollama (Mistral) with offline fallback and fuzzy keyword matching.
 """
 
 import json
@@ -8,7 +8,7 @@ import logging
 import os
 from typing import Any, Dict
 
-from langchain_community.chat_models import ChatZhipuAI
+from langchain_community.chat_models import ChatOllama
 from langchain.prompts import PromptTemplate
 from rag.retriever import retrieve
 
@@ -126,7 +126,7 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
 
 
 def get_answer(query: str, city: str, state: str, country: str = "India") -> Dict[str, Any]:
-    """Run RAG pipeline. Falls back to offline cache if Zhipu AI (GLM-4-flash) unavailable."""
+    """Run RAG pipeline. Falls back to offline cache if Ollama (Mistral) unavailable."""
     try:
         docs = retrieve(query, k=5, city=city, state=state, country=country)
 
@@ -142,7 +142,7 @@ def get_answer(query: str, city: str, state: str, country: str = "India") -> Dic
             for d in docs
         )
 
-        llm = ChatZhipuAI(model="glm-4-flash", temperature=0)
+        llm = ChatOllama(model="mistral", temperature=0)
         prompt = QA_PROMPT.format(context=context, question=query)
         response = llm.invoke(prompt)
 

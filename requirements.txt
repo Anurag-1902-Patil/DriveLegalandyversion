@@ -9,7 +9,7 @@ pydantic==2.7.0
 # ── AI / RAG ───────────────────────────────────────────────────────────────
 langchain==0.2.1
 langchain-community==0.2.1
-zhipuai~=2.1            # Zhipu AI (Z.AI) SDK – powers ChatZhipuAI
+# No additional SDK required for Ollama (built into langchain-community)
 faiss-cpu==1.13.2
 
 # ── Frontend ───────────────────────────────────────────────────────────────

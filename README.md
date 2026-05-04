@@ -13,8 +13,8 @@ DriveLegal answers traffic law questions in natural language with **location-spe
 |---------|-------------|
 | 📍 Geo-aware answers | City → State → National fallback hierarchy |
 | 💰 Challan Calculator | Structured JSON lookup — never hallucinated |
-| 🧠 RAG Pipeline | FAISS + GLM-4-flash + LangChain for grounded responses |
-| ⚡ Offline Fallback | 25 pre-cached Q&A pairs when Zhipu AI is unavailable |
+| 🧠 RAG Pipeline | FAISS + Mistral (Ollama) + LangChain for grounded responses |
+| ⚡ Offline Fallback | 25 pre-cached Q&A pairs when Ollama is unavailable |
 | 💬 Chat UI | Streamlit frontend with location selector |
 | 🔒 Legal Disclaimer | Every response marked as indicative |
 
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env and add your ZHIPUAI_API_KEY
+# No API keys are required for Ollama. Just ensure Ollama is running.
 ```
 
 ### 3. Add raw data
@@ -155,7 +155,7 @@ railway init
 railway up
 ```
 
-Set `ZHIPUAI_API_KEY` in Railway dashboard environment variables.
+Since the app is 100% local, ensure Ollama is installed on your server (like Railway) if deploying remotely, or use a managed Ollama endpoint and set `OLLAMA_BASE_URL`.
 
 ---
 

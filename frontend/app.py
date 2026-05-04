@@ -229,14 +229,14 @@ Road Safety Hackathon 2026 by CoERS, RBG Labs, IIT Madras.
 ### How it works
 1. You ask a traffic law question in natural language.
 2. The system retrieves relevant law chunks from a FAISS vector database.
-3. GLM-4-flash generates an accurate, location-specific answer.
+3. Mistral via Ollama generates an accurate, location-specific answer.
 4. Fine amounts are cross-referenced from a structured JSON dataset — never hallucinated.
 5. If the AI service is offline, a pre-cached fallback is used.
 
 ### Tech Stack
 | Layer | Technology |
 |-------|-----------|
-| AI / LLM | GLM-4-flash via Zhipu AI API |
+| AI / LLM | Mistral via Local Ollama |
 | RAG Framework | LangChain |
 | Vector DB | FAISS (local) |
 | Backend | FastAPI + Uvicorn |
