@@ -1,7 +1,6 @@
 """
-DriveLegal – RAG Chain
-Builds the LangChain RetrievalQA pipeline.  If OpenAI is unavailable,
-falls back to the offline JSON cache.
+DriveLegal – rag/chain.py
+RAG chain using Zhipu AI GLM-4-flash (Z.AI) with offline fallback and fuzzy keyword matching.
 """
 
 import json
@@ -9,18 +8,13 @@ import logging
 import os
 from typing import Any, Dict
 
-from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA
+from langchain_community.chat_models import ChatZhipuAI
 from langchain.prompts import PromptTemplate
-from langchain_community.vectorstores import FAISS
-
-from rag.retriever import retrieve, load_index
+from rag.retriever import retrieve
 
 logger = logging.getLogger("drivelegal.chain")
-
 CACHE_PATH = os.path.join("data", "cache.json")
 
-# ── System / prompt template ───────────────────────────────────────────────
 SYSTEM_TEMPLATE = """You are DriveLegal, an AI road safety assistant for India.
 Use ONLY the context provided below to answer the question.
 If the context does not contain enough information, say:
@@ -33,7 +27,7 @@ Context:
 
 Question: {question}
 
-Answer clearly and concisely in 2–4 sentences. If a fine is mentioned, state it with the disclaimer that amounts are indicative."""
+Answer clearly and concisely in 2-4 sentences. If a fine is mentioned, state it with the disclaimer that amounts are indicative."""
 
 QA_PROMPT = PromptTemplate(
     input_variables=["context", "question"],
@@ -42,25 +36,59 @@ QA_PROMPT = PromptTemplate(
 
 
 def _load_cache() -> list:
-    """Load the offline Q&A cache from disk."""
     if not os.path.exists(CACHE_PATH):
         return []
     with open(CACHE_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
+def _normalize(text: str) -> str:
+    """Normalize text for better matching."""
+    replacements = {
+        "drinking and driving": "drunk driving",
+        "drinking & driving": "drunk driving",
+        "drink driving": "drunk driving",
+        "drunken driving": "drunk driving",
+        "two wheeler": "bike",
+        "two-wheeler": "bike",
+        "motorbike": "bike",
+        "motorcycle": "bike",
+        "four wheeler": "car",
+        "four-wheeler": "car",
+        "seatbelt": "seat belt",
+        "licence": "license",
+        "no helmet": "helmet",
+        "without helmet": "helmet",
+        "jumping red light": "red light",
+        "running red light": "red light",
+        "jump signal": "red light",
+        "traffic signal": "signal",
+        "traffic light": "signal",
+        "mobile phone": "mobile",
+        "cell phone": "mobile",
+        "using phone": "mobile",
+        "puc certificate": "pollution",
+        "pollution certificate": "pollution",
+        "rc book": "registration",
+        "vehicle registration": "registration",
+        "driving licence": "license",
+        "driving license": "license",
+    }
+    text = text.lower()
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return text
+
+
 def _offline_fallback(query: str) -> Dict[str, Any]:
-    """
-    Simple keyword-match against the pre-cached Q&A pairs.
-    Returns the best match or a generic fallback message.
-    """
+    """Keyword match against cache with normalization."""
     cache = _load_cache()
-    query_lower = query.lower()
+    normalized_query = _normalize(query)
 
     best, best_score = None, 0
     for entry in cache:
         keywords = entry.get("keywords", [])
-        score = sum(1 for kw in keywords if kw.lower() in query_lower)
+        score = sum(1 for kw in keywords if _normalize(kw) in normalized_query)
         if score > best_score:
             best, best_score = entry, score
 
@@ -71,11 +99,26 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
             "offline_fallback": True,
         }
 
+    # Last resort — search FAISS even in offline mode
+    try:
+        docs = retrieve(normalized_query, k=3)
+        if docs:
+            best_doc = docs[0]
+            return {
+                "answer": (
+                    f"{best_doc.page_content[:300]}... "
+                    f"(Source: {best_doc.metadata.get('source', 'Traffic Law Database')})"
+                ),
+                "sources": docs,
+                "offline_fallback": True,
+            }
+    except Exception:
+        pass
+
     return {
         "answer": (
-            "I currently cannot reach the AI service. "
-            "Please check your connection or try again shortly. "
-            "For urgent queries, visit the official MoRTH website: https://morth.nic.in"
+            "I could not find specific information for your query. "
+            "Please verify with the official RTO or visit https://morth.nic.in"
         ),
         "sources": [],
         "offline_fallback": True,
@@ -83,12 +126,8 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
 
 
 def get_answer(query: str, city: str, state: str, country: str = "India") -> Dict[str, Any]:
-    """
-    Run the full RAG pipeline for a given query + location.
-    Falls back to the offline cache if OpenAI is unavailable.
-    """
+    """Run RAG pipeline. Falls back to offline cache if Zhipu AI (GLM-4-flash) unavailable."""
     try:
-        # ── 1. Retrieve relevant chunks ────────────────────────────────────
         docs = retrieve(query, k=5, city=city, state=state, country=country)
 
         if not docs:
@@ -98,14 +137,12 @@ def get_answer(query: str, city: str, state: str, country: str = "India") -> Dic
                 "offline_fallback": False,
             }
 
-        # ── 2. Build context string ────────────────────────────────────────
         context = "\n\n".join(
             f"[{d.metadata.get('region', 'India')} | {d.metadata.get('law_section', '')}]\n{d.page_content}"
             for d in docs
         )
 
-        # ── 3. Call LLM ────────────────────────────────────────────────────
-        llm = ChatOpenAI(model="gpt-4o", temperature=0)
+        llm = ChatZhipuAI(model="glm-4-flash", temperature=0)
         prompt = QA_PROMPT.format(context=context, question=query)
         response = llm.invoke(prompt)
 
@@ -116,5 +153,5 @@ def get_answer(query: str, city: str, state: str, country: str = "India") -> Dic
         }
 
     except Exception as exc:
-        logger.warning(f"LLM call failed, using offline cache. Reason: {exc}")
+        logger.warning(f"LLM unavailable, using offline fallback. Reason: {exc}")
         return _offline_fallback(query)

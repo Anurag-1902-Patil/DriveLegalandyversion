@@ -69,7 +69,7 @@ def test_retrieve_raises_without_loaded_index():
 # ── Chain tests ────────────────────────────────────────────────────────────
 
 @patch("rag.chain.retrieve")
-@patch("rag.chain.ChatOpenAI")
+@patch("rag.chain.ChatZhipuAI")
 def test_get_answer_success(mock_llm_cls, mock_retrieve):
     """get_answer() returns answer dict with expected keys."""
     from rag.chain import get_answer
@@ -96,13 +96,13 @@ def test_get_answer_empty_docs_returns_fallback_message(mock_retrieve):
 
 
 @patch("rag.chain.retrieve")
-@patch("rag.chain.ChatOpenAI")
+@patch("rag.chain.ChatZhipuAI")
 def test_get_answer_llm_error_uses_offline_cache(mock_llm_cls, mock_retrieve):
     """When LLM fails, get_answer() falls back to offline cache."""
     from rag.chain import get_answer
     mock_retrieve.return_value = [make_doc("some text", "National")]
     mock_llm = MagicMock()
-    mock_llm.invoke.side_effect = Exception("OpenAI timeout")
+    mock_llm.invoke.side_effect = Exception("Zhipu AI timeout")
     mock_llm_cls.return_value = mock_llm
 
     result = get_answer("helmet fine", city="", state="")

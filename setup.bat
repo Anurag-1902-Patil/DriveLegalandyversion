@@ -39,7 +39,7 @@ echo [4/6] Setting up .env file...
 if not exist .env (
     copy .env.example .env
     echo.
-    echo [ACTION REQUIRED] Open .env and add your OPENAI_API_KEY
+    echo [ACTION REQUIRED] Open .env and add your ZHIPUAI_API_KEY
     echo Press any key once you have saved your API key...
     notepad .env
     pause

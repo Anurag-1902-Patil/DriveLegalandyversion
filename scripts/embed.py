@@ -1,7 +1,7 @@
 """
 DriveLegal – scripts/embed.py
 Embeds chunks using a FREE local sentence-transformers model.
-No OpenAI API key or credits required.
+No Zhipu AI API key or credits required.
 
 Model: all-MiniLM-L6-v2 (~80MB, downloads once, then runs offline)
 
@@ -68,7 +68,7 @@ def main():
     vectorstore.save_local(str(INDEX_PATH))
     print(f"\nFAISS index saved -> {INDEX_PATH}/")
     test_retrieval(vectorstore)
-    print("\nEmbedding complete! No OpenAI credits used.")
+    print("\nEmbedding complete! No Zhipu AI credits used.")
 
 
 if __name__ == "__main__":

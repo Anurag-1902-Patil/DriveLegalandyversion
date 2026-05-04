@@ -13,8 +13,8 @@ DriveLegal answers traffic law questions in natural language with **location-spe
 |---------|-------------|
 | 📍 Geo-aware answers | City → State → National fallback hierarchy |
 | 💰 Challan Calculator | Structured JSON lookup — never hallucinated |
-| 🧠 RAG Pipeline | FAISS + GPT-4o + LangChain for grounded responses |
-| ⚡ Offline Fallback | 25 pre-cached Q&A pairs when OpenAI is unavailable |
+| 🧠 RAG Pipeline | FAISS + GLM-4-flash + LangChain for grounded responses |
+| ⚡ Offline Fallback | 25 pre-cached Q&A pairs when Zhipu AI is unavailable |
 | 💬 Chat UI | Streamlit frontend with location selector |
 | 🔒 Legal Disclaimer | Every response marked as indicative |
 
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env and add your OPENAI_API_KEY
+# Edit .env and add your ZHIPUAI_API_KEY
 ```
 
 ### 3. Add raw data
@@ -155,7 +155,7 @@ railway init
 railway up
 ```
 
-Set `OPENAI_API_KEY` in Railway dashboard environment variables.
+Set `ZHIPUAI_API_KEY` in Railway dashboard environment variables.
 
 ---
 
