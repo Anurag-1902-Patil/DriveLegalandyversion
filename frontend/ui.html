@@ -1417,127 +1417,24 @@
             minor_driving: { base: 25000, repeat: 25000, label: 'Minor Driving' }
         };
 
-        // === Data: Chat responses keyed by topic keywords ===
-        const chatResponses = {
-            delhi: {
-                speed: {
-                    text: 'In Delhi, the speed limits are:\n\n• Restricted areas: 30 km/h\n• Residential areas: 40 km/h\n• Major roads / Ring Road: 50-60 km/h\n• NH-48 / Expressways: 100 km/h\n\nOverspeeding above the limit by more than 20 km/h can result in licence suspension for up to 3 months under the Motor Vehicles (Amendment) Act, 2019.',
-                    penalty: '₹1,000–₹2,000 + possible licence suspension'
-                },
-                phone: {
-                    text: 'In Delhi, using a handheld mobile phone while driving is strictly prohibited under Section 184 of the Motor Vehicles Act. This includes calling, texting, or using navigation apps held in hand.\n\nYou may use hands-free devices or mounted phone holders for navigation, but any interaction that distracts from driving can still attract a penalty.',
-                    penalty: '₹5,000 for first offence, ₹10,000 for repeat'
-                },
-                helmet: {
-                    text: 'In Delhi, wearing an ISI-marked helmet is mandatory for:\n\n• The rider of a two-wheeler\n• The pillion passenger\n• Children above 4 years (on two-wheelers specifically designed to carry them)\n\nThe helmet strap must be securely fastened. Violation also affects insurance claims in case of accidents.',
-                    penalty: '₹1,000 fine + licence disqualification for 3 months'
-                },
-                drink: {
-                    text: 'Delhi enforces a strict Blood Alcohol Concentration (BAC) limit of 0.03% (30 mg per 100 ml of blood). Penalties under the Motor Vehicles (Amendment) Act 2019 are severe:\n\n• First offence: Up to 6 months imprisonment + ₹10,000 fine\n• Repeat offence: Up to 2 years imprisonment + ₹15,000 fine\n\nPolice regularly conduct breathalyzer checks, especially on weekends and near entertainment zones.',
-                    penalty: '₹10,000–₹15,000 + possible imprisonment'
-                },
-                seatbelt: {
-                    text: 'In Delhi, seatbelts are mandatory for:\n\n• Driver and front-seat passenger (always)\n• Rear-seat passengers (enforced since 2022)\n\nChild restraint systems are required for children under 14 years. Not wearing a seatbelt also voids certain insurance claim benefits.',
-                    penalty: '₹1,000 per unbelted occupant'
-                },
-                parking: {
-                    text: 'Delhi parking regulations include:\n\n• No parking within 15 meters of a bus stop\n• No parking near fire hydrants or intersections\n• No parking on footpaths or cycle tracks\n• Designated parking zones are marked with signs and lines\n• Wrong parking in congested areas may result in towing\n\nNight parking rules vary by zone — always check local RWA or MCD signage.',
-                    penalty: '₹500–₹1,000 + possible towing charges'
-                },
-                default: 'In Delhi, all Central Motor Vehicles Rules and the Motor Vehicles (Amendment) Act 2019 are strictly enforced. Could you ask about a specific rule like speed limits, phone usage, helmet, seatbelt, drink driving, or parking?'
-            },
-            mumbai: {
-                speed: {
-                    text: 'In Mumbai, speed limits vary by road type:\n\n• Residential / congested areas: 40 km/h\n• Major arterial roads: 50 km/h\n• Eastern & Western Express Highways: 80 km/h\n• Sea Link: 80 km/h\n\nSpeed cameras are installed at multiple points. The Mumbai Traffic Police actively monitor overspeeding via automated systems.',
-                    penalty: '₹1,000–₹2,000 + licence suspension possible'
-                },
-                phone: {
-                    text: 'Mumbai traffic police strictly enforce the no-phone rule. Handheld phone usage while driving attracts heavy fines. Even checking your phone at a red light counts as an offence.\n\nHands-free devices are permitted, but any visible distraction can be penalized under discretionary powers of the traffic officer.',
-                    penalty: '₹5,000 for first offence, ₹10,000 for repeat'
-                },
-                helmet: {
-                    text: 'Mumbai enforces helmet rules rigorously:\n\n• ISI-marked helmet mandatory for rider and pillion\n• Strap must be fastened at all times\n• RTO and traffic police conduct regular checkpoints\n\nNot wearing a helmet can also lead to complications in insurance claims if an accident occurs.',
-                    penalty: '₹1,000 + 3-month licence disqualification'
-                },
-                drink: {
-                    text: 'Mumbai police conduct regular nakabandi (checkpoints) for drunk driving, especially in South Mumbai, Bandra, and Andheri areas on weekends.\n\nBAC limit: 0.03% (30 mg/100 ml). Penalties are severe and include imprisonment provisions.',
-                    penalty: '₹10,000–₹15,000 + up to 6 months imprisonment'
-                },
-                seatbelt: {
-                    text: 'Seatbelts are mandatory for all occupants in Mumbai — front and rear seats. The Mumbai Traffic Police have been conducting awareness campaigns and enforcement drives specifically targeting rear-seat belt usage since 2022.',
-                    penalty: '₹1,000 per unbelted occupant'
-                },
-                parking: {
-                    text: 'Mumbai parking rules:\n\n• No parking in no-parking zones marked with yellow lines\n• Pay-and-parking zones managed by BMC\n• No double parking\n• Towing is common in South Mumbai, Bandra, and Andheri\n• Multi-level parking lots available at key locations',
-                    penalty: '₹500–₹1,000 + towing charges (₹500+)'
-                },
-                default: 'In Mumbai, traffic rules are enforced by the Mumbai Traffic Police. Please ask about a specific topic: speed limits, phone usage, helmet rules, drink & drive, seatbelt fines, or parking regulations.'
-            },
-            // Generic fallback for other cities
-            generic: {
-                speed: { text: 'Standard Indian speed limits apply:\n\n• Urban areas: 40–50 km/h\n• State highways: 60–80 km/h\n• National highways: 80–100 km/h\n• Expressways: Up to 120 km/h\n\nSpecific limits may vary by city zone. Always follow posted signboards.', penalty: '₹1,000–₹2,000' },
-                phone: { text: 'Handheld mobile phone usage while driving is prohibited across India under the Motor Vehicles Act. Use hands-free devices or mounted holders for navigation.', penalty: '₹5,000 (first offence), ₹10,000 (repeat)' },
-                helmet: { text: 'ISI-marked helmets are mandatory for both rider and pillion passenger on two-wheelers across India. The strap must be properly fastened.', penalty: '₹1,000 + possible licence disqualification' },
-                drink: { text: 'The legal BAC limit across India is 0.03% (30 mg/100 ml). Drunk driving carries fines, imprisonment, and potential licence cancellation.', penalty: '₹10,000–₹15,000 + imprisonment up to 6 months' },
-                seatbelt: { text: 'Seatbelts are mandatory for driver, front passenger, and rear-seat passengers across India. Non-compliance can void insurance claims.', penalty: '₹1,000 per unbelted occupant' },
-                parking: { text: 'General parking rules: No parking within 15m of bus stops, near fire hydrants, on footpaths, or in no-parking zones. Always follow local signage.', penalty: '₹500–₹1,000 + possible towing' }
-            }
+        const locMap = {
+            delhi: { city: 'New Delhi', state: 'Delhi' },
+            mumbai: { city: 'Mumbai', state: 'Maharashtra' },
+            bangalore: { city: 'Bangalore', state: 'Karnataka' },
+            chennai: { city: 'Chennai', state: 'Tamil Nadu' },
+            hyderabad: { city: 'Hyderabad', state: 'Telangana' },
+            kolkata: { city: 'Kolkata', state: 'West Bengal' },
+            pune: { city: 'Pune', state: 'Maharashtra' }
         };
 
-        // Helper: get topic from user query
-        function detectTopic(query) {
-            const q = query.toLowerCase();
-            if (q.includes('speed') || q.includes('fast') || q.includes('limit')) return 'speed';
-            if (q.includes('phone') || q.includes('mobile') || q.includes('call') || q.includes('text')) return 'phone';
-            if (q.includes('helmet') || q.includes('two wheeler') || q.includes('bike') || q.includes('scooter')) return 'helmet';
-            if (q.includes('drink') || q.includes('drunk') || q.includes('alcohol') || q.includes('bac') || q.includes('dui')) return 'drink';
-            if (q.includes('seat') || q.includes('belt') || q.includes('seatbelt')) return 'seatbelt';
-            if (q.includes('park') || q.includes('parking') || q.includes('tow')) return 'parking';
-            if (q.includes('lane') || q.includes('overtake') || q.includes('overtaking')) return 'lane';
-            if (q.includes('insurance') || q.includes('insure')) return 'insurance';
-            if (q.includes('license') || q.includes('licence') || q.includes('dl ')) return 'license';
-            if (q.includes('red light') || q.includes('signal') || q.includes('traffic light')) return 'redlight';
-            if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good')) return 'greeting';
-            if (q.includes('help') || q.includes('what can') || q.includes('how do')) return 'help';
-            return 'default';
-        }
-
-        // Helper: get current location key
-        function getLocation() {
-            return document.getElementById('locationSelect').value;
+        function getLocationData() {
+            const val = document.getElementById('locationSelect').value;
+            return locMap[val] || { city: 'Other', state: 'Other' };
         }
 
         function getLocationName() {
             const sel = document.getElementById('locationSelect');
             return sel.options[sel.selectedIndex].text;
-        }
-
-        // Get response for a query
-        function getResponse(query) {
-            const topic = detectTopic(query);
-            const loc = getLocation();
-
-            if (topic === 'greeting') {
-                return { text: `Hello! I'm your DriveLegal assistant for ${getLocationName()}. Ask me about any traffic rule — speed limits, fines, helmet rules, parking, and more. I'll give you location-specific, accurate information.`, penalty: null };
-            }
-            if (topic === 'help') {
-                return { text: `I can help you with traffic rules specific to ${getLocationName()}:\n\n• Speed limits for different road types\n• Phone usage regulations\n• Helmet & seatbelt rules\n• Drink & drive penalties\n• Parking regulations\n• Lane discipline\n• Insurance & license requirements\n• Challan/penalty details\n\nJust type your question!`, penalty: null };
-            }
-
-            const cityData = chatResponses[loc] || null;
-            const topicData = cityData ? (cityData[topic] || cityData.default) : (chatResponses.generic[topic] || null);
-
-            if (topicData && topicData.text) {
-                return { text: topicData.text, penalty: topicData.penalty || null };
-            }
-
-            // Fallback for lane, insurance, license, redlight not defined per city
-            const genericTopic = chatResponses.generic[topic];
-            if (genericTopic) {
-                return { text: `For ${getLocationName()}, the general rule applies:\n\n${genericTopic.text}`, penalty: genericTopic.penalty || null };
-            }
-
-            return { text: `I don't have specific information on that topic for ${getLocationName()}. Could you try asking about speed limits, phone usage, helmet rules, seatbelt, drink & drive, or parking? I'll give you accurate, location-specific answers.`, penalty: null };
         }
 
         // === Chat Logic ===
@@ -1550,14 +1447,19 @@
             return now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false });
         }
 
-        function addMessage(type, text, penalty) {
+        function addMessage(type, text, penalty, offline = false) {
             const div = document.createElement('div');
             div.className = `message ${type}`;
 
             const avatarIcon = type === 'bot' ? 'fa-shield-halved' : 'fa-user';
             let penaltyHTML = '';
             if (penalty) {
-                penaltyHTML = `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> ${penalty}</div>`;
+                penaltyHTML = `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Estimated Fine: ${penalty}</div>`;
+            }
+
+            let offlineHTML = '';
+            if (offline) {
+                offlineHTML = `<div class="msg-location" style="background:#4f2d0d; color:#ff9800"><i class="fa-solid fa-bolt"></i> Offline Cache</div>`;
             }
 
             let locationHTML = '';
@@ -1572,6 +1474,7 @@
       <div>
         <div class="msg-bubble">
           ${locationHTML}
+          ${offlineHTML}
           ${formattedText}
           ${penaltyHTML}
         </div>
@@ -1592,19 +1495,38 @@
             typingIndicator.classList.remove('show');
         }
 
-        function sendMessage(text) {
+        async function sendMessage(text) {
             if (!text.trim()) return;
             addMessage('user', text.trim(), null);
             chatInput.value = '';
 
             showTyping();
 
-            const delay = 600 + Math.random() * 800;
-            setTimeout(() => {
+            try {
+                const loc = getLocationData();
+                const response = await fetch('http://localhost:8000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: text.trim(),
+                        location: {
+                            city: loc.city,
+                            state: loc.state,
+                            country: 'India'
+                        }
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                
                 hideTyping();
-                const response = getResponse(text.trim());
-                addMessage('bot', response.text, response.penalty);
-            }, delay);
+                addMessage('bot', data.answer, data.fine_amount, data.offline_fallback);
+                
+            } catch (error) {
+                hideTyping();
+                addMessage('bot', '⚠️ Could not connect to the backend. Please ensure the FastAPI server is running.', null, true);
+            }
         }
 
         // Send button

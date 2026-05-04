@@ -70,7 +70,8 @@ The easiest way to start both the backend and frontend simultaneously is using t
 ```bash
 .\start.bat
 ```
-
+To run mistral : Paste this in your working directory's terminal :
+& "$env:LOCALAPPDATA\Programs\Ollama\ollama.exe" run mistral
 **Manual Start:**
 If you prefer to start them manually or are on Mac/Linux:
 ```bash
