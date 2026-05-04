@@ -1,1526 +1,1637 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DriveLegal — Driver Safety Chatbot</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><style> :root {
-    --bg: #F3EDE2;
-    --bg-warm: #EDE6D8;
-    --card: #FDFAF5;
-    --card-hover: #FFF9EF;
-    --fg: #2C2418;
-    --fg-secondary: #6B5E4F;
-    --fg-muted: #9C8E7C;
-    --accent: #8B6F4E;
-    --accent-light: #C4A97D;
-    --accent-bg: #F0E6D4;
-    --border: #DDD4C4;
-    --border-light: #EAE2D4;
-    --danger: #B85C3A;
-    --danger-bg: #FDF0EB;
-    --success: #5E7A52;
-    --success-bg: #EFF4EC;
-    --chat-user: #E8DFD0;
-    --chat-bot: #FDFAF5;
-    --shadow-sm: 0 1px 3px rgba(44, 36, 24, 0.04);
-    --shadow-md: 0 2px 8px rgba(44, 36, 24, 0.06);
-    --shadow-lg: 0 4px 16px rgba(44, 36, 24, 0.08);
-    --radius: 12px;
-    --radius-sm: 8px;
-    --radius-xs: 6px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-    height: 100vh;
-    overflow: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Main Layout */
-.dashboard {
-    display: grid;
-    grid-template-columns: 280px 1fr 300px;
-    height: 100vh;
-    gap: 0;
-}
-
-/* Top Bar */
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 52px;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    z-index: 100;
-}
-
-.topbar-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.topbar-logo .logo-icon {
-    width: 30px;
-    height: 30px;
-    background: var(--accent);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 14px;
-}
-
-.topbar-logo span {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 17px;
-    color: var(--fg);
-    letter-spacing: -0.3px;
-}
-
-.topbar-logo small {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    font-size: 10px;
-    color: var(--fg-muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-left: 4px;
-}
-
-.topbar-center {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--bg);
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 12px;
-    color: var(--fg-secondary);
-}
-
-.topbar-center i {
-    color: var(--success);
-    font-size: 7px;
-}
-
-.topbar-center .loc-name {
-    font-weight: 600;
-    color: var(--fg);
-}
-
-.topbar-right {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.topbar-time {
-    font-size: 12px;
-    color: var(--fg-muted);
-    font-variant-numeric: tabular-nums;
-}
-
-.topbar-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--fg-muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-}
-
-.topbar-btn:hover {
-    background: var(--accent-bg);
-    color: var(--accent);
-    border-color: var(--accent-light);
-}
-
-/* Panels */
-.panel-left,
-.panel-right {
-    padding-top: 52px;
-    height: 100vh;
-    overflow-y: auto;
-    background: var(--bg);
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-}
-
-.panel-left {
-    border-right: 1px solid var(--border);
-}
-
-.panel-right {
-    border-left: 1px solid var(--border);
-}
-
-.panel-left::-webkit-scrollbar,
-.panel-right::-webkit-scrollbar {
-    width: 4px;
-}
-
-.panel-left::-webkit-scrollbar-thumb,
-.panel-right::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 4px;
-}
-
-/* Section Labels */
-.section-label {
-    font-size: 9.5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: var(--fg-muted);
-    padding: 18px 20px 10px;
-}
-
-/* Profile Card */
-.profile-card {
-    margin: 12px 16px;
-    padding: 16px;
-    background: var(--card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-.profile-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: 600;
-    font-size: 15px;
-    flex-shrink: 0;
-}
-
-.profile-info h3 {
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--fg);
-    line-height: 1.2;
-}
-
-.profile-info p {
-    font-size: 11px;
-    color: var(--fg-muted);
-    margin-top: 2px;
-}
-
-.profile-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 8px 4px;
-    background: var(--bg);
-    border-radius: var(--radius-xs);
-}
-
-.stat-item .val {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--fg);
-    line-height: 1;
-}
-
-.stat-item .val.danger {
-    color: var(--danger);
-}
-
-.stat-item .val.ok {
-    color: var(--success);
-}
-
-.stat-item .label {
-    font-size: 9px;
-    color: var(--fg-muted);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* License Badge */
-.license-badge {
-    margin: 0 16px 8px;
-    padding: 10px 14px;
-    background: var(--success-bg);
-    border: 1px solid #D4E0CC;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 11.5px;
-    color: var(--success);
-}
-
-.license-badge i {
-    font-size: 14px;
-}
-
-.license-badge span {
-    font-weight: 500;
-}
-
-/* Rules List */
-.rules-list {
-    padding: 0 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.rule-item {
-    padding: 10px 12px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    border: 1px solid transparent;
-}
-
-.rule-item:hover {
-    background: var(--card);
-    border-color: var(--border-light);
-    box-shadow: var(--shadow-sm);
-}
-
-.rule-icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    flex-shrink: 0;
-    margin-top: 1px;
-}
-
-.rule-icon.speed {
-    background: var(--danger-bg);
-    color: var(--danger);
-}
-
-.rule-icon.seat {
-    background: #F0EBF5;
-    color: #6B5B8A;
-}
-
-.rule-icon.phone {
-    background: #EBF0F5;
-    color: #4A6B8A;
-}
-
-.rule-icon.helmet {
-    background: var(--success-bg);
-    color: var(--success);
-}
-
-.rule-icon.drink {
-    background: #FDF0EB;
-    color: #C45A3A;
-}
-
-.rule-icon.lane {
-    background: #F5F0EB;
-    color: var(--accent);
-}
-
-.rule-icon.parking {
-    background: #EBF2F0;
-    color: #4A7A6B;
-}
-
-.rule-icon.insurance {
-    background: #F5F2EB;
-    color: #8A7A4A;
-}
-
-.rule-text h4 {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--fg);
-    line-height: 1.3;
-}
-
-.rule-text p {
-    font-size: 10.5px;
-    color: var(--fg-muted);
-    margin-top: 2px;
-    line-height: 1.4;
-}
-
-/* Location Selector */
-.location-selector {
-    margin: 0 16px 12px;
-    padding: 8px 12px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--fg-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.location-selector:hover {
-    border-color: var(--accent-light);
-    background: var(--card-hover);
-}
-
-.location-selector i {
-    color: var(--accent);
-    font-size: 13px;
-}
-
-.location-selector select {
-    flex: 1;
-    background: none;
-    border: none;
-    outline: none;
-    font-family: inherit;
-    font-size: 12px;
-    color: var(--fg);
-    cursor: pointer;
-}
-
-/* Center Chat */
-.panel-center {
-    padding-top: 52px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-warm);
-}
-
-.chat-header {
-    padding: 14px 24px;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.chat-header-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.chat-header-left .bot-avatar {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 14px;
-}
-
-.chat-header-left h3 {
-    font-size: 13.5px;
-    font-weight: 600;
-}
-
-.chat-header-left p {
-    font-size: 10.5px;
-    color: var(--fg-muted);
-    margin-top: 1px;
-}
-
-.chat-header-actions {
-    display: flex;
-    gap: 6px;
-}
-
-.chat-header-actions button {
-    width: 30px;
-    height: 30px;
-    border-radius: 7px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--fg-muted);
-    cursor: pointer;
-    font-size: 12px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chat-header-actions button:hover {
-    background: var(--accent-bg);
-    color: var(--accent);
-}
-
-/* Chat Messages */
-.chat-messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
-}
-
-.chat-messages::-webkit-scrollbar {
-    width: 4px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 4px;
-}
-
-.message {
-    display: flex;
-    gap: 10px;
-    max-width: 85%;
-    animation: msgIn 0.3s ease;
-}
-
-@keyframes msgIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.message.bot {
-    align-self: flex-start;
-}
-
-.message.user {
-    align-self: flex-end;
-    flex-direction: row-reverse;
-}
-
-.msg-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.message.bot .msg-avatar {
-    background: var(--accent);
-    color: #fff;
-}
-
-.message.user .msg-avatar {
-    background: var(--chat-user);
-    color: var(--accent);
-}
-
-.msg-bubble {
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 13px;
-    line-height: 1.55;
-    position: relative;
-}
-
-.message.bot .msg-bubble {
-    background: var(--chat-bot);
-    border: 1px solid var(--border-light);
-    border-top-left-radius: 3px;
-    color: var(--fg);
-}
-
-.message.user .msg-bubble {
-    background: var(--chat-user);
-    border: 1px solid var(--border);
-    border-top-right-radius: 3px;
-    color: var(--fg);
-}
-
-.msg-bubble .msg-location {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 10px;
-    color: var(--accent);
-    background: var(--accent-bg);
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-bottom: 6px;
-    font-weight: 500;
-}
-
-.msg-bubble .msg-penalty {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 10.5px;
-    color: var(--danger);
-    background: var(--danger-bg);
-    padding: 3px 8px;
-    border-radius: 6px;
-    margin-top: 6px;
-    font-weight: 500;
-}
-
-.msg-time {
-    font-size: 9.5px;
-    color: var(--fg-muted);
-    margin-top: 4px;
-    text-align: right;
-}
-
-.message.bot .msg-time {
-    text-align: left;
-}
-
-/* Quick Replies */
-.quick-replies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 0 24px 10px;
-}
-
-.quick-reply {
-    padding: 6px 14px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--fg-secondary);
-    font-size: 11.5px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-}
-
-.quick-reply:hover {
-    background: var(--accent-bg);
-    border-color: var(--accent-light);
-    color: var(--accent);
-}
-
-/* Chat Input */
-.chat-input-area {
-    padding: 12px 24px 16px;
-    background: var(--card);
-    border-top: 1px solid var(--border);
-}
-
-.chat-input-wrap {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 4px 6px 4px 14px;
-    transition: border-color 0.2s;
-}
-
-.chat-input-wrap:focus-within {
-    border-color: var(--accent-light);
-}
-
-.chat-input-wrap input {
-    flex: 1;
-    background: none;
-    border: none;
-    outline: none;
-    font-family: inherit;
-    font-size: 13px;
-    color: var(--fg);
-}
-
-.chat-input-wrap input::placeholder {
-    color: var(--fg-muted);
-}
-
-.chat-input-wrap .voice-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    border: none;
-    background: none;
-    color: var(--fg-muted);
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chat-input-wrap .voice-btn:hover {
-    color: var(--accent);
-    background: var(--accent-bg);
-}
-
-.chat-send-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    border: none;
-    background: var(--accent);
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.chat-send-btn:hover {
-    background: #7A5F40;
-    transform: scale(1.04);
-}
-
-.chat-disclaimer {
-    font-size: 9.5px;
-    color: var(--fg-muted);
-    text-align: center;
-    margin-top: 8px;
-}
-
-/* Right Panel — Challan Calculator */
-.challan-card {
-    margin: 12px 16px;
-    padding: 16px;
-    background: var(--card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-}
-
-.challan-card h3 {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.challan-card h3 i {
-    color: var(--accent);
-    font-size: 14px;
-}
-
-.challan-form-group {
-    margin-bottom: 10px;
-}
-
-.challan-form-group label {
-    font-size: 10.5px;
-    font-weight: 500;
-    color: var(--fg-secondary);
-    margin-bottom: 5px;
-    display: block;
-}
-
-.challan-form-group select,
-.challan-form-group input {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xs);
-    background: var(--bg);
-    font-family: inherit;
-    font-size: 12px;
-    color: var(--fg);
-    outline: none;
-    transition: border-color 0.2s;
-    -webkit-appearance: none;
-}
-
-.challan-form-group select:focus,
-.challan-form-group input:focus {
-    border-color: var(--accent-light);
-}
-
-.challan-calc-btn {
-    width: 100%;
-    padding: 9px;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: var(--accent);
-    color: #fff;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 4px;
-}
-
-.challan-calc-btn:hover {
-    background: #7A5F40;
-}
-
-/* Challan Result */
-.challan-result {
-    margin-top: 12px;
-    padding: 12px;
-    background: var(--bg);
-    border-radius: var(--radius-sm);
-    border: 1px dashed var(--border);
-    display: none;
-}
-
-.challan-result.show {
-    display: block;
-    animation: msgIn 0.3s ease;
-}
-
-.challan-result-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0;
-    font-size: 11.5px;
-}
-
-.challan-result-row .cr-label {
-    color: var(--fg-muted);
-}
-
-.challan-result-row .cr-value {
-    font-weight: 600;
-    color: var(--fg);
-}
-
-.challan-result-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 8px;
-    margin-top: 6px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-}
-
-.challan-result-total .cr-label {
-    font-weight: 600;
-    color: var(--fg);
-}
-
-.challan-result-total .cr-value {
-    font-weight: 700;
-    color: var(--danger);
-    font-size: 15px;
-}
-
-/* Violation History */
-.violation-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: var(--radius-sm);
-    margin: 0 16px 4px;
-    background: var(--card);
-    border: 1px solid var(--border-light);
-    transition: all 0.2s;
-}
-
-.violation-item:hover {
-    box-shadow: var(--shadow-sm);
-}
-
-.violation-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.violation-dot.paid {
-    background: var(--success);
-}
-
-.violation-dot.pending {
-    background: var(--danger);
-}
-
-.violation-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.violation-info h4 {
-    font-size: 11.5px;
-    font-weight: 600;
-    color: var(--fg);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.violation-info p {
-    font-size: 10px;
-    color: var(--fg-muted);
-    margin-top: 1px;
-}
-
-.violation-amount {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--fg);
-    flex-shrink: 0;
-}
-
-.violation-status {
-    font-size: 9px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 10px;
-    flex-shrink: 0;
-}
-
-.violation-status.paid {
-    background: var(--success-bg);
-    color: var(--success);
-}
-
-.violation-status.pending {
-    background: var(--danger-bg);
-    color: var(--danger);
-}
-
-/* Safety Score Card */
-.safety-card {
-    margin: 12px 16px;
-    padding: 16px;
-    background: var(--card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-}
-
-.safety-score-ring {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 10px;
-    position: relative;
-}
-
-.safety-score-ring svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-}
-
-.safety-score-ring .ring-bg {
-    fill: none;
-    stroke: var(--border);
-    stroke-width: 5;
-}
-
-.safety-score-ring .ring-fill {
-    fill: none;
-    stroke: var(--success);
-    stroke-width: 5;
-    stroke-linecap: round;
-    stroke-dasharray: 188.5;
-    stroke-dashoffset: 30;
-    transition: stroke-dashoffset 1s ease;
-}
-
-.safety-score-ring .score-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--fg);
-}
-
-.safety-card h4 {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--fg);
-}
-
-.safety-card p {
-    font-size: 10.5px;
-    color: var(--fg-muted);
-    margin-top: 3px;
-    line-height: 1.4;
-}
-
-/* Typing indicator */
-.typing-indicator {
-    display: none;
-    align-self: flex-start;
-    gap: 10px;
-    max-width: 85%;
-    animation: msgIn 0.3s ease;
-}
-
-.typing-indicator.show {
-    display: flex;
-}
-
-.typing-dots {
-    display: flex;
-    gap: 4px;
-    padding: 12px 16px;
-    background: var(--chat-bot);
-    border: 1px solid var(--border-light);
-    border-radius: 10px;
-    border-top-left-radius: 3px;
-}
-
-.typing-dots span {
-    width: 6px;
-    height: 6px;
-    background: var(--fg-muted);
-    border-radius: 50%;
-    animation: typingBounce 1.2s infinite;
-}
-
-.typing-dots span:nth-child(2) {
-    animation-delay: 0.15s;
-}
-
-.typing-dots span:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-@keyframes typingBounce {
-
-    0%,
-    60%,
-    100% {
-        transform: translateY(0);
-        opacity: 0.4;
-    }
-
-    30% {
-        transform: translateY(-4px);
-        opacity: 1;
-    }
-}
-
-/* Toast */
-.toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--fg);
-    color: var(--bg);
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: 500;
-    z-index: 999;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-}
-
-.toast.show {
-    transform: translateX(-50%) translateY(0);
-}
-
-/* Subtle background pattern */
-.panel-center::before {
-    content: '';
-    position: absolute;
-    top: 52px;
-    left: 280px;
-    right: 300px;
-    bottom: 0;
-    background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px);
-    background-size: 24px 24px;
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.chat-messages,
-.quick-replies,
-.chat-input-area {
-    position: relative;
-    z-index: 1;
-}
-
-/* Responsive note: this is primarily for wide screens */
-@media (max-width: 1100px) {
-    .dashboard {
-        grid-template-columns: 240px 1fr 260px;
-    }
-}
-
-</style></head><body>< !-- Top Bar --><header class="topbar"><div class="topbar-logo"><div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div><span>DriveLegal</span><small>Safety Assistant</small></div><div class="topbar-center"><i class="fa-solid fa-circle"></i><span>Location:</span><span class="loc-name" id="topbarLocation">Delhi,
-India</span></div><div class="topbar-right"><span class="topbar-time" id="topbarTime">--:--</span><button class="topbar-btn" title="Settings"><i class="fa-solid fa-gear"></i></button><button class="topbar-btn" title="Notifications" style="position:relative"><i class="fa-solid fa-bell"></i><span style="position:absolute;top:-2px;right:-2px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--card)"></span></button></div></header>< !-- Dashboard --><div class="dashboard">< !-- LEFT PANEL --><aside class="panel-left"><div class="section-label">Driver Profile</div><div class="profile-card"><div class="profile-header"><div class="profile-avatar">AK</div><div class="profile-info"><h3>Arjun Kumar</h3><p>DL-04201987 · Private</p></div></div><div class="profile-stats"><div class="stat-item"><div class="val ok">84</div><div class="label">Score</div></div><div class="stat-item"><div class="val">6</div><div class="label">Years</div></div><div class="stat-item"><div class="val danger">2</div><div class="label">Challans</div></div></div></div><div class="license-badge"><i class="fa-solid fa-id-card"></i><span>License Valid till Mar 2029</span></div><div class="section-label">Jurisdiction</div><div class="location-selector"><i class="fa-solid fa-location-dot"></i><select id="locationSelect"><option value="delhi">Delhi,
-India</option><option value="mumbai">Mumbai,
-India</option><option value="bangalore">Bangalore,
-India</option><option value="chennai">Chennai,
-India</option><option value="hyderabad">Hyderabad,
-India</option><option value="kolkata">Kolkata,
-India</option><option value="pune">Pune,
-India</option></select></div><div class="section-label">Quick Rules Reference</div><div class="rules-list"><div class="rule-item" data-rule="speed"><div class="rule-icon speed"><i class="fa-solid fa-gauge-high"></i></div><div class="rule-text"><h4>Speed Limits</h4><p>City: 50 km/h · Highway: 100 km/h</p></div></div><div class="rule-item" data-rule="seatbelt"><div class="rule-icon seat"><i class="fa-solid fa-user-shield"></i></div><div class="rule-text"><h4>Seatbelt Compliance</h4><p>Mandatory for all occupants</p></div></div><div class="rule-item" data-rule="phone"><div class="rule-icon phone"><i class="fa-solid fa-mobile-screen"></i></div><div class="rule-text"><h4>Phone Usage</h4><p>Handheld use prohibited while driving</p></div></div><div class="rule-item" data-rule="helmet"><div class="rule-icon helmet"><i class="fa-solid fa-helmet-safety"></i></div><div class="rule-text"><h4>Helmet Rule</h4><p>ISI-marked helmet mandatory for riders & pillion</p></div></div><div class="rule-item" data-rule="drink"><div class="rule-icon drink"><i class="fa-solid fa-wine-glass"></i></div><div class="rule-text"><h4>Drink & Drive</h4><p>BAC limit: 0.03% (30 mg/100 ml)</p></div></div><div class="rule-item" data-rule="lane"><div class="rule-icon lane"><i class="fa-solid fa-road"></i></div><div class="rule-text"><h4>Lane Discipline</h4><p>Keep left,
-overtaking from right only</p></div></div><div class="rule-item" data-rule="parking"><div class="rule-icon parking"><i class="fa-solid fa-square-parking"></i></div><div class="rule-text"><h4>Parking Regulations</h4><p>No parking within 15m of bus stops</p></div></div><div class="rule-item" data-rule="insurance"><div class="rule-icon insurance"><i class="fa-solid fa-file-shield"></i></div><div class="rule-text"><h4>Insurance mandate</h4><p>Third-party insurance compulsory</p></div></div></div></aside>< !-- CENTER PANEL — CHAT --><main class="panel-center"><div class="chat-header"><div class="chat-header-left"><div class="bot-avatar"><i class="fa-solid fa-shield-halved"></i></div><div><h3>DriveLegal Assistant</h3><p>Location-specific traffic rule advisor</p></div></div><div class="chat-header-actions"><button title="Search in chat"><i class="fa-solid fa-magnifying-glass"></i></button><button title="Export chat" onclick="showToast('Chat exported as text')"><i class="fa-solid fa-download"></i></button><button title="Clear chat" onclick="clearChat()"><i class="fa-solid fa-trash-can"></i></button></div></div><div class="chat-messages" id="chatMessages">< !-- Messages injected here --></div><div class="typing-indicator" id="typingIndicator"><div class="msg-avatar" style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px"><i class="fa-solid fa-shield-halved"></i></div><div class="typing-dots"><span></span><span></span><span></span></div></div><div class="quick-replies" id="quickReplies"><button class="quick-reply" data-query="What is the speed limit here?">Speed limits</button><button class="quick-reply" data-query="Is talking on phone allowed while driving?">Phone usage rules</button><button class="quick-reply" data-query="What are the helmet rules?">Helmet requirements</button><button class="quick-reply" data-query="What is the penalty for drunk driving?">Drink & drive penalty</button><button class="quick-reply" data-query="What are the seatbelt fines?">Seatbelt fines</button><button class="quick-reply" data-query="Where can I park legally?">Parking rules</button></div><div class="chat-input-area"><div class="chat-input-wrap"><input type="text" id="chatInput" placeholder="Ask about any traffic rule..." autocomplete="off"><button class="voice-btn" title="Voice input" onclick="showToast('Voice input activated')"><i class="fa-solid fa-microphone"></i></button><button class="chat-send-btn" id="sendBtn" title="Send"><i class="fa-solid fa-paper-plane"></i></button></div><p class="chat-disclaimer">DriveLegal provides informational guidance. Always verify with official local authorities.</p></div></main>< !-- RIGHT PANEL --><aside class="panel-right"><div class="section-label">Challan Calculator</div><div class="challan-card"><h3><i class="fa-solid fa-calculator"></i>Estimate Penalty</h3><div class="challan-form-group"><label>Violation Type</label><select id="violationType"><option value="">Select violation...</option><option value="overspeeding">Overspeeding</option><option value="no_seatbelt">No Seatbelt</option><option value="no_helmet">No Helmet</option><option value="phone_usage">Phone Usage While Driving</option><option value="red_light">Red Light Jumping</option><option value="drink_drive">Drunk Driving</option><option value="no_license">No Valid License</option><option value="no_insurance">No Insurance</option><option value="wrong_parking">Wrong Parking</option><option value="no_puc">No PUC Certificate</option><option value="overloading">Overloading</option><option value="minor_driving">Minor Driving</option></select></div><div class="challan-form-group"><label>Number of Offences</label><input type="number" id="offenceCount" value="1" min="1" max="20"></div><div class="challan-form-group"><label>Repeat Offender?</label><select id="repeatOffender"><option value="no">No — First Time</option><option value="yes">Yes — Repeat Offence</option></select></div><button class="challan-calc-btn" onclick="calculateChallan()">Calculate Penalty</button><div class="challan-result" id="challanResult"></div></div><div class="section-label">Driving Safety Score</div><div class="safety-card"><div class="safety-score-ring"><svg viewBox="0 0 72 72"><circle class="ring-bg" cx="36" cy="36" r="30" /><circle class="ring-fill" cx="36" cy="36" r="30" /></svg><div class="score-text">84</div></div><h4>Good Standing</h4><p>2 minor violations in the last 12 months. Maintain current driving habits to improve your score.</p></div><div class="section-label">Recent Violations</div><div class="violation-item"><div class="violation-dot pending"></div><div class="violation-info"><h4>Overspeeding — NH-48</h4><p>12 Jan 2025 · Gurgaon</p></div><div class="violation-amount">₹2,
-000</div><div class="violation-status pending">Due</div></div><div class="violation-item"><div class="violation-dot paid"></div><div class="violation-info"><h4>No Helmet — MG Road</h4><p>03 Nov 2024 · Delhi</p></div><div class="violation-amount">₹1,
-000</div><div class="violation-status paid">Paid</div></div><div class="violation-item"><div class="violation-dot paid"></div><div class="violation-info"><h4>Red Light — ITO Crossing</h4><p>28 Aug 2024 · Delhi</p></div><div class="violation-amount">₹1,
-000</div><div class="violation-status paid">Paid</div></div><div style="height:20px"></div></aside></div>< !-- Toast --><div class="toast" id="toast"></div><script> // === Data: Penalty database per violation type ===
-
-const penaltyData= {
-    overspeeding: {
-        base: 1000, repeat: 2000, label: 'Overspeeding'
-    }
-
-    ,
-    no_seatbelt: {
-        base: 1000, repeat: 2000, label: 'No Seatbelt'
-    }
-
-    ,
-    no_helmet: {
-        base: 1000, repeat: 2000, label: 'No Helmet'
-    }
-
-    ,
-    phone_usage: {
-        base: 5000, repeat: 10000, label: 'Phone Usage While Driving'
-    }
-
-    ,
-    red_light: {
-        base: 1000, repeat: 2000, label: 'Red Light Jumping'
-    }
-
-    ,
-    drink_drive: {
-        base: 10000, repeat: 15000, label: 'Drunk Driving'
-    }
-
-    ,
-    no_license: {
-        base: 5000, repeat: 10000, label: 'No Valid License'
-    }
-
-    ,
-    no_insurance: {
-        base: 2000, repeat: 4000, label: 'No Insurance'
-    }
-
-    ,
-    wrong_parking: {
-        base: 500, repeat: 1000, label: 'Wrong Parking'
-    }
-
-    ,
-    no_puc: {
-        base: 1000, repeat: 2000, label: 'No PUC Certificate'
-    }
-
-    ,
-    overloading: {
-        base: 2000, repeat: 4000, label: 'Overloading'
-    }
-
-    ,
-    minor_driving: {
-        base: 25000, repeat: 25000, label: 'Minor Driving'
-    }
-}
-
-;
-
-// === Data: Chat responses keyed by topic keywords ===
-const chatResponses= {
-    delhi: {
-        speed: {
-            text: 'In Delhi, the speed limits are:\n\n• Restricted areas: 30 km/h\n• Residential areas: 40 km/h\n• Major roads / Ring Road: 50-60 km/h\n• NH-48 / Expressways: 100 km/h\n\nOverspeeding above the limit by more than 20 km/h can result in licence suspension for up to 3 months under the Motor Vehicles (Amendment) Act, 2019.',
-                penalty: '₹1,000–₹2,000 + possible licence suspension'
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveLegal — Driver Safety Chatbot</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #F3EDE2;
+            --bg-warm: #EDE6D8;
+            --card: #FDFAF5;
+            --card-hover: #FFF9EF;
+            --fg: #2C2418;
+            --fg-secondary: #6B5E4F;
+            --fg-muted: #9C8E7C;
+            --accent: #8B6F4E;
+            --accent-light: #C4A97D;
+            --accent-bg: #F0E6D4;
+            --border: #DDD4C4;
+            --border-light: #EAE2D4;
+            --danger: #B85C3A;
+            --danger-bg: #FDF0EB;
+            --success: #5E7A52;
+            --success-bg: #EFF4EC;
+            --chat-user: #E8DFD0;
+            --chat-bot: #FDFAF5;
+            --shadow-sm: 0 1px 3px rgba(44, 36, 24, 0.04);
+            --shadow-md: 0 2px 8px rgba(44, 36, 24, 0.06);
+            --shadow-lg: 0 4px 16px rgba(44, 36, 24, 0.08);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-xs: 6px;
         }
 
-        ,
-        phone: {
-            text: 'In Delhi, using a handheld mobile phone while driving is strictly prohibited under Section 184 of the Motor Vehicles Act. This includes calling, texting, or using navigation apps held in hand.\n\nYou may use hands-free devices or mounted phone holders for navigation, but any interaction that distracts from driving can still attract a penalty.',
-                penalty: '₹5,000 for first offence, ₹10,000 for repeat'
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        ,
-        helmet: {
-            text: 'In Delhi, wearing an ISI-marked helmet is mandatory for:\n\n• The rider of a two-wheeler\n• The pillion passenger\n• Children above 4 years (on two-wheelers specifically designed to carry them)\n\nThe helmet strap must be securely fastened. Violation also affects insurance claims in case of accidents.',
-                penalty: '₹1,000 fine + licence disqualification for 3 months'
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            height: 100vh;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        ,
-        drink: {
-            text: 'Delhi enforces a strict Blood Alcohol Concentration (BAC) limit of 0.03% (30 mg per 100 ml of blood). Penalties under the Motor Vehicles (Amendment) Act 2019 are severe:\n\n• First offence: Up to 6 months imprisonment + ₹10,000 fine\n• Repeat offence: Up to 2 years imprisonment + ₹15,000 fine\n\nPolice regularly conduct breathalyzer checks, especially on weekends and near entertainment zones.',
-                penalty: '₹10,000–₹15,000 + possible imprisonment'
+        /* Main Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr 300px;
+            height: 100vh;
+            gap: 0;
         }
 
-        ,
-        seatbelt: {
-            text: 'In Delhi, seatbelts are mandatory for:\n\n• Driver and front-seat passenger (always)\n• Rear-seat passengers (enforced since 2022)\n\nChild restraint systems are required for children under 14 years. Not wearing a seatbelt also voids certain insurance claim benefits.',
-                penalty: '₹1,000 per unbelted occupant'
+        /* Top Bar */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 52px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
         }
 
-        ,
-        parking: {
-            text: 'Delhi parking regulations include:\n\n• No parking within 15 meters of a bus stop\n• No parking near fire hydrants or intersections\n• No parking on footpaths or cycle tracks\n• Designated parking zones are marked with signs and lines\n• Wrong parking in congested areas may result in towing\n\nNight parking rules vary by zone — always check local RWA or MCD signage.',
-                penalty: '₹500–₹1,000 + possible towing charges'
+        .topbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        ,
-        default: 'In Delhi, all Central Motor Vehicles Rules and the Motor Vehicles (Amendment) Act 2019 are strictly enforced. Could you ask about a specific rule like speed limits, phone usage, helmet, seatbelt, drink driving, or parking?'
-    }
-
-    ,
-    mumbai: {
-        speed: {
-            text: 'In Mumbai, speed limits vary by road type:\n\n• Residential / congested areas: 40 km/h\n• Major arterial roads: 50 km/h\n• Eastern & Western Express Highways: 80 km/h\n• Sea Link: 80 km/h\n\nSpeed cameras are installed at multiple points. The Mumbai Traffic Police actively monitor overspeeding via automated systems.',
-                penalty: '₹1,000–₹2,000 + licence suspension possible'
+        .topbar-logo .logo-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
         }
 
-        ,
-        phone: {
-            text: 'Mumbai traffic police strictly enforce the no-phone rule. Handheld phone usage while driving attracts heavy fines. Even checking your phone at a red light counts as an offence.\n\nHands-free devices are permitted, but any visible distraction can be penalized under discretionary powers of the traffic officer.',
-                penalty: '₹5,000 for first offence, ₹10,000 for repeat'
+        .topbar-logo span {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--fg);
+            letter-spacing: -0.3px;
         }
 
-        ,
-        helmet: {
-            text: 'Mumbai enforces helmet rules rigorously:\n\n• ISI-marked helmet mandatory for rider and pillion\n• Strap must be fastened at all times\n• RTO and traffic police conduct regular checkpoints\n\nNot wearing a helmet can also lead to complications in insurance claims if an accident occurs.',
-                penalty: '₹1,000 + 3-month licence disqualification'
+        .topbar-logo small {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            font-size: 10px;
+            color: var(--fg-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-left: 4px;
         }
 
-        ,
-        drink: {
-            text: 'Mumbai police conduct regular nakabandi (checkpoints) for drunk driving, especially in South Mumbai, Bandra, and Andheri areas on weekends.\n\nBAC limit: 0.03% (30 mg/100 ml). Penalties are severe and include imprisonment provisions.',
-                penalty: '₹10,000–₹15,000 + up to 6 months imprisonment'
+        .topbar-center {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 12px;
+            color: var(--fg-secondary);
         }
 
-        ,
-        seatbelt: {
-            text: 'Seatbelts are mandatory for all occupants in Mumbai — front and rear seats. The Mumbai Traffic Police have been conducting awareness campaigns and enforcement drives specifically targeting rear-seat belt usage since 2022.',
-                penalty: '₹1,000 per unbelted occupant'
+        .topbar-center i {
+            color: var(--success);
+            font-size: 7px;
         }
 
-        ,
-        parking: {
-            text: 'Mumbai parking rules:\n\n• No parking in no-parking zones marked with yellow lines\n• Pay-and-parking zones managed by BMC\n• No double parking\n• Towing is common in South Mumbai, Bandra, and Andheri\n• Multi-level parking lots available at key locations',
-                penalty: '₹500–₹1,000 + towing charges (₹500+)'
+        .topbar-center .loc-name {
+            font-weight: 600;
+            color: var(--fg);
         }
 
-        ,
-        default: 'In Mumbai, traffic rules are enforced by the Mumbai Traffic Police. Please ask about a specific topic: speed limits, phone usage, helmet rules, drink & drive, seatbelt fines, or parking regulations.'
-    }
-
-    ,
-    // Generic fallback for other cities
-    generic: {
-        speed: {
-            text: 'Standard Indian speed limits apply:\n\n• Urban areas: 40–50 km/h\n• State highways: 60–80 km/h\n• National highways: 80–100 km/h\n• Expressways: Up to 120 km/h\n\nSpecific limits may vary by city zone. Always follow posted signboards.', penalty: '₹1,000–₹2,000'
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
-        ,
-        phone: {
-            text: 'Handheld mobile phone usage while driving is prohibited across India under the Motor Vehicles Act. Use hands-free devices or mounted holders for navigation.', penalty: '₹5,000 (first offence), ₹10,000 (repeat)'
+        .topbar-time {
+            font-size: 12px;
+            color: var(--fg-muted);
+            font-variant-numeric: tabular-nums;
         }
 
-        ,
-        helmet: {
-            text: 'ISI-marked helmets are mandatory for both rider and pillion passenger on two-wheelers across India. The strap must be properly fastened.', penalty: '₹1,000 + possible licence disqualification'
+        .topbar-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--fg-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
         }
 
-        ,
-        drink: {
-            text: 'The legal BAC limit across India is 0.03% (30 mg/100 ml). Drunk driving carries fines, imprisonment, and potential licence cancellation.', penalty: '₹10,000–₹15,000 + imprisonment up to 6 months'
+        .topbar-btn:hover {
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-color: var(--accent-light);
         }
 
-        ,
-        seatbelt: {
-            text: 'Seatbelts are mandatory for driver, front passenger, and rear-seat passengers across India. Non-compliance can void insurance claims.', penalty: '₹1,000 per unbelted occupant'
+        /* Panels */
+        .panel-left,
+        .panel-right {
+            padding-top: 52px;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--bg);
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
         }
 
-        ,
-        parking: {
-            text: 'General parking rules: No parking within 15m of bus stops, near fire hydrants, on footpaths, or in no-parking zones. Always follow local signage.', penalty: '₹500–₹1,000 + possible towing'
-        }
-    }
-}
-
-;
-
-// Helper: get topic from user query
-function detectTopic(query) {
-    const q=query.toLowerCase();
-    if (q.includes('speed') || q.includes('fast') || q.includes('limit')) return 'speed';
-    if (q.includes('phone') || q.includes('mobile') || q.includes('call') || q.includes('text')) return 'phone';
-    if (q.includes('helmet') || q.includes('two wheeler') || q.includes('bike') || q.includes('scooter')) return 'helmet';
-    if (q.includes('drink') || q.includes('drunk') || q.includes('alcohol') || q.includes('bac') || q.includes('dui')) return 'drink';
-    if (q.includes('seat') || q.includes('belt') || q.includes('seatbelt')) return 'seatbelt';
-    if (q.includes('park') || q.includes('parking') || q.includes('tow')) return 'parking';
-    if (q.includes('lane') || q.includes('overtake') || q.includes('overtaking')) return 'lane';
-    if (q.includes('insurance') || q.includes('insure')) return 'insurance';
-    if (q.includes('license') || q.includes('licence') || q.includes('dl ')) return 'license';
-    if (q.includes('red light') || q.includes('signal') || q.includes('traffic light')) return 'redlight';
-    if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good')) return 'greeting';
-    if (q.includes('help') || q.includes('what can') || q.includes('how do')) return 'help';
-    return 'default';
-}
-
-// Helper: get current location key
-function getLocation() {
-    return document.getElementById('locationSelect').value;
-}
-
-function getLocationName() {
-    const sel=document.getElementById('locationSelect');
-    return sel.options[sel.selectedIndex].text;
-}
-
-// Get response for a query
-function getResponse(query) {
-    const topic=detectTopic(query);
-    const loc=getLocation();
-
-    if (topic==='greeting') {
-        return {
-            text: `Hello ! I'm your DriveLegal assistant for ${getLocationName()}. Ask me about any traffic rule — speed limits, fines, helmet rules, parking, and more. I' ll give you location-specific,
-            accurate information.`,
-            penalty: null
+        .panel-left {
+            border-right: 1px solid var(--border);
         }
 
-        ;
-    }
+        .panel-right {
+            border-left: 1px solid var(--border);
+        }
 
-    if (topic==='help') {
-        return {
-            text: `I can help you with traffic rules specific to $ {
-                getLocationName()
+        .panel-left::-webkit-scrollbar,
+        .panel-right::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .panel-left::-webkit-scrollbar-thumb,
+        .panel-right::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        /* Section Labels */
+        .section-label {
+            font-size: 9.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: var(--fg-muted);
+            padding: 18px 20px 10px;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            margin: 12px 16px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .profile-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .profile-info h3 {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--fg);
+            line-height: 1.2;
+        }
+
+        .profile-info p {
+            font-size: 11px;
+            color: var(--fg-muted);
+            margin-top: 2px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 8px 4px;
+            background: var(--bg);
+            border-radius: var(--radius-xs);
+        }
+
+        .stat-item .val {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--fg);
+            line-height: 1;
+        }
+
+        .stat-item .val.danger {
+            color: var(--danger);
+        }
+
+        .stat-item .val.ok {
+            color: var(--success);
+        }
+
+        .stat-item .label {
+            font-size: 9px;
+            color: var(--fg-muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* License Badge */
+        .license-badge {
+            margin: 0 16px 8px;
+            padding: 10px 14px;
+            background: var(--success-bg);
+            border: 1px solid #D4E0CC;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11.5px;
+            color: var(--success);
+        }
+
+        .license-badge i {
+            font-size: 14px;
+        }
+
+        .license-badge span {
+            font-weight: 500;
+        }
+
+        /* Rules List */
+        .rules-list {
+            padding: 0 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .rule-item {
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border: 1px solid transparent;
+        }
+
+        .rule-item:hover {
+            background: var(--card);
+            border-color: var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .rule-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .rule-icon.speed {
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        .rule-icon.seat {
+            background: #F0EBF5;
+            color: #6B5B8A;
+        }
+
+        .rule-icon.phone {
+            background: #EBF0F5;
+            color: #4A6B8A;
+        }
+
+        .rule-icon.helmet {
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .rule-icon.drink {
+            background: #FDF0EB;
+            color: #C45A3A;
+        }
+
+        .rule-icon.lane {
+            background: #F5F0EB;
+            color: var(--accent);
+        }
+
+        .rule-icon.parking {
+            background: #EBF2F0;
+            color: #4A7A6B;
+        }
+
+        .rule-icon.insurance {
+            background: #F5F2EB;
+            color: #8A7A4A;
+        }
+
+        .rule-text h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--fg);
+            line-height: 1.3;
+        }
+
+        .rule-text p {
+            font-size: 10.5px;
+            color: var(--fg-muted);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        /* Location Selector */
+        .location-selector {
+            margin: 0 16px 12px;
+            padding: 8px 12px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--fg-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .location-selector:hover {
+            border-color: var(--accent-light);
+            background: var(--card-hover);
+        }
+
+        .location-selector i {
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .location-selector select {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+            color: var(--fg);
+            cursor: pointer;
+        }
+
+        /* Center Chat */
+        .panel-center {
+            padding-top: 52px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-warm);
+        }
+
+        .chat-header {
+            padding: 14px 24px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-header-left .bot-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .chat-header-left h3 {
+            font-size: 13.5px;
+            font-weight: 600;
+        }
+
+        .chat-header-left p {
+            font-size: 10.5px;
+            color: var(--fg-muted);
+            margin-top: 1px;
+        }
+
+        .chat-header-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .chat-header-actions button {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--fg-muted);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-header-actions button:hover {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        /* Chat Messages */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            max-width: 85%;
+            animation: msgIn 0.3s ease;
+        }
+
+        @keyframes msgIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
             }
 
-            :\n\n• Speed limits for different road types\n• Phone usage regulations\n• Helmet & seatbelt rules\n• Drink & drive penalties\n• Parking regulations\n• Lane discipline\n• Insurance & license requirements\n• Challan/penalty details\n\nJust type your question !`,
-            penalty: null
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        ;
-    }
-
-    const cityData=chatResponses[loc] || null;
-    const topicData=cityData ? (cityData[topic] || cityData.default) : (chatResponses.generic[topic] || null);
-
-    if (topicData && topicData.text) {
-        return {
-            text: topicData.text, penalty: topicData.penalty || null
+        .message.bot {
+            align-self: flex-start;
         }
 
-        ;
-    }
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
 
-    // Fallback for lane, insurance, license, redlight not defined per city
-    const genericTopic=chatResponses.generic[topic];
+        .msg-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
 
-    if (genericTopic) {
-        return {
-            text: `For $ {
-                getLocationName()
+        .message.bot .msg-avatar {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .message.user .msg-avatar {
+            background: var(--chat-user);
+            color: var(--accent);
+        }
+
+        .msg-bubble {
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.55;
+            position: relative;
+        }
+
+        .message.bot .msg-bubble {
+            background: var(--chat-bot);
+            border: 1px solid var(--border-light);
+            border-top-left-radius: 3px;
+            color: var(--fg);
+        }
+
+        .message.user .msg-bubble {
+            background: var(--chat-user);
+            border: 1px solid var(--border);
+            border-top-right-radius: 3px;
+            color: var(--fg);
+        }
+
+        .msg-bubble .msg-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            color: var(--accent);
+            background: var(--accent-bg);
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .msg-bubble .msg-penalty {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10.5px;
+            color: var(--danger);
+            background: var(--danger-bg);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .msg-time {
+            font-size: 9.5px;
+            color: var(--fg-muted);
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .message.bot .msg-time {
+            text-align: left;
+        }
+
+        /* Quick Replies */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 0 24px 10px;
+        }
+
+        .quick-reply {
+            padding: 6px 14px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--fg-secondary);
+            font-size: 11.5px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .quick-reply:hover {
+            background: var(--accent-bg);
+            border-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        /* Chat Input */
+        .chat-input-area {
+            padding: 12px 24px 16px;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+
+        .chat-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 4px 6px 4px 14px;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input-wrap:focus-within {
+            border-color: var(--accent-light);
+        }
+
+        .chat-input-wrap input {
+            flex: 1;
+            background: none;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--fg);
+        }
+
+        .chat-input-wrap input::placeholder {
+            color: var(--fg-muted);
+        }
+
+        .chat-input-wrap .voice-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: none;
+            color: var(--fg-muted);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-input-wrap .voice-btn:hover {
+            color: var(--accent);
+            background: var(--accent-bg);
+        }
+
+        .chat-send-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            border: none;
+            background: var(--accent);
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-send-btn:hover {
+            background: #7A5F40;
+            transform: scale(1.04);
+        }
+
+        .chat-disclaimer {
+            font-size: 9.5px;
+            color: var(--fg-muted);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        /* Right Panel — Challan Calculator */
+        .challan-card {
+            margin: 12px 16px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .challan-card h3 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .challan-card h3 i {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .challan-form-group {
+            margin-bottom: 10px;
+        }
+
+        .challan-form-group label {
+            font-size: 10.5px;
+            font-weight: 500;
+            color: var(--fg-secondary);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .challan-form-group select,
+        .challan-form-group input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xs);
+            background: var(--bg);
+            font-family: inherit;
+            font-size: 12px;
+            color: var(--fg);
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .challan-form-group select:focus,
+        .challan-form-group input:focus {
+            border-color: var(--accent-light);
+        }
+
+        .challan-calc-btn {
+            width: 100%;
+            padding: 9px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: var(--accent);
+            color: #fff;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .challan-calc-btn:hover {
+            background: #7A5F40;
+        }
+
+        /* Challan Result */
+        .challan-result {
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            border: 1px dashed var(--border);
+            display: none;
+        }
+
+        .challan-result.show {
+            display: block;
+            animation: msgIn 0.3s ease;
+        }
+
+        .challan-result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 11.5px;
+        }
+
+        .challan-result-row .cr-label {
+            color: var(--fg-muted);
+        }
+
+        .challan-result-row .cr-value {
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        .challan-result-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 8px;
+            margin-top: 6px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .challan-result-total .cr-label {
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        .challan-result-total .cr-value {
+            font-weight: 700;
+            color: var(--danger);
+            font-size: 15px;
+        }
+
+        /* Violation History */
+        .violation-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            margin: 0 16px 4px;
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            transition: all 0.2s;
+        }
+
+        .violation-item:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .violation-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .violation-dot.paid {
+            background: var(--success);
+        }
+
+        .violation-dot.pending {
+            background: var(--danger);
+        }
+
+        .violation-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .violation-info h4 {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--fg);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .violation-info p {
+            font-size: 10px;
+            color: var(--fg-muted);
+            margin-top: 1px;
+        }
+
+        .violation-amount {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--fg);
+            flex-shrink: 0;
+        }
+
+        .violation-status {
+            font-size: 9px;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .violation-status.paid {
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .violation-status.pending {
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        /* Safety Score Card */
+        .safety-card {
+            margin: 12px 16px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .safety-score-ring {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 10px;
+            position: relative;
+        }
+
+        .safety-score-ring svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .safety-score-ring .ring-bg {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 5;
+        }
+
+        .safety-score-ring .ring-fill {
+            fill: none;
+            stroke: var(--success);
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-dasharray: 188.5;
+            stroke-dashoffset: 30;
+            transition: stroke-dashoffset 1s ease;
+        }
+
+        .safety-score-ring .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--fg);
+        }
+
+        .safety-card h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        .safety-card p {
+            font-size: 10.5px;
+            color: var(--fg-muted);
+            margin-top: 3px;
+            line-height: 1.4;
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            gap: 10px;
+            max-width: 85%;
+            animation: msgIn 0.3s ease;
+        }
+
+        .typing-indicator.show {
+            display: flex;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: var(--chat-bot);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            border-top-left-radius: 3px;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background: var(--fg-muted);
+            border-radius: 50%;
+            animation: typingBounce 1.2s infinite;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
             }
 
-            ,
-            the general rule applies:\n\n$ {
-                genericTopic.text
+            30% {
+                transform: translateY(-4px);
+                opacity: 1;
             }
-
-            `,
-            penalty: genericTopic.penalty || null
         }
 
-        ;
-    }
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--fg);
+            color: var(--bg);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 999;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
 
-    return {
-        text: `I don't have specific information on that topic for ${getLocationName()}. Could you try asking about speed limits, phone usage, helmet rules, seatbelt, drink & drive, or parking? I' ll give you accurate,
-        location-specific answers.`,
-        penalty: null
-    }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
 
-    ;
-}
+        /* Subtle background pattern */
+        .panel-center::before {
+            content: '';
+            position: absolute;
+            top: 52px;
+            left: 280px;
+            right: 300px;
+            bottom: 0;
+            background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-// === Chat Logic ===
-const chatMessages=document.getElementById('chatMessages');
-const chatInput=document.getElementById('chatInput');
-const typingIndicator=document.getElementById('typingIndicator');
+        .chat-messages,
+        .quick-replies,
+        .chat-input-area {
+            position: relative;
+            z-index: 1;
+        }
 
-function getTimeString() {
-    const now=new Date();
+        /* Responsive note: this is primarily for wide screens */
+        @media (max-width: 1100px) {
+            .dashboard {
+                grid-template-columns: 240px 1fr 260px;
+            }
+        }
+    </style>
+</head>
 
-    return now.toLocaleTimeString('en-IN', {
-        hour: '2-digit', minute: '2-digit', hour12: false
-    });
-}
+<body>
 
-function addMessage(type, text, penalty) {
-    const div=document.createElement('div');
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-logo">
+            <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <span>DriveLegal</span>
+            <small>Safety Assistant</small>
+        </div>
+        <div class="topbar-center">
+            <i class="fa-solid fa-circle"></i>
+            <span>Location:</span>
+            <span class="loc-name" id="topbarLocation">Delhi, India</span>
+        </div>
+        <div class="topbar-right">
+            <span class="topbar-time" id="topbarTime">--:--</span>
+            <button class="topbar-btn" title="Settings"><i class="fa-solid fa-gear"></i></button>
+            <button class="topbar-btn" title="Notifications" style="position:relative">
+                <i class="fa-solid fa-bell"></i>
+                <span
+                    style="position:absolute;top:-2px;right:-2px;width:7px;height:7px;background:var(--danger);border-radius:50%;border:1.5px solid var(--card)"></span>
+            </button>
+        </div>
+    </header>
 
-    div.className=`message $ {
-        type
-    }
+    <!-- Dashboard -->
+    <div class="dashboard">
 
+        <!-- LEFT PANEL -->
+        <aside class="panel-left">
+            <div class="section-label">Driver Profile</div>
+
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">AK</div>
+                    <div class="profile-info">
+                        <h3>Arjun Kumar</h3>
+                        <p>DL-04201987 · Private</p>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="val ok">84</div>
+                        <div class="label">Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="val">6</div>
+                        <div class="label">Years</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="val danger">2</div>
+                        <div class="label">Challans</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="license-badge">
+                <i class="fa-solid fa-id-card"></i>
+                <span>License Valid till Mar 2029</span>
+            </div>
+
+            <div class="section-label">Jurisdiction</div>
+            <div class="location-selector">
+                <i class="fa-solid fa-location-dot"></i>
+                <select id="locationSelect">
+                    <option value="delhi">Delhi, India</option>
+                    <option value="mumbai">Mumbai, India</option>
+                    <option value="bangalore">Bangalore, India</option>
+                    <option value="chennai">Chennai, India</option>
+                    <option value="hyderabad">Hyderabad, India</option>
+                    <option value="kolkata">Kolkata, India</option>
+                    <option value="pune">Pune, India</option>
+                </select>
+            </div>
+
+            <div class="section-label">Quick Rules Reference</div>
+            <div class="rules-list">
+                <div class="rule-item" data-rule="speed">
+                    <div class="rule-icon speed"><i class="fa-solid fa-gauge-high"></i></div>
+                    <div class="rule-text">
+                        <h4>Speed Limits</h4>
+                        <p>City: 50 km/h · Highway: 100 km/h</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="seatbelt">
+                    <div class="rule-icon seat"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="rule-text">
+                        <h4>Seatbelt Compliance</h4>
+                        <p>Mandatory for all occupants</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="phone">
+                    <div class="rule-icon phone"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <div class="rule-text">
+                        <h4>Phone Usage</h4>
+                        <p>Handheld use prohibited while driving</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="helmet">
+                    <div class="rule-icon helmet"><i class="fa-solid fa-helmet-safety"></i></div>
+                    <div class="rule-text">
+                        <h4>Helmet Rule</h4>
+                        <p>ISI-marked helmet mandatory for riders & pillion</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="drink">
+                    <div class="rule-icon drink"><i class="fa-solid fa-wine-glass"></i></div>
+                    <div class="rule-text">
+                        <h4>Drink & Drive</h4>
+                        <p>BAC limit: 0.03% (30 mg/100 ml)</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="lane">
+                    <div class="rule-icon lane"><i class="fa-solid fa-road"></i></div>
+                    <div class="rule-text">
+                        <h4>Lane Discipline</h4>
+                        <p>Keep left, overtaking from right only</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="parking">
+                    <div class="rule-icon parking"><i class="fa-solid fa-square-parking"></i></div>
+                    <div class="rule-text">
+                        <h4>Parking Regulations</h4>
+                        <p>No parking within 15m of bus stops</p>
+                    </div>
+                </div>
+                <div class="rule-item" data-rule="insurance">
+                    <div class="rule-icon insurance"><i class="fa-solid fa-file-shield"></i></div>
+                    <div class="rule-text">
+                        <h4>Insurance mandate</h4>
+                        <p>Third-party insurance compulsory</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- CENTER PANEL — CHAT -->
+        <main class="panel-center">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <div class="bot-avatar"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div>
+                        <h3>DriveLegal Assistant</h3>
+                        <p>Location-specific traffic rule advisor</p>
+                    </div>
+                </div>
+                <div class="chat-header-actions">
+                    <button title="Search in chat"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button title="Export chat" onclick="showToast('Chat exported as text')"><i
+                            class="fa-solid fa-download"></i></button>
+                    <button title="Clear chat" onclick="clearChat()"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages injected here -->
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="msg-avatar"
+                    style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="quick-replies" id="quickReplies">
+                <button class="quick-reply" data-query="What is the speed limit here?">Speed limits</button>
+                <button class="quick-reply" data-query="Is talking on phone allowed while driving?">Phone usage
+                    rules</button>
+                <button class="quick-reply" data-query="What are the helmet rules?">Helmet requirements</button>
+                <button class="quick-reply" data-query="What is the penalty for drunk driving?">Drink & drive
+                    penalty</button>
+                <button class="quick-reply" data-query="What are the seatbelt fines?">Seatbelt fines</button>
+                <button class="quick-reply" data-query="Where can I park legally?">Parking rules</button>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-wrap">
+                    <input type="text" id="chatInput" placeholder="Ask about any traffic rule..." autocomplete="off">
+                    <button class="voice-btn" title="Voice input" onclick="showToast('Voice input activated')"><i
+                            class="fa-solid fa-microphone"></i></button>
+                    <button class="chat-send-btn" id="sendBtn" title="Send"><i
+                            class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                <p class="chat-disclaimer">DriveLegal provides informational guidance. Always verify with official local
+                    authorities.</p>
+            </div>
+        </main>
+
+        <!-- RIGHT PANEL -->
+        <aside class="panel-right">
+            <div class="section-label">Challan Calculator</div>
+            <div class="challan-card">
+                <h3><i class="fa-solid fa-calculator"></i> Estimate Penalty</h3>
+                <div class="challan-form-group">
+                    <label>Violation Type</label>
+                    <select id="violationType">
+                        <option value="">Select violation...</option>
+                        <option value="overspeeding">Overspeeding</option>
+                        <option value="no_seatbelt">No Seatbelt</option>
+                        <option value="no_helmet">No Helmet</option>
+                        <option value="phone_usage">Phone Usage While Driving</option>
+                        <option value="red_light">Red Light Jumping</option>
+                        <option value="drink_drive">Drunk Driving</option>
+                        <option value="no_license">No Valid License</option>
+                        <option value="no_insurance">No Insurance</option>
+                        <option value="wrong_parking">Wrong Parking</option>
+                        <option value="no_puc">No PUC Certificate</option>
+                        <option value="overloading">Overloading</option>
+                        <option value="minor_driving">Minor Driving</option>
+                    </select>
+                </div>
+                <div class="challan-form-group">
+                    <label>Number of Offences</label>
+                    <input type="number" id="offenceCount" value="1" min="1" max="20">
+                </div>
+                <div class="challan-form-group">
+                    <label>Repeat Offender?</label>
+                    <select id="repeatOffender">
+                        <option value="no">No — First Time</option>
+                        <option value="yes">Yes — Repeat Offence</option>
+                    </select>
+                </div>
+                <button class="challan-calc-btn" onclick="calculateChallan()">Calculate Penalty</button>
+                <div class="challan-result" id="challanResult"></div>
+            </div>
+
+            <div class="section-label">Driving Safety Score</div>
+            <div class="safety-card">
+                <div class="safety-score-ring">
+                    <svg viewBox="0 0 72 72">
+                        <circle class="ring-bg" cx="36" cy="36" r="30" />
+                        <circle class="ring-fill" cx="36" cy="36" r="30" />
+                    </svg>
+                    <div class="score-text">84</div>
+                </div>
+                <h4>Good Standing</h4>
+                <p>2 minor violations in the last 12 months. Maintain current driving habits to improve your score.</p>
+            </div>
+
+            <div class="section-label">Recent Violations</div>
+            <div class="violation-item">
+                <div class="violation-dot pending"></div>
+                <div class="violation-info">
+                    <h4>Overspeeding — NH-48</h4>
+                    <p>12 Jan 2025 · Gurgaon</p>
+                </div>
+                <div class="violation-amount">₹2,000</div>
+                <div class="violation-status pending">Due</div>
+            </div>
+            <div class="violation-item">
+                <div class="violation-dot paid"></div>
+                <div class="violation-info">
+                    <h4>No Helmet — MG Road</h4>
+                    <p>03 Nov 2024 · Delhi</p>
+                </div>
+                <div class="violation-amount">₹1,000</div>
+                <div class="violation-status paid">Paid</div>
+            </div>
+            <div class="violation-item">
+                <div class="violation-dot paid"></div>
+                <div class="violation-info">
+                    <h4>Red Light — ITO Crossing</h4>
+                    <p>28 Aug 2024 · Delhi</p>
+                </div>
+                <div class="violation-amount">₹1,000</div>
+                <div class="violation-status paid">Paid</div>
+            </div>
+            <div style="height:20px"></div>
+        </aside>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // === Data: Penalty database per violation type ===
+        const penaltyData = {
+            overspeeding: { base: 1000, repeat: 2000, label: 'Overspeeding' },
+            no_seatbelt: { base: 1000, repeat: 2000, label: 'No Seatbelt' },
+            no_helmet: { base: 1000, repeat: 2000, label: 'No Helmet' },
+            phone_usage: { base: 5000, repeat: 10000, label: 'Phone Usage While Driving' },
+            red_light: { base: 1000, repeat: 2000, label: 'Red Light Jumping' },
+            drink_drive: { base: 10000, repeat: 15000, label: 'Drunk Driving' },
+            no_license: { base: 5000, repeat: 10000, label: 'No Valid License' },
+            no_insurance: { base: 2000, repeat: 4000, label: 'No Insurance' },
+            wrong_parking: { base: 500, repeat: 1000, label: 'Wrong Parking' },
+            no_puc: { base: 1000, repeat: 2000, label: 'No PUC Certificate' },
+            overloading: { base: 2000, repeat: 4000, label: 'Overloading' },
+            minor_driving: { base: 25000, repeat: 25000, label: 'Minor Driving' }
+        };
+
+        // === Data: Chat responses keyed by topic keywords ===
+        const chatResponses = {
+            delhi: {
+                speed: {
+                    text: 'In Delhi, the speed limits are:\n\n• Restricted areas: 30 km/h\n• Residential areas: 40 km/h\n• Major roads / Ring Road: 50-60 km/h\n• NH-48 / Expressways: 100 km/h\n\nOverspeeding above the limit by more than 20 km/h can result in licence suspension for up to 3 months under the Motor Vehicles (Amendment) Act, 2019.',
+                    penalty: '₹1,000–₹2,000 + possible licence suspension'
+                },
+                phone: {
+                    text: 'In Delhi, using a handheld mobile phone while driving is strictly prohibited under Section 184 of the Motor Vehicles Act. This includes calling, texting, or using navigation apps held in hand.\n\nYou may use hands-free devices or mounted phone holders for navigation, but any interaction that distracts from driving can still attract a penalty.',
+                    penalty: '₹5,000 for first offence, ₹10,000 for repeat'
+                },
+                helmet: {
+                    text: 'In Delhi, wearing an ISI-marked helmet is mandatory for:\n\n• The rider of a two-wheeler\n• The pillion passenger\n• Children above 4 years (on two-wheelers specifically designed to carry them)\n\nThe helmet strap must be securely fastened. Violation also affects insurance claims in case of accidents.',
+                    penalty: '₹1,000 fine + licence disqualification for 3 months'
+                },
+                drink: {
+                    text: 'Delhi enforces a strict Blood Alcohol Concentration (BAC) limit of 0.03% (30 mg per 100 ml of blood). Penalties under the Motor Vehicles (Amendment) Act 2019 are severe:\n\n• First offence: Up to 6 months imprisonment + ₹10,000 fine\n• Repeat offence: Up to 2 years imprisonment + ₹15,000 fine\n\nPolice regularly conduct breathalyzer checks, especially on weekends and near entertainment zones.',
+                    penalty: '₹10,000–₹15,000 + possible imprisonment'
+                },
+                seatbelt: {
+                    text: 'In Delhi, seatbelts are mandatory for:\n\n• Driver and front-seat passenger (always)\n• Rear-seat passengers (enforced since 2022)\n\nChild restraint systems are required for children under 14 years. Not wearing a seatbelt also voids certain insurance claim benefits.',
+                    penalty: '₹1,000 per unbelted occupant'
+                },
+                parking: {
+                    text: 'Delhi parking regulations include:\n\n• No parking within 15 meters of a bus stop\n• No parking near fire hydrants or intersections\n• No parking on footpaths or cycle tracks\n• Designated parking zones are marked with signs and lines\n• Wrong parking in congested areas may result in towing\n\nNight parking rules vary by zone — always check local RWA or MCD signage.',
+                    penalty: '₹500–₹1,000 + possible towing charges'
+                },
+                default: 'In Delhi, all Central Motor Vehicles Rules and the Motor Vehicles (Amendment) Act 2019 are strictly enforced. Could you ask about a specific rule like speed limits, phone usage, helmet, seatbelt, drink driving, or parking?'
+            },
+            mumbai: {
+                speed: {
+                    text: 'In Mumbai, speed limits vary by road type:\n\n• Residential / congested areas: 40 km/h\n• Major arterial roads: 50 km/h\n• Eastern & Western Express Highways: 80 km/h\n• Sea Link: 80 km/h\n\nSpeed cameras are installed at multiple points. The Mumbai Traffic Police actively monitor overspeeding via automated systems.',
+                    penalty: '₹1,000–₹2,000 + licence suspension possible'
+                },
+                phone: {
+                    text: 'Mumbai traffic police strictly enforce the no-phone rule. Handheld phone usage while driving attracts heavy fines. Even checking your phone at a red light counts as an offence.\n\nHands-free devices are permitted, but any visible distraction can be penalized under discretionary powers of the traffic officer.',
+                    penalty: '₹5,000 for first offence, ₹10,000 for repeat'
+                },
+                helmet: {
+                    text: 'Mumbai enforces helmet rules rigorously:\n\n• ISI-marked helmet mandatory for rider and pillion\n• Strap must be fastened at all times\n• RTO and traffic police conduct regular checkpoints\n\nNot wearing a helmet can also lead to complications in insurance claims if an accident occurs.',
+                    penalty: '₹1,000 + 3-month licence disqualification'
+                },
+                drink: {
+                    text: 'Mumbai police conduct regular nakabandi (checkpoints) for drunk driving, especially in South Mumbai, Bandra, and Andheri areas on weekends.\n\nBAC limit: 0.03% (30 mg/100 ml). Penalties are severe and include imprisonment provisions.',
+                    penalty: '₹10,000–₹15,000 + up to 6 months imprisonment'
+                },
+                seatbelt: {
+                    text: 'Seatbelts are mandatory for all occupants in Mumbai — front and rear seats. The Mumbai Traffic Police have been conducting awareness campaigns and enforcement drives specifically targeting rear-seat belt usage since 2022.',
+                    penalty: '₹1,000 per unbelted occupant'
+                },
+                parking: {
+                    text: 'Mumbai parking rules:\n\n• No parking in no-parking zones marked with yellow lines\n• Pay-and-parking zones managed by BMC\n• No double parking\n• Towing is common in South Mumbai, Bandra, and Andheri\n• Multi-level parking lots available at key locations',
+                    penalty: '₹500–₹1,000 + towing charges (₹500+)'
+                },
+                default: 'In Mumbai, traffic rules are enforced by the Mumbai Traffic Police. Please ask about a specific topic: speed limits, phone usage, helmet rules, drink & drive, seatbelt fines, or parking regulations.'
+            },
+            // Generic fallback for other cities
+            generic: {
+                speed: { text: 'Standard Indian speed limits apply:\n\n• Urban areas: 40–50 km/h\n• State highways: 60–80 km/h\n• National highways: 80–100 km/h\n• Expressways: Up to 120 km/h\n\nSpecific limits may vary by city zone. Always follow posted signboards.', penalty: '₹1,000–₹2,000' },
+                phone: { text: 'Handheld mobile phone usage while driving is prohibited across India under the Motor Vehicles Act. Use hands-free devices or mounted holders for navigation.', penalty: '₹5,000 (first offence), ₹10,000 (repeat)' },
+                helmet: { text: 'ISI-marked helmets are mandatory for both rider and pillion passenger on two-wheelers across India. The strap must be properly fastened.', penalty: '₹1,000 + possible licence disqualification' },
+                drink: { text: 'The legal BAC limit across India is 0.03% (30 mg/100 ml). Drunk driving carries fines, imprisonment, and potential licence cancellation.', penalty: '₹10,000–₹15,000 + imprisonment up to 6 months' },
+                seatbelt: { text: 'Seatbelts are mandatory for driver, front passenger, and rear-seat passengers across India. Non-compliance can void insurance claims.', penalty: '₹1,000 per unbelted occupant' },
+                parking: { text: 'General parking rules: No parking within 15m of bus stops, near fire hydrants, on footpaths, or in no-parking zones. Always follow local signage.', penalty: '₹500–₹1,000 + possible towing' }
+            }
+        };
+
+        // Helper: get topic from user query
+        function detectTopic(query) {
+            const q = query.toLowerCase();
+            if (q.includes('speed') || q.includes('fast') || q.includes('limit')) return 'speed';
+            if (q.includes('phone') || q.includes('mobile') || q.includes('call') || q.includes('text')) return 'phone';
+            if (q.includes('helmet') || q.includes('two wheeler') || q.includes('bike') || q.includes('scooter')) return 'helmet';
+            if (q.includes('drink') || q.includes('drunk') || q.includes('alcohol') || q.includes('bac') || q.includes('dui')) return 'drink';
+            if (q.includes('seat') || q.includes('belt') || q.includes('seatbelt')) return 'seatbelt';
+            if (q.includes('park') || q.includes('parking') || q.includes('tow')) return 'parking';
+            if (q.includes('lane') || q.includes('overtake') || q.includes('overtaking')) return 'lane';
+            if (q.includes('insurance') || q.includes('insure')) return 'insurance';
+            if (q.includes('license') || q.includes('licence') || q.includes('dl ')) return 'license';
+            if (q.includes('red light') || q.includes('signal') || q.includes('traffic light')) return 'redlight';
+            if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('good')) return 'greeting';
+            if (q.includes('help') || q.includes('what can') || q.includes('how do')) return 'help';
+            return 'default';
+        }
+
+        // Helper: get current location key
+        function getLocation() {
+            return document.getElementById('locationSelect').value;
+        }
+
+        function getLocationName() {
+            const sel = document.getElementById('locationSelect');
+            return sel.options[sel.selectedIndex].text;
+        }
+
+        // Get response for a query
+        function getResponse(query) {
+            const topic = detectTopic(query);
+            const loc = getLocation();
+
+            if (topic === 'greeting') {
+                return { text: `Hello! I'm your DriveLegal assistant for ${getLocationName()}. Ask me about any traffic rule — speed limits, fines, helmet rules, parking, and more. I'll give you location-specific, accurate information.`, penalty: null };
+            }
+            if (topic === 'help') {
+                return { text: `I can help you with traffic rules specific to ${getLocationName()}:\n\n• Speed limits for different road types\n• Phone usage regulations\n• Helmet & seatbelt rules\n• Drink & drive penalties\n• Parking regulations\n• Lane discipline\n• Insurance & license requirements\n• Challan/penalty details\n\nJust type your question!`, penalty: null };
+            }
+
+            const cityData = chatResponses[loc] || null;
+            const topicData = cityData ? (cityData[topic] || cityData.default) : (chatResponses.generic[topic] || null);
+
+            if (topicData && topicData.text) {
+                return { text: topicData.text, penalty: topicData.penalty || null };
+            }
+
+            // Fallback for lane, insurance, license, redlight not defined per city
+            const genericTopic = chatResponses.generic[topic];
+            if (genericTopic) {
+                return { text: `For ${getLocationName()}, the general rule applies:\n\n${genericTopic.text}`, penalty: genericTopic.penalty || null };
+            }
+
+            return { text: `I don't have specific information on that topic for ${getLocationName()}. Could you try asking about speed limits, phone usage, helmet rules, seatbelt, drink & drive, or parking? I'll give you accurate, location-specific answers.`, penalty: null };
+        }
+
+        // === Chat Logic ===
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        function getTimeString() {
+            const now = new Date();
+            return now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+
+        function addMessage(type, text, penalty) {
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+
+            const avatarIcon = type === 'bot' ? 'fa-shield-halved' : 'fa-user';
+            let penaltyHTML = '';
+            if (penalty) {
+                penaltyHTML = `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> ${penalty}</div>`;
+            }
+
+            let locationHTML = '';
+            if (type === 'bot') {
+                locationHTML = `<div class="msg-location"><i class="fa-solid fa-location-dot"></i> ${getLocationName()}</div>`;
+            }
+
+            const formattedText = text.replace(/\n/g, '<br>');
+
+            div.innerHTML = `
+      <div class="msg-avatar"><i class="fa-solid ${avatarIcon}"></i></div>
+      <div>
+        <div class="msg-bubble">
+          ${locationHTML}
+          ${formattedText}
+          ${penaltyHTML}
+        </div>
+        <div class="msg-time">${getTimeString()}</div>
+      </div>
     `;
 
-    const avatarIcon=type==='bot' ? 'fa-shield-halved' : 'fa-user';
-    let penaltyHTML='';
-
-    if (penalty) {
-        penaltyHTML=`<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i>$ {
-            penalty
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        </div>`;
-    }
-
-    let locationHTML='';
-
-    if (type==='bot') {
-        locationHTML=`<div class="msg-location"><i class="fa-solid fa-location-dot"></i>$ {
-            getLocationName()
+        function showTyping() {
+            typingIndicator.classList.add('show');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        </div>`;
-    }
-
-    const formattedText=text.replace(/\n/g, '<br>');
-
-    div.innerHTML=` <div class="msg-avatar"><i class="fa-solid ${avatarIcon}"></i></div><div><div class="msg-bubble">$ {
-        locationHTML
-    }
-
-    $ {
-        formattedText
-    }
-
-    $ {
-        penaltyHTML
-    }
-
-    </div><div class="msg-time">$ {
-        getTimeString()
-    }
-
-    </div></div>`;
-
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop=chatMessages.scrollHeight;
-}
-
-function showTyping() {
-    typingIndicator.classList.add('show');
-    chatMessages.scrollTop=chatMessages.scrollHeight;
-}
-
-function hideTyping() {
-    typingIndicator.classList.remove('show');
-}
-
-function sendMessage(text) {
-    if ( !text.trim()) return;
-    addMessage('user', text.trim(), null);
-    chatInput.value='';
-
-    showTyping();
-
-    const delay=600+Math.random() * 800;
-
-    setTimeout(()=> {
-            hideTyping();
-            const response=getResponse(text.trim());
-            addMessage('bot', response.text, response.penalty);
+        function hideTyping() {
+            typingIndicator.classList.remove('show');
         }
 
-        , delay);
-}
+        function sendMessage(text) {
+            if (!text.trim()) return;
+            addMessage('user', text.trim(), null);
+            chatInput.value = '';
 
-// Send button
-document.getElementById('sendBtn').addEventListener('click', ()=> {
-        sendMessage(chatInput.value);
-    });
+            showTyping();
 
-// Enter key
-chatInput.addEventListener('keydown', (e)=> {
-        if (e.key==='Enter' && !e.shiftKey) {
-            e.preventDefault();
+            const delay = 600 + Math.random() * 800;
+            setTimeout(() => {
+                hideTyping();
+                const response = getResponse(text.trim());
+                addMessage('bot', response.text, response.penalty);
+            }, delay);
+        }
+
+        // Send button
+        document.getElementById('sendBtn').addEventListener('click', () => {
             sendMessage(chatInput.value);
-        }
-    });
+        });
 
-// Quick reply buttons
-document.querySelectorAll('.quick-reply').forEach(btn=> {
-        btn.addEventListener('click', ()=> {
+        // Enter key
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage(chatInput.value);
+            }
+        });
+
+        // Quick reply buttons
+        document.querySelectorAll('.quick-reply').forEach(btn => {
+            btn.addEventListener('click', () => {
                 sendMessage(btn.dataset.query);
             });
-    });
+        });
 
-// Rule items — send to chat
-document.querySelectorAll('.rule-item').forEach(item=> {
-        item.addEventListener('click', ()=> {
-                const rule=item.dataset.rule;
-
-                const queries= {
+        // Rule items — send to chat
+        document.querySelectorAll('.rule-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const rule = item.dataset.rule;
+                const queries = {
                     speed: 'What is the speed limit here?',
                     seatbelt: 'What are the seatbelt fines?',
                     phone: 'Is talking on phone allowed while driving?',
@@ -1529,118 +1640,94 @@ document.querySelectorAll('.rule-item').forEach(item=> {
                     lane: 'What are the lane discipline rules?',
                     parking: 'Where can I park legally?',
                     insurance: 'What are the insurance requirements?'
-                }
-
-                ;
+                };
                 sendMessage(queries[rule] || 'Tell me about this rule');
             });
-    });
-
-// Clear chat
-function clearChat() {
-    chatMessages.innerHTML='';
-    showToast('Chat history cleared');
-
-    // Re-add welcome message
-    setTimeout(()=> {
-            addMessage('bot', `Welcome back ! I'm your DriveLegal assistant for ${getLocationName()}. How can I help you with traffic rules today?`, null);
-
-            }
-
-            , 400);
-    }
-
-    // Location change handler
-    document.getElementById('locationSelect').addEventListener('change', (e)=> {
-            const name=getLocationName();
-            document.getElementById('topbarLocation').textContent=name;
-
-            addMessage('bot', `Location updated to $ {
-                    name
-                }
-
-                . All rules and penalties I share will now be specific to this jurisdiction. What would you like to know?`, null);
         });
 
-    // === Challan Calculator ===
-    function calculateChallan() {
-        const type=document.getElementById('violationType').value;
-        const count=parseInt(document.getElementById('offenceCount').value) || 1;
-        const repeat=document.getElementById('repeatOffender').value;
-
-        if ( !type) {
-            showToast('Please select a violation type');
-            return;
+        // Clear chat
+        function clearChat() {
+            chatMessages.innerHTML = '';
+            showToast('Chat history cleared');
+            // Re-add welcome message
+            setTimeout(() => {
+                addMessage('bot', `Welcome back! I'm your DriveLegal assistant for ${getLocationName()}. How can I help you with traffic rules today?`, null);
+            }, 400);
         }
 
-        const data=penaltyData[type];
-        if ( !data) return;
-
-        const baseFine=repeat==='yes' ? data.repeat : data.base;
-        const totalFine=baseFine * count;
-
-        // Additional surcharge for repeat offenders
-        const surcharge=repeat==='yes' ? Math.round(totalFine * 0.25) : 0;
-        const grandTotal=totalFine + surcharge;
-
-        const resultEl=document.getElementById('challanResult');
-
-        resultEl.innerHTML=` <div class="challan-result-row" > <span class="cr-label" >Violation</span> <span class="cr-value" >$ {
-            data.label
-        }
-
-        </span> </div> <div class="challan-result-row" > <span class="cr-label" >Base Fine (per offence)</span> <span class="cr-value" >₹$ {
-            baseFine.toLocaleString('en-IN')
-        }
-
-        </span> </div> <div class="challan-result-row" > <span class="cr-label" >Number of Offences</span> <span class="cr-value" >&times; $ {
-            count
-        }
-
-        </span> </div> $ {
-            repeat==='yes' ? `<div class="challan-result-row" ><span class="cr-label" >Repeat Offender Surcharge (25%)</span><span class="cr-value" style="color:var(--danger)" >+₹$ {
-                surcharge.toLocaleString('en-IN')
-            }
-
-            </span></div>` : ''
-        }
-
-        <div class="challan-result-total" > <span class="cr-label" >Total Estimated Penalty</span> <span class="cr-value" >₹$ {
-            grandTotal.toLocaleString('en-IN')
-        }
-
-        </span> </div> `;
-        resultEl.classList.add('show');
-    }
-
-    // === Clock ===
-    function updateClock() {
-        const now=new Date();
-
-        document.getElementById('topbarTime').textContent=now.toLocaleTimeString('en-IN', {
-            hour: '2-digit', minute: '2-digit', hour12: false
+        // Location change handler
+        document.getElementById('locationSelect').addEventListener('change', (e) => {
+            const name = getLocationName();
+            document.getElementById('topbarLocation').textContent = name;
+            addMessage('bot', `Location updated to ${name}. All rules and penalties I share will now be specific to this jurisdiction. What would you like to know?`, null);
         });
-}
 
-updateClock();
-setInterval(updateClock, 10000);
+        // === Challan Calculator ===
+        function calculateChallan() {
+            const type = document.getElementById('violationType').value;
+            const count = parseInt(document.getElementById('offenceCount').value) || 1;
+            const repeat = document.getElementById('repeatOffender').value;
 
-// === Toast ===
-function showToast(msg) {
-    const toast=document.getElementById('toast');
-    toast.textContent=msg;
-    toast.classList.add('show');
-    setTimeout(()=> toast.classList.remove('show'), 2500);
-}
-
-// === Initial welcome message ===
-setTimeout(()=> {
-        addMessage('bot', `Welcome to DriveLegal ! I'm your location-specific driver safety assistant.\n\nI' m currently set to $ {
-                getLocationName()
+            if (!type) {
+                showToast('Please select a violation type');
+                return;
             }
 
-            . You can ask me about speed limits, phone usage rules, helmet requirements, drink & drive penalties, seatbelt fines, parking regulations, and more.\n\nAll information is based on the Motor Vehicles (Amendment) Act, 2019 and local enforcement guidelines.`, null);
-    }
+            const data = penaltyData[type];
+            if (!data) return;
 
-    , 500);
-</script> </body> </html>
+            const baseFine = repeat === 'yes' ? data.repeat : data.base;
+            const totalFine = baseFine * count;
+
+            // Additional surcharge for repeat offenders
+            const surcharge = repeat === 'yes' ? Math.round(totalFine * 0.25) : 0;
+            const grandTotal = totalFine + surcharge;
+
+            const resultEl = document.getElementById('challanResult');
+            resultEl.innerHTML = `
+      <div class="challan-result-row">
+        <span class="cr-label">Violation</span>
+        <span class="cr-value">${data.label}</span>
+      </div>
+      <div class="challan-result-row">
+        <span class="cr-label">Base Fine (per offence)</span>
+        <span class="cr-value">₹${baseFine.toLocaleString('en-IN')}</span>
+      </div>
+      <div class="challan-result-row">
+        <span class="cr-label">Number of Offences</span>
+        <span class="cr-value">&times; ${count}</span>
+      </div>
+      ${repeat === 'yes' ? `<div class="challan-result-row"><span class="cr-label">Repeat Offender Surcharge (25%)</span><span class="cr-value" style="color:var(--danger)">+₹${surcharge.toLocaleString('en-IN')}</span></div>` : ''}
+      <div class="challan-result-total">
+        <span class="cr-label">Total Estimated Penalty</span>
+        <span class="cr-value">₹${grandTotal.toLocaleString('en-IN')}</span>
+      </div>
+    `;
+            resultEl.classList.add('show');
+        }
+
+        // === Clock ===
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('topbarTime').textContent = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+        updateClock();
+        setInterval(updateClock, 10000);
+
+        // === Toast ===
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // === Initial welcome message ===
+        setTimeout(() => {
+            addMessage('bot', `Welcome to DriveLegal! I'm your location-specific driver safety assistant.\n\nI'm currently set to ${getLocationName()}. You can ask me about speed limits, phone usage rules, helmet requirements, drink & drive penalties, seatbelt fines, parking regulations, and more.\n\nAll information is based on the Motor Vehicles (Amendment) Act, 2019 and local enforcement guidelines.`, null);
+        }, 500);
+    </script>
+
+</body>
+
+</html>
