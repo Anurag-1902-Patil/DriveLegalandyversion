@@ -22,7 +22,18 @@ DriveLegal answers traffic law questions in natural language with **location-spe
 
 ## 🚀 Quick Start
 
-### 1. Clone & setup environment
+### 1. Install Ollama & Mistral
+
+DriveLegal runs 100% locally to protect your data. You must install the Ollama framework to run the AI engine.
+
+1. Download and install [Ollama](https://ollama.com/download) for your operating system.
+2. Open a new terminal and run:
+   ```bash
+   ollama run mistral
+   ```
+   *(This will download the Mistral model and start it. Ensure Ollama remains running in your system background).*
+
+### 2. Clone & setup environment
 
 ```bash
 git clone https://github.com/your-username/drivelegal.git
@@ -32,38 +43,46 @@ source venv/bin/activate       # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Configure environment
+### 3. Configure environment
 
 ```bash
 cp .env.example .env
-# No API keys are required for Ollama. Just ensure Ollama is running.
+# No API keys are required for Ollama.
 ```
 
-### 3. Add raw data
+### 4. Add raw data
 
 Place `.txt` or `.md` files of Indian traffic laws in `data/raw/`.  
 Example sources: Motor Vehicles Act 1988, Maharashtra RTO website, Pune traffic portal.
 
-### 4. Preprocess → Embed → Index
+### 5. Preprocess → Embed → Index
 
 ```bash
 python scripts/preprocess.py    # Chunk and tag raw files
 python scripts/embed.py         # Build FAISS vector index
 ```
 
-### 5. Start the backend
+### 6. Run the Software
 
+The easiest way to start both the backend and frontend simultaneously is using the provided start script:
+
+**Windows:**
 ```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+.\start.bat
 ```
 
-API docs available at: http://localhost:8000/docs
-
-### 6. Start the frontend
-
+**Manual Start:**
+If you prefer to start them manually or are on Mac/Linux:
 ```bash
+# Start backend in terminal 1
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# Start frontend in terminal 2
 streamlit run frontend/app.py
 ```
+
+- **Frontend App**: http://localhost:8501
+- **API Docs**: http://localhost:8000/docs
 
 ---
 
