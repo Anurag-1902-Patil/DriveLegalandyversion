@@ -1,10 +1,44 @@
 """
 DriveLegal – Pydantic Models
-Strict input/output schemas for the /chat endpoint.
+Strict input/output schemas for the /chat and /location endpoints.
 """
 
 from typing import List, Optional
 from pydantic import BaseModel, Field
+
+
+# ── GPS / Location ─────────────────────────────────────────────────────────
+
+class GPSPayload(BaseModel):
+    """Raw GPS coordinates from the browser Geolocation API."""
+    lat: float = Field(..., ge=-90.0, le=90.0,  example=18.5204,  description="Latitude")
+    lon: float = Field(..., ge=-180.0, le=180.0, example=73.8567,  description="Longitude")
+    accuracy: Optional[float] = Field(None, ge=0, example=15.0, description="Accuracy in metres")
+    client_timestamp: Optional[str] = Field(None, description="ISO-8601 client timestamp")
+
+
+class GPSUpdateResponse(BaseModel):
+    """Response after accepting a GPS fix."""
+    status: str
+    city: Optional[str] = None
+    state: Optional[str] = None
+    country: Optional[str] = None
+    lat: float
+    lon: float
+    accuracy_m: Optional[float] = None
+
+
+class CurrentLocationResponse(BaseModel):
+    """Latest GPS fix from memory."""
+    fix_available: bool
+    age_seconds: Optional[float] = None
+    lat: Optional[float] = None
+    lon: Optional[float] = None
+    accuracy_m: Optional[float] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    country: Optional[str] = None
+    context_string: Optional[str] = None
 
 
 class Location(BaseModel):

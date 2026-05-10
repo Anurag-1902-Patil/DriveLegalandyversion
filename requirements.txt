@@ -20,6 +20,9 @@ requests==2.32.2
 python-dotenv==1.0.1
 slowapi==0.1.9          # rate limiting
 
+# ── GPS / Offline Geocoding ───────────────────────────────────────────────────
+reverse_geocoder==1.5.1  # offline reverse geocoding (bundled CSV, no internet)
+
 # ── Dev / Testing ─────────────────────────────────────────────────────────
 pytest==8.2.1
 pytest-asyncio==0.23.7

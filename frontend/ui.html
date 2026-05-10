@@ -1113,6 +1113,192 @@
             z-index: 1;
         }
 
+        /* GPS Tracker Card */
+        .gps-card {
+            margin: 0 16px 12px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gps-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .gps-card-title {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        .gps-card-title i {
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        /* GPS Enable toggle */
+        .gps-toggle {
+            padding: 4px 12px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--fg-secondary);
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .gps-toggle:hover {
+            background: var(--accent-bg);
+            border-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .gps-toggle.active {
+            background: var(--success-bg);
+            border-color: #D4E0CC;
+            color: var(--success);
+        }
+
+        .gps-toggle.active:hover {
+            background: var(--danger-bg);
+            border-color: #E8C4BC;
+            color: var(--danger);
+        }
+
+        /* Status badge */
+        .gps-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10.5px;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .gps-status.idle {
+            background: var(--bg);
+            color: var(--fg-muted);
+        }
+
+        .gps-status.acquiring {
+            background: #FFF8E6;
+            color: #A07020;
+            border: 1px solid #E8D8A0;
+        }
+
+        .gps-status.fixed {
+            background: var(--success-bg);
+            color: var(--success);
+            border: 1px solid #D4E0CC;
+        }
+
+        .gps-status.error {
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid #E8C4BC;
+        }
+
+        .gps-status .gps-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .gps-status.idle .gps-dot { background: var(--fg-muted); }
+        .gps-status.acquiring .gps-dot {
+            background: #A07020;
+            animation: gps-pulse 1s infinite;
+        }
+        .gps-status.fixed .gps-dot { background: var(--success); }
+        .gps-status.error .gps-dot { background: var(--danger); }
+
+        @keyframes gps-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.4; transform: scale(1.4); }
+        }
+
+        /* Coordinate rows */
+        .gps-coords {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .gps-coords.visible {
+            display: flex;
+            animation: msgIn 0.3s ease;
+        }
+
+        .gps-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 8px;
+            background: var(--bg);
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        .gps-row .gr-label {
+            color: var(--fg-muted);
+            font-weight: 500;
+        }
+
+        .gps-row .gr-value {
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            color: var(--fg);
+            letter-spacing: 0.3px;
+        }
+
+        .gps-resolved {
+            margin-top: 8px;
+            padding: 7px 10px;
+            background: var(--accent-bg);
+            border-radius: 7px;
+            border: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--accent);
+            font-weight: 500;
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gps-resolved.visible {
+            display: flex;
+        }
+
+        .gps-override-note {
+            margin-top: 6px;
+            font-size: 10px;
+            color: var(--success);
+            text-align: center;
+            display: none;
+        }
+
+        .gps-override-note.visible {
+            display: block;
+        }
+
         /* Responsive note: this is primarily for wide screens */
         @media (max-width: 1100px) {
             .dashboard {
@@ -1394,6 +1580,60 @@
                 <div class="violation-status paid">Paid</div>
             </div>
             <div style="height:20px"></div>
+
+            <!-- GPS TRACKER CARD -->
+            <div class="section-label">Live GPS Tracker</div>
+            <div class="gps-card">
+                <div class="gps-card-header">
+                    <div class="gps-card-title">
+                        <i class="fa-solid fa-satellite-dish"></i>
+                        GPS Location
+                    </div>
+                    <button class="gps-toggle" id="gpsToggleBtn" onclick="toggleGPS()">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        Enable
+                    </button>
+                </div>
+
+                <!-- Status badge -->
+                <div class="gps-status idle" id="gpsStatus">
+                    <span class="gps-dot"></span>
+                    <span id="gpsStatusText">GPS disabled</span>
+                </div>
+
+                <!-- Coordinate display (hidden until fix) -->
+                <div class="gps-coords" id="gpsCoords">
+                    <div class="gps-row">
+                        <span class="gr-label"><i class="fa-solid fa-arrows-up-down" style="font-size:9px;margin-right:4px"></i>Latitude</span>
+                        <span class="gr-value" id="gpsLat">&mdash;</span>
+                    </div>
+                    <div class="gps-row">
+                        <span class="gr-label"><i class="fa-solid fa-arrows-left-right" style="font-size:9px;margin-right:4px"></i>Longitude</span>
+                        <span class="gr-value" id="gpsLon">&mdash;</span>
+                    </div>
+                    <div class="gps-row">
+                        <span class="gr-label"><i class="fa-solid fa-circle-dot" style="font-size:9px;margin-right:4px"></i>Accuracy</span>
+                        <span class="gr-value" id="gpsAcc">&mdash;</span>
+                    </div>
+                    <div class="gps-row">
+                        <span class="gr-label"><i class="fa-regular fa-clock" style="font-size:9px;margin-right:4px"></i>Updated</span>
+                        <span class="gr-value" id="gpsTime">&mdash;</span>
+                    </div>
+                </div>
+
+                <!-- Resolved address -->
+                <div class="gps-resolved" id="gpsResolved">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="gpsResolvedText">Resolving location&hellip;</span>
+                </div>
+
+                <!-- Override note -->
+                <div class="gps-override-note" id="gpsOverrideNote">
+                    <i class="fa-solid fa-check-circle"></i> Overriding dropdown — GPS active
+                </div>
+            </div>
+
+            <div style="height:20px"></div>
         </aside>
     </div>
 
@@ -1642,6 +1882,189 @@
             toast.textContent = msg;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // === GPS Tracker ===
+        const BACKEND = 'http://localhost:8000';
+        const GPS_PUSH_INTERVAL_MS = 10000;   // push every 10 seconds
+
+        let _gpsWatchId     = null;   // browser watchPosition ID
+        let _gpsPushTimer   = null;   // setInterval handle for periodic push
+        let _lastFix        = null;   // { lat, lon, accuracy, timestamp }
+        let _gpsActive      = false;  // is GPS currently enabled?
+
+        // DOM refs
+        const gpsToggleBtn    = document.getElementById('gpsToggleBtn');
+        const gpsStatus       = document.getElementById('gpsStatus');
+        const gpsStatusText   = document.getElementById('gpsStatusText');
+        const gpsCoords       = document.getElementById('gpsCoords');
+        const gpsResolved     = document.getElementById('gpsResolved');
+        const gpsResolvedText = document.getElementById('gpsResolvedText');
+        const gpsOverrideNote = document.getElementById('gpsOverrideNote');
+
+        /** Set the status badge appearance */
+        function setGPSStatus(state, message) {
+            gpsStatus.className = `gps-status ${state}`;
+            gpsStatusText.textContent = message;
+        }
+
+        /** Push the current GPS fix to the backend */
+        async function pushFix(lat, lon, accuracy) {
+            try {
+                const payload = {
+                    lat,
+                    lon,
+                    accuracy: accuracy || null,
+                    client_timestamp: new Date().toISOString()
+                };
+                const res = await fetch(`${BACKEND}/location/update`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) return;
+
+                const data = await res.json();
+
+                // Update resolved location display
+                if (data.city) {
+                    const locStr = [data.city, data.state, data.country].filter(Boolean).join(', ');
+                    gpsResolvedText.textContent = locStr;
+                    gpsResolved.classList.add('visible');
+                    gpsOverrideNote.classList.add('visible');
+
+                    // ----- Override dropdown + topbar ----- //
+                    overrideLocationDropdown(data.city, data.state, data.country);
+                }
+            } catch (err) {
+                console.warn('GPS push failed:', err);
+            }
+        }
+
+        /** Override the manual location dropdown with GPS-resolved city */
+        function overrideLocationDropdown(city, state, country) {
+            // Update topbar location text
+            document.getElementById('topbarLocation').textContent = `${city}, ${country}`;
+
+            // Try to match existing option; if not found, inject a GPS option
+            const sel = document.getElementById('locationSelect');
+            const gpsVal = '__gps__';
+
+            // Remove any previous GPS injected option
+            const prev = sel.querySelector('option[value="__gps__"]');
+            if (prev) prev.remove();
+
+            // Insert new GPS option at top
+            const opt = document.createElement('option');
+            opt.value = gpsVal;
+            opt.textContent = `📍 ${city}, ${state} (GPS)`;
+            opt.setAttribute('data-city', city);
+            opt.setAttribute('data-state', state);
+            opt.setAttribute('data-country', country || 'India');
+            sel.insertBefore(opt, sel.firstChild);
+            sel.value = gpsVal;
+
+            // Update locMap so getLocationData() returns GPS values
+            locMap[gpsVal] = { city, state };
+        }
+
+        /** Called when browser provides a GPS fix */
+        function onGPSFix(position) {
+            const { latitude: lat, longitude: lon, accuracy } = position.coords;
+            _lastFix = { lat, lon, accuracy, timestamp: new Date() };
+
+            // Update coordinate display
+            document.getElementById('gpsLat').textContent = lat.toFixed(5) + '°';
+            document.getElementById('gpsLon').textContent = lon.toFixed(5) + '°';
+            document.getElementById('gpsAcc').textContent = accuracy ? `±${Math.round(accuracy)} m` : 'unknown';
+            document.getElementById('gpsTime').textContent = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+
+            gpsCoords.classList.add('visible');
+            setGPSStatus('fixed', 'Location fixed');
+
+            // Immediate push on first fix
+            pushFix(lat, lon, accuracy);
+        }
+
+        /** Called on GPS error */
+        function onGPSError(err) {
+            const msgs = {
+                1: 'Permission denied — please allow location access.',
+                2: 'Position unavailable — check device GPS.',
+                3: 'Timed out waiting for GPS signal.'
+            };
+            setGPSStatus('error', msgs[err.code] || 'GPS error');
+            showToast(msgs[err.code] || 'GPS error');
+        }
+
+        /** Start GPS tracking */
+        function startGPS() {
+            if (!('geolocation' in navigator)) {
+                setGPSStatus('error', 'GPS not supported by this browser.');
+                return;
+            }
+
+            _gpsActive = true;
+            gpsToggleBtn.classList.add('active');
+            gpsToggleBtn.innerHTML = '<i class="fa-solid fa-circle-stop"></i> Disable';
+            setGPSStatus('acquiring', 'Acquiring signal…');
+
+            // watchPosition gives continuous updates as device moves
+            _gpsWatchId = navigator.geolocation.watchPosition(
+                onGPSFix,
+                onGPSError,
+                {
+                    enableHighAccuracy: true,
+                    maximumAge: 5000,      // cache at most 5s
+                    timeout: 15000         // give up after 15s per attempt
+                }
+            );
+
+            // Periodic push every GPS_PUSH_INTERVAL_MS even if position unchanged
+            _gpsPushTimer = setInterval(() => {
+                if (_lastFix) {
+                    pushFix(_lastFix.lat, _lastFix.lon, _lastFix.accuracy);
+                }
+            }, GPS_PUSH_INTERVAL_MS);
+
+            showToast('GPS tracking started');
+        }
+
+        /** Stop GPS tracking */
+        function stopGPS() {
+            _gpsActive = false;
+            gpsToggleBtn.classList.remove('active');
+            gpsToggleBtn.innerHTML = '<i class="fa-solid fa-location-crosshairs"></i> Enable';
+            setGPSStatus('idle', 'GPS disabled');
+            gpsCoords.classList.remove('visible');
+            gpsResolved.classList.remove('visible');
+            gpsOverrideNote.classList.remove('visible');
+
+            if (_gpsWatchId !== null) {
+                navigator.geolocation.clearWatch(_gpsWatchId);
+                _gpsWatchId = null;
+            }
+            if (_gpsPushTimer) {
+                clearInterval(_gpsPushTimer);
+                _gpsPushTimer = null;
+            }
+            _lastFix = null;
+
+            // Remove GPS override from dropdown
+            const sel = document.getElementById('locationSelect');
+            const gpsOpt = sel.querySelector('option[value="__gps__"]');
+            if (gpsOpt) gpsOpt.remove();
+            delete locMap['__gps__'];
+
+            // Reset topbar
+            document.getElementById('topbarLocation').textContent = getLocationName();
+
+            showToast('GPS tracking stopped');
+        }
+
+        /** Toggle GPS on/off */
+        function toggleGPS() {
+            if (_gpsActive) stopGPS(); else startGPS();
         }
 
         // === Initial welcome message ===
