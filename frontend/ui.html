@@ -35,8 +35,33 @@
             --radius: 12px;
             --radius-sm: 8px;
             --radius-xs: 6px;
+            --bg: #F3EDE2;
+            --bg-warm: #EDE6D8;
+            --card: #FDFAF5;
         }
+        [data-theme="dark"] {
+            --bg: #121212;
+            --bg-warm: #181818;
+            --card: #1E1E1E;
+            --card-hover: #252525;
 
+            --fg: #F5F5F5;
+            --fg-secondary: #CCCCCC;
+            --fg-muted: #999999;
+
+            --accent: #C4A97D;
+            --accent-light: #D4BC95;
+            --accent-bg: #2A241C;
+
+            --border: #333333;
+            --border-light: #2A2A2A;
+
+            --chat-user: #2D2D2D;
+            --chat-bot: #1E1E1E;
+
+            --danger-bg: #2D1C1C;
+            --success-bg: #1E2A1E;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -1324,7 +1349,9 @@
         </div>
         <div class="topbar-right">
             <span class="topbar-time" id="topbarTime">--:--</span>
-            <button class="topbar-btn" title="Settings"><i class="fa-solid fa-gear"></i></button>
+            <button class="topbar-btn" title="Toggle Theme" onclick="toggleTheme()">
+                <i class="fa-solid fa-moon"></i>
+            </button>
             <button class="topbar-btn" title="Notifications" style="position:relative">
                 <i class="fa-solid fa-bell"></i>
                 <span
@@ -2071,6 +2098,35 @@
         setTimeout(() => {
             addMessage('bot', `Welcome to DriveLegal! I'm your location-specific driver safety assistant.\n\nI'm currently set to ${getLocationName()}. You can ask me about speed limits, phone usage rules, helmet requirements, drink & drive penalties, seatbelt fines, parking regulations, and more.\n\nAll information is based on the Motor Vehicles (Amendment) Act, 2019 and local enforcement guidelines.`, null);
         }, 500);
+
+        // ===== Theme Toggle =====
+
+        function toggleTheme() {
+            const currentTheme =
+                document.documentElement.getAttribute("data-theme");
+
+            const newTheme =
+                currentTheme === "dark" ? "light" : "dark";
+
+            document.documentElement.setAttribute(
+                "data-theme",
+                newTheme
+            );
+
+            localStorage.setItem("theme", newTheme);
+        }
+
+        // Load saved theme on startup
+        const savedTheme =
+            localStorage.getItem("theme") ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light");
+
+        document.documentElement.setAttribute(
+            "data-theme",
+            savedTheme
+        );
     </script>
 
 </body>
