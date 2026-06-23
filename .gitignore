@@ -10,7 +10,7 @@ __pycache__/
 .env
 
 # FAISS index (use Git LFS or regenerate locally)
-data/faiss_index/
+
 
 # HuggingFace model cache
 *.bin
