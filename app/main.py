@@ -29,12 +29,12 @@ logging.basicConfig(
 logger = logging.getLogger("drivelegal")
 
 
-# ── Lifespan: load FAISS index once at startup ─────────────────────────────
+# ── Lifespan: load Qdrant index once at startup ────────────────────────────
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("Loading FAISS index…")
-    load_index()          # warms up the retriever singleton
-    logger.info("FAISS index ready.")
+    logger.info("Loading Qdrant index…")
+    load_index()          # initializes Qdrant client and embedder
+    logger.info("Qdrant index ready.")
     yield
     logger.info("Shutting down DriveLegal.")
 

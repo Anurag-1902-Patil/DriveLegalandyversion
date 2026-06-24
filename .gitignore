@@ -26,3 +26,6 @@ Thumbs.db
 
 # VS Code
 .vscode/
+
+#qdrant .lock file
+*.lock

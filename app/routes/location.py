@@ -162,7 +162,7 @@ async def update_location(payload: GPSPayload):
             accuracy_m=payload.accuracy,
         )
 
-    logger.info("Geocoded → %s", location.as_context_string())
+    logger.info("Geocoded -> %s", location.as_context_string())
     return GPSUpdateResponse(
         status="ok",
         city=location.city,
