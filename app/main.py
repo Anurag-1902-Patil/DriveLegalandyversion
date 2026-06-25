@@ -9,8 +9,11 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.routes.chat import router as chat_router
+from app.routes.location import router as location_router
 from rag.retriever import load_index
 
 # ── Logging ────────────────────────────────────────────────────────────────
@@ -26,12 +29,12 @@ logging.basicConfig(
 logger = logging.getLogger("drivelegal")
 
 
-# ── Lifespan: load FAISS index once at startup ─────────────────────────────
+# ── Lifespan: load Qdrant index once at startup ────────────────────────────
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("Loading FAISS index…")
-    load_index()          # warms up the retriever singleton
-    logger.info("FAISS index ready.")
+    logger.info("Loading Qdrant index…")
+    load_index()          # initializes Qdrant client and embedder
+    logger.info("Qdrant index ready.")
     yield
     logger.info("Shutting down DriveLegal.")
 
@@ -52,6 +55,13 @@ app.add_middleware(
 )
 
 app.include_router(chat_router)
+app.include_router(location_router)
+
+# ── Serve the HTML frontend at /ui ─────────────────────────────────────────
+@app.get("/ui", tags=["Frontend"], include_in_schema=False)
+def serve_ui():
+    """Serve the main dashboard HTML file."""
+    return FileResponse("frontend/ui.html")
 
 
 @app.get("/health", tags=["System"])

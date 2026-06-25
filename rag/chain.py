@@ -16,7 +16,7 @@ logger = logging.getLogger("drivelegal.chain")
 CACHE_PATH = os.path.join("data", "cache.json")
 
 SYSTEM_TEMPLATE = """You are DriveLegal, an AI road safety assistant for India.
-Use ONLY the context provided below to answer the question.
+{gps_context_line}Use ONLY the context provided below to answer the question.
 If the context does not contain enough information, say:
   "I could not find specific data for your location. Please verify with the official RTO."
 Never invent fine amounts or law sections.
@@ -30,7 +30,7 @@ Question: {question}
 Answer clearly and concisely in 2-4 sentences. If a fine is mentioned, state it with the disclaimer that amounts are indicative."""
 
 QA_PROMPT = PromptTemplate(
-    input_variables=["context", "question"],
+    input_variables=["context", "question", "gps_context_line"],
     template=SYSTEM_TEMPLATE,
 )
 
@@ -125,8 +125,31 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
     }
 
 
-def get_answer(query: str, city: str, state: str, country: str = "India") -> Dict[str, Any]:
-    """Run RAG pipeline. Falls back to offline cache if Ollama (Mistral) unavailable."""
+def get_answer(
+    query: str,
+    city: str,
+    state: str,
+    country: str = "India",
+    gps_context: str = "",
+) -> Dict[str, Any]:
+    """Run RAG pipeline. Falls back to offline cache if Ollama (Mistral) unavailable.
+
+    Args:
+        query:       The user's natural-language question.
+        city:        City resolved from GPS or manual dropdown.
+        state:       State resolved from GPS or manual dropdown.
+        country:     Country (default India).
+        gps_context: Optional human-readable location context injected into the
+                     system prompt (e.g. "Pune, Maharashtra, India"). When provided,
+                     Mistral is explicitly told the user's physical location.
+    """
+    # Build the GPS context line — blank if no GPS fix available
+    gps_context_line = (
+        f"The user is currently located near {gps_context}. "
+        "Tailor your answer to local enforcement where possible.\n"
+        if gps_context
+        else ""
+    )
     try:
         docs = retrieve(query, k=5, city=city, state=state, country=country)
 
@@ -143,7 +166,11 @@ def get_answer(query: str, city: str, state: str, country: str = "India") -> Dic
         )
 
         llm = ChatOllama(model="mistral", temperature=0)
-        prompt = QA_PROMPT.format(context=context, question=query)
+        prompt = QA_PROMPT.format(
+            context=context,
+            question=query,
+            gps_context_line=gps_context_line,
+        )
         response = llm.invoke(prompt)
 
         return {

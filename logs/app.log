@@ -650,5 +650,1186 @@ __root__
 2026-06-22 22:08:17,346 | INFO | faiss.loader | Successfully loaded faiss with AVX2 support.
 2026-06-22 22:08:17,530 | INFO | drivelegal.retriever | FAISS index loaded from data\faiss_index
 2026-06-22 22:08:17,531 | INFO | drivelegal | FAISS index ready.
-2026-06-22 23:41:21,545 | INFO | drivelegal | Loading FAISS index…
-2026-06-22 23:41:21,545 | INFO | drivelegal.retriever | Loading local embedding model...
+2026-06-24 14:27:39,300 | INFO | drivelegal | Loading FAISS index…
+2026-06-24 14:27:39,300 | INFO | drivelegal.retriever | Loading local embedding model...
+2026-06-24 14:28:58,101 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:58,101 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 14:28:58,133 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 14:28:58,407 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:58,431 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 14:28:58,455 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 14:28:58,662 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:58,682 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 14:28:58,884 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:58,905 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 14:28:59,169 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:59,195 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 14:28:59,422 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:59,447 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:28:59,704 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:28:59,931 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:28:59,947 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:29:00,462 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:29:00,733 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:29:00,961 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:29:01,643 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:29:01,847 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:29:01,863 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:29:02,100 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:29:02,120 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:29:02,334 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:29:02,353 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:29:02,588 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:29:02,614 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:29:02,857 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 14:29:03,067 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:29:03,414 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:29:03,428 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 14:29:03,680 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 14:29:03,697 | INFO | faiss.loader | Loading faiss with AVX2 support.
+2026-06-24 14:29:04,222 | INFO | faiss.loader | Successfully loaded faiss with AVX2 support.
+2026-06-24 14:29:04,328 | INFO | drivelegal.retriever | FAISS index loaded from data\faiss_index
+2026-06-24 14:29:04,328 | INFO | drivelegal | FAISS index ready.
+2026-06-24 14:29:39,165 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82385 accuracy=99.0
+2026-06-24 14:29:39,170 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-24 14:53:36,790 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 14:53:36,790 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 14:53:36,790 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 14:53:38,224 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:38,224 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 14:53:38,272 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:38,527 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:38,568 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:38,575 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 14:53:38,824 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:38,859 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:39,124 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:39,158 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 14:53:39,414 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:39,449 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:39,702 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:39,748 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:40,019 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:53:40,316 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:40,347 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:40,707 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:53:40,963 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:53:41,513 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:53:41,804 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 14:53:42,054 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:42,213 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:42,466 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:42,498 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:42,756 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:42,797 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:43,054 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:43,098 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:43,353 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 14:53:43,631 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:53:43,936 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:53:43,979 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 14:53:44,242 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 14:53:44,249 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 14:53:45,109 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-24 14:53:45,109 | INFO | drivelegal | Qdrant index ready.
+2026-06-24 14:57:31,815 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-24 14:57:31,866 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='hello'
+2026-06-24 14:57:32,655 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:03:41,031 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-24 15:03:41,063 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='hello'
+2026-06-24 15:03:42,528 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:03:46,895 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-24 15:03:46,895 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='Is talking on phone allowed while driving?'
+2026-06-24 15:03:46,959 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:03:46,967 | INFO | drivelegal.challan | Fine found | scope=delhi | violation=mobile_phone | vehicle=default
+2026-06-24 15:04:00,334 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-24 15:04:00,337 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='what is the penalty for drinking & driving?'
+2026-06-24 15:04:00,392 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:04:09,137 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=96.0
+2026-06-24 15:04:09,143 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-24 15:04:15,499 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=96.0
+2026-06-24 15:04:20,972 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=92.0
+2026-06-24 15:04:22,673 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:04:22,673 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message="What if I don't wear a seatbelt?"
+2026-06-24 15:04:22,736 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:04:22,736 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=no_seatbelt | vehicle=default
+2026-06-24 15:04:25,510 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=92.0
+2026-06-24 15:04:32,869 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:04:36,651 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:04:46,902 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:04:57,269 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:05:08,620 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:05:19,449 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:05:29,991 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:05:41,240 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:05:52,110 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:05:57,371 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:06:25,242 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82383 accuracy=105.0
+2026-06-24 15:06:31,467 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82383 accuracy=105.0
+2026-06-24 15:06:37,077 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:06:41,474 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:06:41,968 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:06:41,968 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='what is the penalty for driving while using the phone?'
+2026-06-24 15:06:42,016 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:06:42,068 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=mobile_phone | vehicle=default
+2026-06-24 15:06:49,014 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:06:51,976 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:07:02,501 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:07:13,061 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:07:23,521 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:07:33,669 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:07:44,231 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:07:54,973 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:08:05,627 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:08:17,529 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:08:27,313 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:08:38,227 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:08:48,701 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:08:59,487 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:09:10,426 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:09:20,826 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:09:59,513 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:09:59,513 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:09:59,513 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:09:59,895 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:09:59,895 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:09:59,958 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:00,194 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:00,242 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:00,242 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:10:00,478 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:00,498 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:00,728 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:00,744 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:10:00,972 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:00,991 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:01,221 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:01,235 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:01,478 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:10:01,719 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:01,734 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:02,068 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:10:02,291 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:10:02,519 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:10:02,735 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:10:02,971 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:02,985 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:03,214 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:03,234 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:03,451 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:03,465 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:03,687 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:03,701 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:03,930 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:10:04,152 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:10:04,429 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:10:04,443 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:10:04,680 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:10:04,687 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:10:05,519 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-24 15:10:05,519 | INFO | drivelegal | Qdrant index ready.
+2026-06-24 15:10:05,735 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:10:05,742 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-24 15:10:14,430 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:10:15,277 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:10:15,277 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='penalty for using phone while driving'
+2026-06-24 15:10:15,310 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:10:15,322 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=mobile_phone | vehicle=default
+2026-06-24 15:10:25,799 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:10:35,835 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:10:46,361 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:10:56,868 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:11:07,107 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:11:17,483 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:11:27,760 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:11:38,015 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:11:48,368 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:11:58,878 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:12:09,454 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:12:20,409 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:12:31,140 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:12:42,055 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:12:52,690 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:13:02,991 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:13:13,098 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:13:23,918 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:13:34,000 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:13:45,258 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:13:54,293 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:14:06,099 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:14:18,087 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:14:28,916 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:14:39,350 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:14:49,402 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:15:00,478 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:15:12,178 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:15:22,674 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:15:33,076 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:15:43,402 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:15:50,026 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-24 15:16:24,637 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:16:24,643 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:16:24,643 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:16:25,005 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:25,005 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:16:25,035 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:25,283 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:25,380 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:25,386 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:16:25,644 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:25,680 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:25,955 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:25,990 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:16:26,297 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:26,352 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:26,608 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:26,644 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:26,895 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:27,137 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:27,169 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:27,574 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:27,822 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:28,075 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:28,325 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:28,581 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:28,623 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:28,887 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:28,918 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:29,171 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:29,199 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:29,505 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:29,582 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:29,852 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:30,102 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:16:30,407 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:30,477 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:30,783 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:16:30,789 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:16:31,609 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-24 15:16:31,609 | INFO | drivelegal | Qdrant index ready.
+2026-06-24 15:16:43,976 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:16:43,976 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:16:43,976 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:16:44,338 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:44,338 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:16:44,372 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:44,712 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:44,748 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:44,748 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:16:45,012 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:45,050 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:45,303 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:45,342 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:16:45,595 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:45,633 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:45,881 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:45,991 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:46,247 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:46,504 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:46,541 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:46,929 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:47,193 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:47,495 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:47,755 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:48,005 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:48,040 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:48,296 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:48,338 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:48,588 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:48,624 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:48,879 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:48,920 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:49,198 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:16:49,466 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:16:49,764 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:16:49,802 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:16:50,129 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:16:50,150 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:16:50,936 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-24 15:16:50,936 | INFO | drivelegal | Qdrant index ready.
+2026-06-24 15:16:50,943 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: , 
+2026-06-24 15:16:50,943 | INFO | drivelegal.routes.chat | Query | location=, , India | message='penalty for using phone while driving'
+2026-06-24 15:16:50,989 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:16:51,001 | INFO | drivelegal.challan | Fine found | scope=national | violation=mobile_phone | vehicle=default
+2026-06-24 15:16:51,001 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:16:51,003 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-24 15:16:51,464 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:16:51,464 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:16:51,464 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:16:59,097 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:16:59,097 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:17:09,956 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:17:09,957 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:17:20,814 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:17:20,814 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:17:22,858 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:17:22,858 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='penalty for using phone while driving'
+2026-06-24 15:17:22,875 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: 'QdrantClient' object has no attribute 'search'
+2026-06-24 15:17:22,889 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=mobile_phone | vehicle=default
+2026-06-24 15:17:31,842 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:17:31,843 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:17:43,865 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:17:43,865 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:17:53,901 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:17:53,901 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:18:05,337 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:18:05,337 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:18:16,378 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:18:16,378 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:18:27,915 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:18:27,915 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:18:34,988 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-24 15:18:47,501 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:18:47,501 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:18:47,501 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:18:47,768 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:47,787 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:48,001 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:48,016 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:48,022 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:18:48,234 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:48,252 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:48,467 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:48,488 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:18:48,502 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:18:48,719 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:48,735 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:48,961 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:48,983 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:49,197 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:18:49,432 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:49,453 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:49,807 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:18:50,030 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:18:50,259 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:18:50,564 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:18:50,793 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:50,808 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:51,015 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:51,036 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:51,272 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:51,293 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:51,509 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:51,523 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:51,752 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:18:51,981 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:18:52,266 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:18:52,279 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:18:52,508 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:18:52,508 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:20:30,019 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:20:30,019 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:20:30,019 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:20:30,285 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:30,285 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:20:30,306 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:30,528 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:30,542 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:30,549 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:20:30,784 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:30,800 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:31,020 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:31,035 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:20:31,271 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:31,286 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:31,507 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:31,521 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:31,731 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:20:31,971 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:31,987 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:32,312 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:20:32,555 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:20:32,771 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:20:32,999 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:20:33,223 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:33,236 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:33,471 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:33,485 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:33,715 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:33,729 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:33,971 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:33,986 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:34,214 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:20:34,450 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:20:34,715 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:20:34,730 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:20:34,952 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:20:34,959 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:20:35,819 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-24 15:20:35,819 | INFO | drivelegal | Qdrant index ready.
+2026-06-24 15:20:39,076 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: , 
+2026-06-24 15:20:39,076 | INFO | drivelegal.routes.chat | Query | location=, , India | message='penalty for using phone while driving'
+2026-06-24 15:20:39,174 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: penalty for using phone while driving
+2026-06-24 15:21:03,717 | INFO | drivelegal.challan | Fine found | scope=national | violation=mobile_phone | vehicle=default
+2026-06-24 15:21:03,738 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:03,741 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-24 15:21:04,220 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:04,231 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:04,231 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:04,231 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:04,232 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:08,943 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:21:08,943 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='what is the penalty for mobile phone usage while driving'
+2026-06-24 15:21:09,371 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: what is the penalty for mobile phone usage while d
+2026-06-24 15:21:28,983 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=mobile_phone | vehicle=default
+2026-06-24 15:21:28,984 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:28,986 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:28,988 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:28,989 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:34,568 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:34,570 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:44,941 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:44,941 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:21:55,709 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:21:55,709 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:22:06,312 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:22:06,312 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:22:17,086 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:22:17,086 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:22:28,095 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:22:28,095 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:22:38,636 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:22:38,636 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:22:42,608 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:22:42,608 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:22:42,608 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:22:42,879 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:42,885 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:22:42,901 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:43,123 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:43,137 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:43,145 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:22:43,364 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:43,435 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:43,687 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:43,702 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:22:43,966 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:44,000 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:44,242 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:44,257 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:44,491 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:22:44,796 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:44,810 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:45,143 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:22:45,379 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:22:45,608 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:22:45,845 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:22:46,060 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:46,082 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:46,290 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:46,312 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:46,526 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:46,542 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:46,761 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:46,782 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:47,003 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:22:47,220 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:22:47,519 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:22:47,532 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:22:47,761 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:22:47,776 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:22:49,482 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:22:49,483 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:01,138 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:01,139 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:09,607 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:09,618 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:10,686 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:23:10,742 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:17,966 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:23:17,967 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:20,278 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:20,282 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:22,413 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:23:22,413 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:27,989 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:23:27,997 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:30,371 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:30,374 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:34,176 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:34,176 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:36,413 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:23:36,446 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='what is the penalty fo driving past the speed limit here?'
+2026-06-24 15:23:40,246 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: what is the penalty fo driving past the speed limi
+2026-06-24 15:23:53,109 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=speeding | vehicle=default
+2026-06-24 15:23:53,116 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:23:53,117 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:53,121 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:23:53,121 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:53,129 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:53,134 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:53,137 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:53,142 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:53,152 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:23:53,156 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:58,016 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:23:58,017 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:23:58,358 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82385 accuracy=92.0
+2026-06-24 15:23:58,362 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:02,961 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:24:02,961 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:08,004 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82385 accuracy=92.0
+2026-06-24 15:24:08,009 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:10,118 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:24:10,118 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:15,964 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:24:15,966 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:18,155 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:24:18,155 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:26,197 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:24:26,197 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:26,733 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:24:26,733 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:24:26,733 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:24:27,020 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:27,022 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:24:27,039 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:27,274 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:27,341 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:27,343 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:24:27,613 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:27,627 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:27,850 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:27,865 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:24:28,102 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:28,124 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:28,225 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:24:28,227 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:28,357 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:28,372 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:28,599 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:24:28,816 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:28,831 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:29,172 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:24:29,387 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:24:29,602 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:24:29,822 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:24:30,037 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:30,057 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:30,272 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:30,289 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:30,516 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:30,534 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:30,765 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:30,779 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:31,017 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:24:31,237 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:24:31,496 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:24:31,510 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:24:31,731 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:24:31,739 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:24:37,062 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:24:37,062 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:39,071 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:24:39,071 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:48,514 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:24:48,514 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:24:49,514 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:24:49,522 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:26:43,512 | INFO | drivelegal | Loading Qdrant index…
+2026-06-24 15:26:43,512 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-24 15:26:43,512 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-24 15:26:43,794 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:43,794 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 15:26:43,808 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:44,023 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:44,036 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:44,042 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-24 15:26:44,256 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:44,270 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:44,485 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:44,499 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-24 15:26:44,721 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:44,735 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:44,968 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:44,985 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:45,219 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:26:45,450 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:45,465 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:45,801 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:26:46,033 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:26:46,250 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:26:46,480 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-24 15:26:46,710 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:46,728 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:46,958 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:46,971 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:47,200 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:47,218 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:47,437 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:47,458 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:47,694 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 15:26:47,916 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 15:26:48,186 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 15:26:48,201 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-24 15:26:48,437 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-24 15:26:48,446 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-24 15:26:49,360 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-24 15:26:49,360 | INFO | drivelegal | Qdrant index ready.
+2026-06-24 15:27:10,296 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-24 15:27:10,296 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='What are the helmet rules?'
+2026-06-24 15:27:14,911 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: What are the helmet rules?
+2026-06-24 15:27:30,077 | INFO | drivelegal.challan | Fine found | scope=delhi | violation=no_helmet | vehicle=default
+2026-06-24 15:27:43,150 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82382 accuracy=109.0
+2026-06-24 15:27:43,162 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-24 15:27:44,060 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:27:47,275 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82382 accuracy=109.0
+2026-06-24 15:27:47,324 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:27:55,010 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:27:55,011 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:27:56,860 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:27:56,860 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='what is the fine for going past speed limit here'
+2026-06-24 15:28:01,272 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: what is the fine for going past speed limit here
+2026-06-24 15:28:19,263 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=speeding | vehicle=default
+2026-06-24 15:28:19,312 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:28:19,441 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:28:19,597 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:28:19,650 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:28:19,817 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:28:19,821 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:28:19,851 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:28:19,914 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:28:19,999 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:28:20,035 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:28:24,518 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:28:24,518 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='hello'
+2026-06-24 15:28:25,753 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: hello
+2026-06-24 15:29:29,761 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=109.0
+2026-06-24 15:29:29,763 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,765 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=100.0
+2026-06-24 15:29:29,766 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,770 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=100.0
+2026-06-24 15:29:29,770 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,770 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=100.0
+2026-06-24 15:29:29,772 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,773 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=101.0
+2026-06-24 15:29:29,773 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,777 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=100.0
+2026-06-24 15:29:29,777 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,782 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=101.0
+2026-06-24 15:29:29,784 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,789 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:29:29,789 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,792 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:29:29,793 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,794 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:29:29,796 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,800 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82384 accuracy=96.0
+2026-06-24 15:29:29,803 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:29,810 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82384 accuracy=96.0
+2026-06-24 15:29:29,811 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:30,227 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:29:30,227 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:37,565 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:29:37,569 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:42,008 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:29:42,009 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:48,514 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:29:48,515 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:29:59,206 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:29:59,209 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:09,675 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:30:09,676 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:20,147 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:30:20,147 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:30,140 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:30:30,168 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:31,538 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=89.0
+2026-06-24 15:30:31,582 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:40,149 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=89.0
+2026-06-24 15:30:40,149 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:43,230 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:30:43,230 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:30:50,725 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:30:50,727 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:00,849 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:31:00,852 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:11,187 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:31:11,191 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:21,778 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:31:21,778 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:34,674 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:31:34,674 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:44,674 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:31:44,701 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:46,566 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:31:46,591 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:31:55,111 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:31:55,118 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:32:05,213 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:32:05,215 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:32:18,373 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:32:18,374 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:32:33,081 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:32:33,085 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:32:43,180 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:32:43,184 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:32:54,019 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:32:54,019 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:33:04,519 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:33:04,519 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:33:15,068 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:33:15,073 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:33:26,420 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:33:26,420 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:33:37,414 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:33:37,414 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:33:48,485 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:33:48,492 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:33:59,520 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:33:59,520 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:34:10,250 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:34:10,250 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:34:21,327 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:34:21,335 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:34:32,317 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:34:32,317 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:34:43,423 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82383 accuracy=99.0
+2026-06-24 15:34:43,423 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:34:55,044 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:34:55,044 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:34:56,063 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:34:56,064 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:06,167 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:35:06,167 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:14,455 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:35:14,501 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='Where can I park legally?'
+2026-06-24 15:35:17,510 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: Where can I park legally?
+2026-06-24 15:35:44,680 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:35:44,680 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:44,683 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:35:44,683 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:44,683 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=95.0
+2026-06-24 15:35:44,683 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:44,688 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=95.0
+2026-06-24 15:35:44,689 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:44,691 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=91.0
+2026-06-24 15:35:44,691 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:44,691 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=91.0
+2026-06-24 15:35:44,691 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:46,175 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:35:46,175 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:35:56,448 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:35:56,448 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:36:07,201 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:36:07,202 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:36:17,569 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:36:17,569 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:36:28,651 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:36:28,651 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:36:39,292 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:36:39,292 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:36:49,792 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:36:49,792 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:37:00,610 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:37:00,610 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:37:17,828 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:37:17,828 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:37:28,361 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:37:28,362 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:37:39,022 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:37:39,022 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:37:49,427 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:37:49,427 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:00,149 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:38:00,149 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:09,029 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:38:09,029 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='What penalties apply if someone ignores a traffic signal while riding a two-wheeler in Pune?'
+2026-06-24 15:38:10,135 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: What penalties apply if someone ignores a traffic 
+2026-06-24 15:38:29,155 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=red_light | vehicle=default
+2026-06-24 15:38:29,333 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=89.0
+2026-06-24 15:38:29,420 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:29,558 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=95.0
+2026-06-24 15:38:29,666 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:29,814 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=95.0
+2026-06-24 15:38:29,886 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:30,225 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:38:30,233 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:30,305 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:38:30,358 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:37,463 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:38:37,469 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:40,179 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:38:40,270 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:50,307 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:38:50,385 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:38:51,062 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-06-24 15:38:51,109 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:00,195 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-06-24 15:39:00,217 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:03,575 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:39:03,575 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:10,206 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:39:10,206 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:15,816 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:39:15,816 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:20,228 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=91.0
+2026-06-24 15:39:20,228 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:27,624 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:39:27,633 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:30,231 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:39:30,231 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:39,949 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=96.0
+2026-06-24 15:39:39,949 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:40,421 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=96.0
+2026-06-24 15:39:40,421 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:50,248 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=96.0
+2026-06-24 15:39:50,248 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:39:51,938 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=93.0
+2026-06-24 15:39:51,938 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:00,388 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=93.0
+2026-06-24 15:40:00,388 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:04,514 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-06-24 15:40:04,514 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:10,299 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-06-24 15:40:10,299 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:18,229 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:40:18,309 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:20,300 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:40:20,300 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:30,404 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82384 accuracy=95.0
+2026-06-24 15:40:30,422 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:30,695 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82385 accuracy=89.0
+2026-06-24 15:40:30,695 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:40,408 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82385 accuracy=89.0
+2026-06-24 15:40:40,439 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:43,463 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:40:43,463 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:53,264 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=89.0
+2026-06-24 15:40:53,264 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:40:55,774 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82384 accuracy=89.0
+2026-06-24 15:40:55,774 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:04,708 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82384 accuracy=89.0
+2026-06-24 15:41:04,708 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:07,534 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=96.0
+2026-06-24 15:41:07,534 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:07,941 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:41:07,941 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='I was driving my motorcycle in Maharashtra and accidentally crossed the stop line after the signal turned red. What sections of the law apply and what fine could I face?'
+2026-06-24 15:41:09,195 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: I was driving my motorcycle in Maharashtra and acc
+2026-06-24 15:41:22,119 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=red_light | vehicle=bike
+2026-06-24 15:41:22,261 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=96.0
+2026-06-24 15:41:22,273 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:22,282 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=99.0
+2026-06-24 15:41:22,296 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:24,636 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=99.0
+2026-06-24 15:41:24,636 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:33,795 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 15:41:33,795 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:35,296 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 15:41:35,296 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:41:42,501 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:41:42,547 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='Compare the consequences of drunk driving and overspeeding for a car driver in Mumbai.'
+2026-06-24 15:41:45,767 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: Compare the consequences of drunk driving and over
+2026-06-24 15:42:11,417 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=speeding | vehicle=car
+2026-06-24 15:42:11,419 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-06-24 15:42:11,420 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:11,421 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 15:42:11,422 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:11,427 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82384 accuracy=97.0
+2026-06-24 15:42:11,436 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:11,451 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82384 accuracy=97.0
+2026-06-24 15:42:11,454 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:11,461 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82384 accuracy=97.0
+2026-06-24 15:42:11,463 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:11,470 | INFO | drivelegal.routes.location | GPS update received: lat=18.44994 lon=73.82384 accuracy=97.0
+2026-06-24 15:42:11,474 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:15,314 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-06-24 15:42:15,356 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:22,768 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:42:22,769 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:23,789 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:42:23,790 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='Can the police seize my vehicle if I repeatedly break traffic rules?'
+2026-06-24 15:42:25,068 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: Can the police seize my vehicle if I repeatedly br
+2026-06-24 15:42:38,024 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:42:38,025 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:38,026 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:42:38,026 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:38,029 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:42:38,029 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:46,517 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:42:46,517 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:42:53,980 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:42:54,001 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='What does the Motor Vehicles Act say about obeying traffic signals, and which section covers it?'
+2026-06-24 15:42:57,867 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: What does the Motor Vehicles Act say about obeying
+2026-06-24 15:43:18,202 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=red_light | vehicle=default
+2026-06-24 15:43:18,207 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 15:43:18,208 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:18,210 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:43:18,211 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:18,212 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:43:18,215 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:18,217 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=92.0
+2026-06-24 15:43:18,218 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:18,218 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=92.0
+2026-06-24 15:43:18,220 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:24,108 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:43:24,108 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:26,796 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:43:26,796 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:37,084 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:43:37,085 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:47,172 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:43:47,172 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:43:57,302 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:43:57,302 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:44:07,468 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:44:07,470 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:44:17,564 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:44:17,580 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:44:27,707 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:44:27,710 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:44:37,833 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:44:37,833 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:44:47,980 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:44:47,980 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:44:58,120 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:44:58,121 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:45:08,297 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:45:08,297 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:45:18,415 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:45:18,415 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:45:28,583 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:45:28,583 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:45:38,704 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:45:38,704 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:45:48,795 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:45:48,804 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:45:58,890 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:45:58,890 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:46:09,089 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:46:09,089 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:46:19,429 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:46:19,429 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:46:29,276 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:46:29,277 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:46:39,358 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:46:39,362 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:46:49,509 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:46:49,511 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:46:59,600 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:46:59,600 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:47:09,674 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:47:09,675 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:47:19,724 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:47:19,724 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:47:29,813 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:47:29,816 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:47:39,956 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:47:39,958 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:47:50,085 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:47:50,085 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:48:00,208 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:48:00,208 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:48:10,329 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:48:10,329 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:48:20,408 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:48:20,409 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:48:30,527 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:48:30,527 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:48:40,645 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:48:40,645 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:48:50,805 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:48:50,808 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:49:00,888 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:49:00,888 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:49:11,009 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:49:11,010 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:49:21,148 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:49:21,149 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:49:31,260 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:49:31,261 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:49:41,368 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:49:41,370 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:49:51,486 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:49:51,486 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:50:01,608 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:50:01,608 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:50:11,765 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:50:11,765 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:50:21,983 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:50:21,988 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:50:32,035 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:50:32,035 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:50:42,130 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:50:42,130 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:50:52,259 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:50:52,259 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:02,341 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:51:02,341 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:12,462 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82384 accuracy=92.0
+2026-06-24 15:51:12,462 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:20,959 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82385 accuracy=96.0
+2026-06-24 15:51:20,959 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:22,458 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82385 accuracy=96.0
+2026-06-24 15:51:22,458 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:33,402 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82385 accuracy=96.0
+2026-06-24 15:51:33,402 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:43,463 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82385 accuracy=96.0
+2026-06-24 15:51:43,463 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:51:53,558 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82385 accuracy=96.0
+2026-06-24 15:51:53,558 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:03,602 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82385 accuracy=96.0
+2026-06-24 15:52:03,602 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:08,419 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=90.0
+2026-06-24 15:52:08,419 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:13,611 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=90.0
+2026-06-24 15:52:13,615 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:20,400 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:52:20,400 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:23,707 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:52:23,707 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:32,260 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:52:32,260 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:33,629 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:52:33,629 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:43,641 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82383 accuracy=92.0
+2026-06-24 15:52:43,644 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:44,136 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:52:44,136 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:53,661 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=91.0
+2026-06-24 15:52:53,661 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:52:56,211 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:52:56,211 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:03,651 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:03,651 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:08,060 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:08,060 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:13,662 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:13,662 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:20,054 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:20,054 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:23,680 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:23,686 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:32,022 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:32,029 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:33,686 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:33,686 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:43,813 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:43,813 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:43,899 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:43,899 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:53,813 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:53,813 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:53:55,851 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:53:55,851 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:03,823 | INFO | drivelegal.routes.location | GPS update received: lat=18.44991 lon=73.82383 accuracy=89.0
+2026-06-24 15:54:03,823 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:07,841 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:54:07,857 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:13,816 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=91.0
+2026-06-24 15:54:13,825 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:19,633 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82384 accuracy=92.0
+2026-06-24 15:54:19,633 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:23,820 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82384 accuracy=92.0
+2026-06-24 15:54:23,820 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:31,556 | INFO | drivelegal.routes.location | GPS update received: lat=18.44996 lon=73.82384 accuracy=95.0
+2026-06-24 15:54:31,556 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:33,839 | INFO | drivelegal.routes.location | GPS update received: lat=18.44996 lon=73.82384 accuracy=95.0
+2026-06-24 15:54:33,840 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:43,497 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:54:43,497 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:43,850 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:54:43,855 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:54:54,514 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:54:54,515 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:55:04,593 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:55:04,593 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:55:14,673 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:55:14,673 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:55:24,784 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:55:24,788 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:55:34,866 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:55:34,866 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:55:44,974 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:55:44,974 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:55:55,082 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:55:55,082 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:56:05,205 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:56:05,208 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:56:15,295 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:56:15,295 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:56:25,408 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:56:25,409 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:56:35,494 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:56:35,494 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:56:45,566 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:56:45,566 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:56:55,722 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:56:55,723 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:57:05,805 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:57:05,805 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:57:15,889 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:57:15,891 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:57:25,995 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:57:25,995 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:57:36,511 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:57:36,511 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:57:46,624 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:57:46,625 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:57:56,761 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:57:56,763 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:58:06,874 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:58:06,874 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:58:17,012 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:58:17,018 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:58:27,089 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:58:27,089 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:58:37,233 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:58:37,237 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:58:47,383 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:58:47,383 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:58:57,484 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:58:57,488 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:59:09,438 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:59:09,438 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:59:17,637 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 15:59:17,637 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 15:59:27,154 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-06-24 15:59:27,154 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message="I live in Pune right now, I'm shifting to banglore for my job I've own a 2 wheeler and a 4 wheeler what are some major and mior rules and fines which are different between both cities"
+2026-06-24 15:59:28,334 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: I live in Pune right now, I'm shifting to banglore
+2026-06-24 16:00:08,018 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 16:00:08,018 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,020 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82386 accuracy=91.0
+2026-06-24 16:00:08,021 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,021 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 16:00:08,021 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,026 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 16:00:08,026 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,028 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 16:00:08,028 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,028 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 16:00:08,033 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,035 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=97.0
+2026-06-24 16:00:08,035 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,038 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=92.0
+2026-06-24 16:00:08,038 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:08,040 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82383 accuracy=97.0
+2026-06-24 16:00:08,042 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:15,372 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:00:15,382 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:17,675 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:00:17,675 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:28,156 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:00:28,156 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:38,524 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:00:38,524 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:48,573 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:00:48,573 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:00:58,920 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:00:58,929 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:08,998 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:01:08,998 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:19,046 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:01:19,046 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:29,178 | INFO | drivelegal.routes.location | GPS update received: lat=18.44989 lon=73.82383 accuracy=102.0
+2026-06-24 16:01:29,178 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:38,649 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 16:01:38,649 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:39,317 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 16:01:39,317 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:49,395 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 16:01:49,395 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:01:59,718 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 16:01:59,718 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-24 16:02:09,819 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
+2026-06-24 16:02:09,836 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
