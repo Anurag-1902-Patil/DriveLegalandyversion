@@ -1833,3 +1833,498 @@ __root__
 2026-06-24 16:01:59,718 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
 2026-06-24 16:02:09,819 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=95.0
 2026-06-24 16:02:09,836 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-06-27 14:09:01,214 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 14:09:01,214 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 14:09:01,255 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 14:09:01,627 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-06-27 14:09:01,970 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:01,972 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 14:09:02,153 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:02,583 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:02,598 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:02,611 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 14:09:02,910 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:02,930 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:03,163 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:03,179 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 14:09:03,417 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:03,430 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:03,820 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:03,837 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:04,125 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:09:04,430 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:04,444 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:05,229 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:09:05,530 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:09:05,944 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:09:06,180 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:09:06,392 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:06,407 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:06,673 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:06,687 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:06,960 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:06,972 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:07,211 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:07,222 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:07,569 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 14:09:07,930 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 14:09:08,327 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:09:08,347 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 14:09:08,590 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 14:09:08,611 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 14:09:11,659 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 14:09:11,659 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 14:13:23,282 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94174 accuracy=71.0
+2026-06-27 14:13:23,286 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:13:23,286 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:13:23,286 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94174)
+2026-06-27 14:13:28,059 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94174 accuracy=71.0
+2026-06-27 14:13:28,062 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:13:28,062 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:13:28,064 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94174)
+2026-06-27 14:13:38,049 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94174 accuracy=71.0
+2026-06-27 14:13:38,056 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:13:38,087 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:13:38,093 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94174)
+2026-06-27 14:13:44,247 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94175 accuracy=87.0
+2026-06-27 14:13:44,252 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:13:44,253 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:13:44,253 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94175)
+2026-06-27 14:13:47,296 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94175 accuracy=87.0
+2026-06-27 14:13:47,296 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:13:47,296 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:13:47,296 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94175)
+2026-06-27 14:13:48,046 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94175 accuracy=87.0
+2026-06-27 14:13:48,048 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:13:48,049 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:13:48,050 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94175)
+2026-06-27 14:28:36,521 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-27 14:29:10,130 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 14:29:10,133 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 14:29:10,139 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 14:29:11,265 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:11,283 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:11,583 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:11,583 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 14:29:11,599 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:11,603 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 14:29:12,188 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:12,198 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:12,598 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:12,608 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 14:29:12,903 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:12,923 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:13,133 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:13,257 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:13,533 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:29:13,763 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:13,782 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:14,323 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:29:14,638 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:29:14,893 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:29:15,123 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:29:15,333 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:15,353 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:15,672 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:15,683 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:15,963 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:16,006 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:16,383 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:16,443 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:16,803 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 14:29:17,103 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 14:29:17,413 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:29:17,453 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 14:29:17,713 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 14:29:17,720 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 14:29:18,635 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 14:29:18,635 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 14:38:32,824 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 14:38:32,824 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 14:38:32,824 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 14:38:33,161 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:33,400 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:33,846 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:33,853 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:33,860 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 14:38:34,151 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:34,151 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 14:38:34,177 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:34,388 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:34,625 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 14:38:34,975 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:34,991 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:35,310 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:35,613 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:35,936 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:38:36,206 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:36,213 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:36,913 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:38:37,286 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:38:37,614 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:38:38,051 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:38:38,420 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:38,435 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:38,757 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:38,773 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:39,069 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:39,085 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:39,435 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:39,784 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:40,054 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 14:38:40,407 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 14:38:40,808 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:38:40,823 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 14:38:41,176 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 14:38:41,184 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 14:38:42,089 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 14:38:42,089 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 14:39:59,942 | INFO | drivelegal.routes.location | GPS update received: lat=20.10349 lon=73.94177 accuracy=111.0
+2026-06-27 14:39:59,946 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:39:59,948 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:39:59,948 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10349, 73.94177)
+2026-06-27 14:40:07,065 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-27 14:40:07,065 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='heyy can we talk now?'
+2026-06-27 14:40:08,483 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: heyy can we talk now?
+2026-06-27 14:40:12,550 | WARNING | drivelegal.chain | LLM unavailable, using offline fallback. Reason: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError("HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))
+2026-06-27 14:40:12,640 | INFO | drivelegal.retriever | retrieve() returning 9 docs for query: heyy can we talk now?
+2026-06-27 14:40:12,647 | INFO | drivelegal.routes.location | GPS update received: lat=20.10349 lon=73.94177 accuracy=111.0
+2026-06-27 14:40:12,647 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:12,647 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:12,647 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10349, 73.94177)
+2026-06-27 14:40:12,654 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:40:12,656 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:12,656 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:12,656 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:40:17,197 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:40:17,199 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:17,199 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:17,200 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:40:27,933 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:40:27,935 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:27,935 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:27,935 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:40:37,937 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:40:37,937 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:37,937 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:37,937 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:40:47,932 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:40:47,945 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:47,947 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:47,947 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:40:57,940 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:40:57,943 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:40:57,945 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:40:57,950 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:41:07,946 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:41:07,950 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:07,950 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:07,950 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:41:17,942 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:41:17,945 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:17,945 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:17,945 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:41:27,944 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:41:27,947 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:27,948 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:27,948 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:41:37,194 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94189 accuracy=115.0
+2026-06-27 14:41:37,197 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:37,197 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:37,197 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10357, 73.94189)
+2026-06-27 14:41:40,012 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:41:40,016 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:40,016 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:40,018 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:41:43,711 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 14:41:43,711 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 14:41:43,727 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 14:41:47,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:41:47,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:47,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:47,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:41:51,198 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:51,201 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 14:41:51,210 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:51,581 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:51,591 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:51,596 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 14:41:51,866 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:51,882 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:52,089 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:52,104 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 14:41:52,311 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:52,321 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:52,539 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:52,615 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:52,824 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:41:53,039 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:53,049 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:53,454 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:41:53,687 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:41:53,898 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:41:54,108 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 14:41:54,311 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:54,331 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:54,536 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:54,543 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:54,770 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:54,780 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:54,994 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:54,997 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:55,222 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 14:41:55,433 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 14:41:55,753 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 14:41:55,768 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 14:41:56,076 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 14:41:56,092 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 14:41:57,939 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:41:57,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:41:57,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:41:57,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:42:07,948 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:42:07,955 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:07,956 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:07,956 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:42:17,940 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:42:17,942 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:17,942 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:17,942 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:42:27,942 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:42:27,947 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:27,948 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:27,948 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:42:37,706 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 14:42:37,708 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:37,708 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:37,710 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10356, 73.94190)
+2026-06-27 14:42:39,497 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:42:39,498 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:39,498 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:39,502 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:42:47,935 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:42:47,938 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:47,938 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:47,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:42:57,946 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:42:57,951 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:42:57,953 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:42:57,954 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:43:07,937 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:43:07,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:07,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:07,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:43:17,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:43:17,942 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:17,942 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:17,942 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:43:27,936 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:43:27,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:27,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:27,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:43:37,191 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94174 accuracy=71.0
+2026-06-27 14:43:37,191 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:37,191 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:37,191 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94174)
+2026-06-27 14:43:42,248 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94175 accuracy=71.0
+2026-06-27 14:43:42,252 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:42,252 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:42,253 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94175)
+2026-06-27 14:43:47,188 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94175 accuracy=71.0
+2026-06-27 14:43:47,198 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:47,198 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:47,198 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10343, 73.94175)
+2026-06-27 14:43:56,243 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:43:56,245 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:56,245 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:56,245 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:43:57,192 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:43:57,192 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:43:57,192 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:43:57,192 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:44:07,936 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:44:07,936 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:44:07,940 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:44:07,940 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:44:17,940 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:44:17,951 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:44:17,951 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:44:17,951 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:44:27,939 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:44:27,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:44:27,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:44:27,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:44:37,942 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:44:37,942 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:44:37,942 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:44:37,942 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:44:47,934 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:44:47,934 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:44:47,934 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:44:47,934 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:44:57,944 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:44:57,949 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:44:57,949 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:44:57,949 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:45:18,932 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:45:18,932 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:45:18,943 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:45:18,943 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:46:18,943 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:46:18,943 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:46:18,943 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:46:18,943 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:47:18,946 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:47:18,949 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:47:18,949 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:47:18,950 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:48:18,945 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=84.0
+2026-06-27 14:48:18,949 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:48:18,949 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:48:18,950 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10344, 73.94176)
+2026-06-27 14:48:23,744 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:48:23,748 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:48:23,748 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:48:23,748 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:48:27,937 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:48:27,941 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:48:27,942 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:48:27,943 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:48:37,935 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:48:37,940 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:48:37,941 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:48:37,941 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:48:47,936 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:48:47,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:48:47,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:48:47,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:48:57,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:48:57,940 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:48:57,940 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:48:57,940 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:49:07,934 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:49:07,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:49:07,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:49:07,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:49:17,937 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:49:17,939 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:49:17,939 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:49:17,939 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:50:09,277 | INFO | drivelegal.routes.location | GPS update received: lat=20.10353 lon=73.94187 accuracy=134.0
+2026-06-27 14:50:09,280 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:09,280 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:09,281 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10353, 73.94187)
+2026-06-27 14:50:14,565 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:50:14,568 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:14,568 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:14,568 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:50:17,941 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:50:17,942 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:17,942 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:17,942 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:50:27,945 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:50:27,948 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:27,948 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:27,949 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:50:37,944 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:50:37,946 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:37,947 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:37,947 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:50:47,931 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:50:47,938 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:47,938 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:47,938 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:50:57,934 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:50:57,936 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:50:57,936 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:50:57,936 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:51:07,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:51:07,941 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:51:07,941 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:51:07,941 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 14:51:18,937 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=84.0
+2026-06-27 14:51:18,937 | ERROR | drivelegal.geocoder | reverse_geocoder not installed. Run: pip install reverse_geocoder
+2026-06-27 14:51:18,937 | ERROR | drivelegal.geocoder | reverse_geocoder library not available.
+2026-06-27 14:51:18,937 | WARNING | drivelegal.routes.location | Offline geocoding returned None for (20.10348, 73.94179)
+2026-06-27 15:05:48,508 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 15:05:48,508 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 15:05:48,510 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 15:05:48,845 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:48,850 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 15:05:48,862 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:49,094 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:49,112 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:49,115 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 15:05:49,320 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:49,340 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:49,550 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:49,563 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 15:05:49,780 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:49,794 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:50,028 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:50,040 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:50,250 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:05:50,487 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:50,500 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:51,010 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:05:51,245 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:05:51,462 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:05:51,690 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:05:51,905 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:51,924 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:52,172 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:52,186 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:52,405 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:52,410 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:52,643 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:52,650 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:52,870 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 15:05:53,090 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 15:05:53,391 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:05:53,405 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 15:05:53,620 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 15:05:53,623 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 15:05:54,625 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 15:05:54,625 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 15:24:41,510 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-27 15:25:03,806 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 15:25:03,807 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 15:25:03,815 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 15:25:04,148 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:04,165 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:04,389 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:04,406 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:04,410 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 15:25:04,659 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:04,683 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:04,966 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:04,970 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 15:25:04,982 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 15:25:05,193 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:05,204 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:05,411 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:05,424 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:05,640 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:25:05,857 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:05,869 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:06,359 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:25:06,574 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:25:06,807 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:25:07,037 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:25:07,253 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:07,264 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:07,485 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:07,501 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:07,714 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:07,731 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:07,944 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:07,959 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:08,180 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 15:25:08,404 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 15:25:08,731 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:25:08,742 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 15:25:08,961 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 15:25:08,972 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 15:25:11,204 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 15:25:11,204 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 15:29:34,194 | INFO | drivelegal | Shutting down DriveLegal.
