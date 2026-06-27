@@ -4,8 +4,9 @@ POST /chat  → runs RAG pipeline + challan lookup → returns answer
 """
 
 import logging
-from fastapi import APIRouter, HTTPException
-
+from fastapi import APIRouter, HTTPException, Depends,  Header
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from typing import Optional 
 from app.models import ChatRequest, ChatResponse, Source
 from app.routes.location import get_store     # GPS in-memory store
 from rag.chain import get_answer
@@ -14,9 +15,13 @@ from rag.challan import lookup_fine
 logger = logging.getLogger("drivelegal.routes.chat")
 router = APIRouter(tags=["Chat"])
 
+security = HTTPBearer()
 
 @router.post("/chat", response_model=ChatResponse)
-async def chat(req: ChatRequest):
+async def chat(
+    req: ChatRequest,
+    token: HTTPAuthorizationCredentials = Depends(security) # This validates the Bearer token
+):
     """
     Main endpoint.  Accepts a natural-language traffic law question
     plus a location object and returns a grounded, location-specific answer.

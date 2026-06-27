@@ -1,0 +1,28 @@
+STEP 1
+Open Terminal 1 and run:
+ollama serve
+If it says it's already running, that's fine.
+Then, in the same terminal or another terminal, verify the model is available:
+ollama list
+You should see mistral:latest.
+
+---------------------------------------------------------------------------------------------------------
+
+Step 2: Start the FastAPI backend
+Open Terminal 2.
+Activate your virtual environment if it's not already active:
+.\venv\Scripts\Activate.ps1
+Then start the backend using the venv executable:
+.\venv\Scripts\uvicorn.exe app.main:app --reload
+Wait until you see something like:
+INFO:     Uvicorn running on http://127.0.0.1:8000
+INFO:     Application startup complete.
+
+------------------------------------------------------------------------------------------------
+Step 3: Start the Streamlit frontend
+Open Terminal 3.
+Again activate the venv if needed:
+.\venv\Scripts\Activate.ps1
+Then run:
+.\venv\Scripts\streamlit.exe run frontend\app.py
+Open the URL that Streamlit shows (usually http://localhost:8501).
