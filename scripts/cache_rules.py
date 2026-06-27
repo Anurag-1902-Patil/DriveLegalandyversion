@@ -51,7 +51,7 @@ SEED_QUERIES = [
 
 
 def main():
-    print("Loading FAISS index…")
+    print("Loading Qdrant index…")
     load_index()
 
     cache = []

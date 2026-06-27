@@ -9,7 +9,7 @@ import pytest
 from unittest.mock import patch, MagicMock
 from fastapi.testclient import TestClient
 
-# Patch load_index so the app starts without a real FAISS index
+# Patch load_index so the app starts without loading the Qdrant index
 with patch("rag.retriever.load_index"):
     from app.main import app
 
