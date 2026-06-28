@@ -1109,6 +1109,7 @@
             outline: none;
             transition: border-color 0.2s;
             -webkit-appearance: none;
+            appearance: none;
         }
 
         .challan-form-group select:focus,
@@ -1628,6 +1629,58 @@
 
         .gps-override-note.visible {
             display: block;
+        }
+
+        /* ── Confidence Badge ──────────────────────────────────────────────── */
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 3px 9px;
+            border-radius: 20px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            cursor: default;
+            user-select: none;
+        }
+
+        .confidence-high {
+            background: #d4edda;
+            color: #2d6a3f;
+            border: 1px solid #b8dfc5;
+        }
+
+        .confidence-medium {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffe499;
+        }
+
+        .confidence-low {
+            background: #f8d7da;
+            color: #842029;
+            border: 1px solid #f1aeb5;
+        }
+
+        [data-theme="dark"] .confidence-high {
+            background: #1a3a22;
+            color: #6fcf8a;
+            border-color: #2e5c38;
+        }
+
+        [data-theme="dark"] .confidence-medium {
+            background: #3a300a;
+            color: #f0c040;
+            border-color: #5a4a10;
+        }
+
+        [data-theme="dark"] .confidence-low {
+            background: #3a1218;
+            color: #f08080;
+            border-color: #5c2028;
         }
 
         @media (max-width: 1100px) {
@@ -2296,13 +2349,30 @@
             return now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false });
         }
 
-        function appendRenderedMessage(sender, text, penalty, locationTag) {
+        function confidenceBadgeHTML(confidence) {
+            if (!confidence) return '';
+            const cfgMap = {
+                high:   { icon: 'fa-circle-check',        label: 'High Confidence' },
+                medium: { icon: 'fa-circle-half-stroke',  label: 'Medium Confidence' },
+                low:    { icon: 'fa-triangle-exclamation', label: 'Offline Cache' },
+            };
+            const cfg = cfgMap[confidence.level] || cfgMap.medium;
+            const scoreHint = (confidence.retrieval_score != null)
+                ? ` &middot; ${Math.round(confidence.retrieval_score * 100)}% match` : '';
+            const fineHint = confidence.fine_from_structured_data
+                ? ' &middot; <i class="fa-solid fa-database" style="font-size:9px"></i> verified fine' : '';
+            return `<span class="confidence-badge confidence-${confidence.level}" title="Retrieval score: ${confidence.retrieval_score ?? 'n/a'}">`
+                + `<i class="fa-solid ${cfg.icon}"></i> ${cfg.label}${scoreHint}${fineHint}</span>`;
+        }
+
+        function appendRenderedMessage(sender, text, penalty, locationTag, confidence) {
             const div = document.createElement('div');
             div.className = `message ${sender === 'user' ? 'user' : 'bot'}`;
 
             const avatarIcon = sender === 'bot' ? 'fa-shield-halved' : 'fa-user';
             let penaltyHTML = penalty ? `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Estimated Fine: ${penalty}</div>` : '';
             let locationHTML = sender === 'bot' ? `<div class="msg-location"><i class="fa-solid fa-location-dot"></i> ${locationTag || getLocationName()}</div>` : '';
+            let confHTML = (sender === 'bot') ? confidenceBadgeHTML(confidence) : '';
 
             div.innerHTML = `
                 <div class="msg-avatar"><i class="fa-solid ${avatarIcon}"></i></div>
@@ -2311,6 +2381,7 @@
                         ${locationHTML}
                         ${text.replace(/\n/g, '<br>')}
                         ${penaltyHTML}
+                        ${confHTML}
                     </div>
                 </div>
             `;
@@ -2318,8 +2389,8 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        function addMessage(type, text, penalty) {
-            appendRenderedMessage(type, text, penalty, getLocationName());
+        function addMessage(type, text, penalty, confidence) {
+            appendRenderedMessage(type, text, penalty, getLocationName(), confidence);
         }
 
         function showTyping() {
@@ -2357,7 +2428,7 @@
                 const data = await response.json();
 
                 hideTyping();
-                addMessage('bot', data.answer, data.fine_amount);
+                addMessage('bot', data.answer, data.fine_amount, data.confidence);
 
             } catch (error) {
                 hideTyping();

@@ -3,6 +3,7 @@ DriveLegal – Pydantic Models & Database Schemas
 Strict input/output schemas for endpoints and SQLAlchemy model tracking definitions.
 """
 
+from enum import Enum
 from typing import List, Optional
 from datetime import datetime
 from pydantic import BaseModel, Field
@@ -62,15 +63,33 @@ class Source(BaseModel):
     text_snippet: Optional[str] = None
 
 
+# ── Confidence Scoring ─────────────────────────────────────────────────────
+
+class ConfidenceLevel(str, Enum):
+    """Three-tier confidence signal for every chat response."""
+    HIGH   = "high"
+    MEDIUM = "medium"
+    LOW    = "low"
+
+
+class ConfidenceDetail(BaseModel):
+    """Composite confidence score derived from three independent signals."""
+    level: ConfidenceLevel
+    retrieval_score: Optional[float] = None      # top-1 Qdrant cosine similarity (0–1)
+    fine_from_structured_data: bool = False      # did fines.json return a match?
+    is_offline_fallback: bool = False            # Ollama/Mistral was unavailable
+
+
 class ChatResponse(BaseModel):
     answer: str
-    fine_amount: Optional[str] = None      # e.g. "₹1,000 – ₹2,000"
+    fine_amount: Optional[str] = None            # e.g. "₹1,000 – ₹2,000"
     sources: List[Source] = []
     disclaimer: str = (
         "This information is indicative and for awareness only. "
         "Fine amounts may vary. Please verify with the official RTO or traffic authority."
     )
-    offline_fallback: bool = False         # True when Ollama/Mistral was unavailable
+    offline_fallback: bool = False               # True when Ollama/Mistral was unavailable
+    confidence: Optional[ConfidenceDetail] = None  # Composite confidence signal
 
 
 # ── DATABASE SCHEMAS (SQLAlchemy Models) ──────────────────────────────────
