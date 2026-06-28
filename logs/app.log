@@ -3155,3 +3155,70 @@ __root__
 2026-06-28 14:51:51,943 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
 2026-06-28 14:51:51,945 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
 2026-06-28 14:52:04,596 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-28 15:54:07,134 | INFO | drivelegal | Initializing database tables...
+2026-06-28 15:54:07,166 | INFO | drivelegal | Loading Qdrant index…
+2026-06-28 15:54:07,166 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-28 15:54:07,171 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-28 15:54:07,751 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:07,757 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:08,280 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:08,291 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:08,305 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-28 15:54:08,553 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:08,559 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 15:54:08,567 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:08,813 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:08,824 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-28 15:54:09,081 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:09,094 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:09,589 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:09,594 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:09,820 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 15:54:10,057 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:10,057 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:10,581 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 15:54:10,802 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 15:54:11,013 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 15:54:11,224 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 15:54:11,454 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:11,468 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:11,762 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:11,773 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:12,068 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:12,081 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:12,376 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:12,386 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:12,683 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 15:54:13,000 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 15:54:13,400 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 15:54:13,670 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-28 15:54:13,922 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-28 15:54:13,934 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-28 15:54:14,954 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-28 15:54:14,954 | INFO | drivelegal | Qdrant index ready.
+2026-06-28 15:54:23,466 | INFO | drivelegal.routes.location | GPS update received: lat=20.10365 lon=73.94193 accuracy=212.0
+2026-06-28 15:54:23,470 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-28 15:54:24,328 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:54:26,773 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Ozar, Maharashtra, India
+2026-06-28 15:54:26,773 | INFO | drivelegal.routes.chat | Query | location=Ozar, Maharashtra, India | message='Is talking on phone allowed while driving?'
+2026-06-28 15:54:28,023 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: Is talking on phone allowed while driving?
+2026-06-28 15:55:07,139 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=mobile_phone | vehicle=default
+2026-06-28 15:55:07,168 | INFO | drivelegal.routes.chat | Chat transaction logged for user_id: 1
+2026-06-28 15:55:07,170 | INFO | drivelegal.routes.location | GPS update received: lat=20.10365 lon=73.94193 accuracy=212.0
+2026-06-28 15:55:07,170 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,175 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94182 accuracy=212.0
+2026-06-28 15:55:07,175 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,175 | INFO | drivelegal.routes.location | GPS update received: lat=20.10361 lon=73.94193 accuracy=51.0
+2026-06-28 15:55:07,181 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,182 | INFO | drivelegal.routes.location | GPS update received: lat=20.10361 lon=73.94193 accuracy=51.0
+2026-06-28 15:55:07,183 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,184 | INFO | drivelegal.routes.location | GPS update received: lat=20.10361 lon=73.94193 accuracy=51.0
+2026-06-28 15:55:07,185 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,187 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94188 accuracy=141.0
+2026-06-28 15:55:07,188 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,191 | INFO | drivelegal.routes.location | GPS update received: lat=20.10355 lon=73.94182 accuracy=149.0
+2026-06-28 15:55:07,192 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:07,193 | INFO | drivelegal.routes.location | GPS update received: lat=20.10357 lon=73.94188 accuracy=141.0
+2026-06-28 15:55:07,194 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 15:55:10,041 | INFO | drivelegal.routes.location | GPS update received: lat=20.10355 lon=73.94182 accuracy=149.0
+2026-06-28 15:55:10,041 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
