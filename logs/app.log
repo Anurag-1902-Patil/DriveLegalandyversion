@@ -2328,3 +2328,830 @@ __root__
 2026-06-27 15:25:11,204 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
 2026-06-27 15:25:11,204 | INFO | drivelegal | Qdrant index ready.
 2026-06-27 15:29:34,194 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-27 15:29:50,025 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 15:29:50,025 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 15:29:50,028 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 15:29:50,352 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:50,366 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:50,657 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:50,657 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 15:29:50,671 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:50,675 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 15:29:50,963 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:50,977 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:51,227 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:51,240 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 15:29:51,480 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:51,491 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:51,782 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:51,796 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:52,095 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:29:52,303 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:52,310 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:52,720 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:29:52,949 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:29:53,160 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:29:53,376 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 15:29:53,587 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:53,600 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:53,812 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:53,824 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:54,046 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:54,060 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:54,271 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:54,282 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:54,497 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 15:29:54,709 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 15:29:54,976 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 15:29:54,988 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 15:29:55,202 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 15:29:55,209 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 15:29:56,324 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 15:29:56,324 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 15:29:56,324 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-27 15:29:56,328 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='What are the helmet rules?'
+2026-06-27 15:29:56,907 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: What are the helmet rules?
+2026-06-27 15:30:35,703 | INFO | drivelegal.challan | Fine found | scope=delhi | violation=no_helmet | vehicle=default
+2026-06-27 15:30:52,114 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-06-27 15:30:52,114 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='is everything working properly now'
+2026-06-27 15:30:53,234 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: is everything working properly now
+2026-06-27 15:31:55,892 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:31:55,896 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-27 15:31:56,877 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:02,326 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:32:02,326 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:10,793 | INFO | drivelegal.routes.location | GPS update received: lat=20.10355 lon=73.94185 accuracy=115.0
+2026-06-27 15:32:10,793 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:12,317 | INFO | drivelegal.routes.location | GPS update received: lat=20.10355 lon=73.94185 accuracy=115.0
+2026-06-27 15:32:12,319 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:12,422 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Ozar, Maharashtra, India
+2026-06-27 15:32:12,422 | INFO | drivelegal.routes.chat | Query | location=Ozar, Maharashtra, India | message='how fine should I pay fine for breaking a red signal'
+2026-06-27 15:32:13,526 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: how fine should I pay fine for breaking a red sign
+2026-06-27 15:32:37,454 | INFO | drivelegal.challan | Fine found | scope=maharashtra | violation=red_light | vehicle=default
+2026-06-27 15:32:37,458 | INFO | drivelegal.routes.location | GPS update received: lat=20.10347 lon=73.94177 accuracy=78.0
+2026-06-27 15:32:37,459 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:37,461 | INFO | drivelegal.routes.location | GPS update received: lat=20.10347 lon=73.94176 accuracy=82.0
+2026-06-27 15:32:37,461 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:37,463 | INFO | drivelegal.routes.location | GPS update received: lat=20.10347 lon=73.94177 accuracy=78.0
+2026-06-27 15:32:37,465 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:37,467 | INFO | drivelegal.routes.location | GPS update received: lat=20.10355 lon=73.94185 accuracy=115.0
+2026-06-27 15:32:37,468 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:42,320 | INFO | drivelegal.routes.location | GPS update received: lat=20.10347 lon=73.94176 accuracy=82.0
+2026-06-27 15:32:42,320 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:45,151 | INFO | drivelegal.routes.location | GPS update received: lat=20.10345 lon=73.94177 accuracy=90.0
+2026-06-27 15:32:45,152 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:52,327 | INFO | drivelegal.routes.location | GPS update received: lat=20.10345 lon=73.94177 accuracy=90.0
+2026-06-27 15:32:52,329 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:32:55,949 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:32:55,950 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:33:03,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:33:03,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:33:13,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:33:13,211 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:33:23,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:33:23,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:33:33,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:33:33,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:33:43,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:33:43,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:33:53,225 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:33:53,225 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:34:18,180 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:34:18,182 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:34:23,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:34:23,226 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:34:33,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:34:33,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:34:43,231 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:34:43,238 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:34:53,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:34:53,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:35:03,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:35:03,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:35:13,209 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:35:13,209 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:36:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:36:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:37:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:37:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:38:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:38:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:39:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:39:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:39:29,143 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:39:29,143 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:39:33,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:39:33,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:39:43,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:39:43,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:39:53,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:39:53,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:02,910 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 15:40:02,910 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:03,025 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94173 accuracy=80.0
+2026-06-27 15:40:03,025 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:12,318 | INFO | drivelegal.routes.location | GPS update received: lat=20.10343 lon=73.94173 accuracy=80.0
+2026-06-27 15:40:12,318 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:13,101 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:40:13,102 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:23,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:40:23,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:33,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:40:33,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:43,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:40:43,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:40:53,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:40:53,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:41:03,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:41:03,211 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:41:13,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:41:13,259 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:41:23,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:41:23,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:42:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:42:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:43:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:43:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:44:20,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:44:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:45:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:45:20,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:46:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:46:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:47:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:47:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:48:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:48:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:49:20,243 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:49:20,248 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:50:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:50:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:51:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:51:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:52:20,207 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:52:20,207 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:53:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:53:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:54:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:54:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:55:20,229 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:55:20,232 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:56:20,227 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:56:20,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:57:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:57:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:58:20,208 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:58:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 15:59:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 15:59:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:00:20,231 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:00:20,231 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:00:32,116 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:00:32,117 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:00:43,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:00:43,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:00:53,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:00:53,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:01:03,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:01:03,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:01:13,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:01:13,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:01:23,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:01:23,213 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:01:33,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:01:33,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:02:20,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:02:20,211 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:03:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:03:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:04:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:04:20,236 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:05:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:05:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:06:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:06:20,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:07:20,227 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:07:20,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:08:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:08:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:08:48,005 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:08:48,005 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:08:53,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:08:53,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:09:03,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:09:03,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:09:13,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:09:13,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:09:23,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:09:23,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:09:33,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:09:33,223 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:09:43,227 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:09:43,229 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:10:15,482 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:10:15,484 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:10:23,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:10:23,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:10:33,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:10:33,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:10:43,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:10:43,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:10:53,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:10:53,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:11:03,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:11:03,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:11:13,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:11:13,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:12:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:12:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:13:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:13:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:14:20,207 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:14:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:15:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:15:20,213 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:16:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:16:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:17:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:17:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:18:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:18:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:19:20,231 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:19:20,231 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:20:20,209 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:20:20,209 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:21:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:21:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:22:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:22:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:22:47,985 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:22:47,987 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:22:53,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:22:53,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:23:03,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:23:03,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:23:13,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:23:13,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:23:23,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:23:23,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:23:33,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:23:33,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:23:43,237 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:23:43,237 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:24:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:24:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:25:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:25:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:26:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:26:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:27:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:27:20,223 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:28:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:28:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:29:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:29:20,295 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:30:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:30:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:31:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:31:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:32:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:32:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:33:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:33:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:34:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:34:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:35:20,236 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:35:20,237 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:36:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:36:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:36:32,308 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 16:36:32,308 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:36:33,516 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:36:33,516 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:36:43,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:36:43,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:36:53,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:36:53,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:37:03,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:37:03,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:37:13,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:37:13,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:37:23,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:37:23,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:37:33,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:37:33,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:37:43,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:37:43,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:37:53,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:37:53,213 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:38:03,209 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:38:03,209 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:38:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:38:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:39:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:39:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:40:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:40:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:41:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:41:20,223 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:42:20,237 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:42:20,237 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:43:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:43:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:44:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:44:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:45:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:45:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:46:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:46:20,225 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:46:20,384 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-27 16:46:44,749 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 16:46:44,749 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 16:46:44,757 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 16:46:45,086 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:45,098 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:45,354 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:45,356 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 16:46:45,368 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:45,372 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 16:46:45,599 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:45,612 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:45,824 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:45,915 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 16:46:46,146 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:46,160 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:46,376 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:46,388 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:46,618 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 16:46:46,852 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:46,852 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:47,304 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 16:46:47,509 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 16:46:47,912 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 16:46:48,135 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 16:46:48,350 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:48,353 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:48,667 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:48,676 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:48,978 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:48,991 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:49,287 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:49,289 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:49,589 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 16:46:49,912 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 16:46:50,304 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 16:46:50,318 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 16:46:50,614 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 16:46:50,632 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 16:46:52,477 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 16:46:52,477 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 16:47:20,227 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:47:20,233 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-27 16:47:21,272 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:48:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:48:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:49:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:49:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:50:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:50:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:51:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:51:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:52:20,230 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:52:20,231 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:53:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:53:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:54:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:54:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:55:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:55:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:56:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:56:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:57:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:57:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:58:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:58:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 16:59:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 16:59:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:00:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:00:20,223 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:00:45,455 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:00:45,455 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:00:45,513 | INFO | drivelegal.routes.location | GPS update received: lat=20.10351 lon=73.94181 accuracy=134.0
+2026-06-27 17:00:45,513 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:00:58,994 | INFO | drivelegal.routes.location | GPS update received: lat=20.10347 lon=73.94178 accuracy=84.0
+2026-06-27 17:00:58,994 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:01:03,880 | INFO | drivelegal.routes.location | GPS update received: lat=20.10347 lon=73.94178 accuracy=84.0
+2026-06-27 17:01:03,881 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:01:11,934 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Ozar, Maharashtra, India
+2026-06-27 17:01:11,934 | INFO | drivelegal.routes.chat | Query | location=Ozar, Maharashtra, India | message='hi just checking up with you doing fine'
+2026-06-27 17:01:13,063 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: hi just checking up with you doing fine
+2026-06-27 17:02:20,597 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:20,597 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,604 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:02:20,604 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,608 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:02:20,610 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,613 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:02:20,614 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,616 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:20,617 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,620 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:20,620 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,622 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:02:20,623 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,625 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=90.0
+2026-06-27 17:02:20,626 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,629 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:02:20,629 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,632 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94176 accuracy=90.0
+2026-06-27 17:02:20,632 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,635 | INFO | drivelegal.routes.location | GPS update received: lat=20.10359 lon=73.94191 accuracy=128.0
+2026-06-27 17:02:20,635 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,639 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:20,640 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,642 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 17:02:20,643 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:20,644 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:20,644 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:23,883 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94179 accuracy=85.0
+2026-06-27 17:02:23,885 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:29,289 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:29,289 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:33,884 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:02:33,886 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:39,995 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:02:39,995 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:43,883 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:02:43,883 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:02:54,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:02:54,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:03:04,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:03:04,213 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:03:14,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:03:14,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:03:24,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:03:24,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:03:34,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:03:34,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:03:44,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:03:44,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:04:20,228 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:04:20,228 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:05:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:05:20,213 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:06:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:06:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:07:20,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:07:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:08:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:08:20,235 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:09:20,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:09:20,211 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:10:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:10:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:11:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:11:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:12:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:12:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:13:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:13:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:14:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:14:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:15:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:15:20,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:16:20,234 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:16:20,234 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:17:20,211 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:17:20,211 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:18:20,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:18:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:19:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:19:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:20:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:20:20,225 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:21:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:21:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:22:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:22:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:23:20,225 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:23:20,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:24:20,227 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:24:20,228 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:25:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:25:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:26:20,234 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:26:20,234 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:27:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:27:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:28:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:28:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:29:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:29:20,217 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:30:20,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:30:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:31:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:31:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:32:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:32:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:33:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:33:20,213 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:34:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:34:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:35:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:35:20,225 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:36:20,243 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:36:20,243 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:37:20,222 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:37:20,223 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:38:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:38:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:39:20,225 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:39:20,226 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:40:20,228 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:40:20,228 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:41:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:41:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:42:20,226 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:42:20,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:43:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:43:20,222 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:44:20,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:44:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:45:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:45:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:46:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:46:20,226 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:47:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:47:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:48:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:48:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:49:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:49:20,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:50:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:50:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:51:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:51:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:52:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:52:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:53:20,225 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:53:20,225 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:54:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:54:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:55:20,226 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:55:20,227 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:55:44,915 | INFO | drivelegal.routes.location | GPS update received: lat=20.10350 lon=73.94180 accuracy=128.0
+2026-06-27 17:55:44,916 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:55:45,053 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:55:45,053 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:55:54,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:55:54,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:56:04,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:56:04,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:56:14,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:56:14,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:56:24,225 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:56:24,225 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:56:34,267 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:56:34,267 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:56:44,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:56:44,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:57:20,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:57:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:58:20,215 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:58:20,216 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 17:59:20,208 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 17:59:20,208 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:00:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:00:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:01:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:01:20,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:02:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:02:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:03:20,221 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:03:20,221 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:04:20,208 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:04:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:05:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:05:20,215 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:06:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:06:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:07:20,213 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:07:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:08:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:08:20,219 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:09:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:09:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:10:20,224 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:10:20,226 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:11:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:11:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:12:20,217 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:12:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:13:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:13:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:14:20,212 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:14:20,212 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:15:20,220 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:15:20,220 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:16:20,218 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:16:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:17:20,216 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:17:20,218 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:18:20,233 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:18:20,234 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:19:20,223 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:19:20,224 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:20:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:20:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 18:21:20,214 | INFO | drivelegal.routes.location | GPS update received: lat=20.10356 lon=73.94190 accuracy=178.0
+2026-06-27 18:21:20,214 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-27 22:17:50,966 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 22:17:50,967 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 22:17:50,989 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 22:17:51,422 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:51,438 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:51,650 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:51,666 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 22:17:51,672 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:51,689 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 22:17:51,897 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:51,911 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:52,140 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:52,154 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 22:17:52,373 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:52,385 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:52,606 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:52,617 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:52,843 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:17:53,060 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:53,079 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:53,884 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:17:54,191 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:17:54,492 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:17:54,733 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:17:54,981 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:54,995 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:55,327 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:55,327 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:55,549 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:55,559 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:55,961 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:55,975 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:56,234 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 22:17:56,517 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 22:17:56,903 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:17:56,916 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 22:17:57,183 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 22:17:57,183 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 22:17:58,395 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 22:17:58,395 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 22:19:31,244 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-27 22:21:30,967 | INFO | drivelegal | Loading Qdrant index…
+2026-06-27 22:21:30,967 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-27 22:21:30,980 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-27 22:21:31,317 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:31,320 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-27 22:21:31,462 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:31,723 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:31,730 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:31,741 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-27 22:21:31,950 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:31,956 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:32,171 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:32,178 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-27 22:21:32,389 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:32,480 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:32,704 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:32,723 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:32,923 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:21:33,136 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:33,151 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:33,528 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:21:33,741 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:21:33,952 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:21:34,160 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-27 22:21:34,364 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:34,385 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:34,598 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:34,611 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:34,813 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:34,829 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:35,050 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:35,054 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:35,273 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-27 22:21:35,477 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-27 22:21:35,829 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-27 22:21:35,898 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-27 22:21:36,113 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-27 22:21:36,113 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-27 22:21:37,425 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-27 22:21:37,425 | INFO | drivelegal | Qdrant index ready.
+2026-06-27 22:30:13,339 | INFO | drivelegal | Shutting down DriveLegal.
+2026-06-28 14:22:39,212 | INFO | drivelegal | Initializing database tables...
+2026-06-28 14:22:39,312 | INFO | drivelegal | Loading Qdrant index…
+2026-06-28 14:22:39,312 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-28 14:22:39,312 | INFO | sentence_transformers.base.model | No device provided, using cpu
+2026-06-28 14:22:39,678 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-06-28 14:22:39,890 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:39,890 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 14:22:39,910 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:40,187 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:40,201 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:40,204 | INFO | sentence_transformers.base.model | Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+2026-06-28 14:22:40,415 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:40,422 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:40,636 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:40,649 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+2026-06-28 14:22:40,859 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:40,870 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:41,087 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:41,097 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:41,367 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 14:22:41,635 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:41,646 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:42,184 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 14:22:42,472 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 14:22:42,734 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 14:22:43,001 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+2026-06-28 14:22:43,263 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:43,282 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:43,527 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:43,549 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:43,894 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:43,930 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:44,187 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:44,257 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:44,492 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 14:22:44,732 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 14:22:45,088 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 14:22:45,097 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-06-28 14:22:45,342 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+2026-06-28 14:22:45,352 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-28 14:22:46,568 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 15339 points
+2026-06-28 14:22:46,568 | INFO | drivelegal | Qdrant index ready.
+2026-06-28 14:25:29,825 | INFO | drivelegal.auth | OTP successfully transmitted to: 25123158@pvgcoet.ac.in
+2026-06-28 14:30:39,406 | INFO | drivelegal.auth | OTP successfully transmitted to: 25123158@pvgcoet.ac.in
+2026-06-28 14:32:40,615 | INFO | drivelegal.auth | New driver detected. Registering: 25123158@pvgcoet.ac.in
+2026-06-28 14:35:04,458 | INFO | drivelegal.routes.profile | User 25123158@pvgcoet.ac.in successfully completed one-time DL verification with license: MH12202612345
+2026-06-28 14:44:45,225 | INFO | drivelegal.auth | OTP successfully transmitted to: 25123158@pvgcoet.ac.in
+2026-06-28 14:44:54,992 | INFO | drivelegal.auth | Returning user session loaded: 25123158@pvgcoet.ac.in
+2026-06-28 14:45:10,748 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:45:10,760 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-06-28 14:45:11,638 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:45:16,688 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:45:16,688 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:45:26,949 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:45:26,949 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:45:36,945 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:45:36,945 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:45:46,955 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:45:46,957 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:45:56,951 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:45:56,951 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:46:06,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:46:06,938 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:46:16,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:46:16,941 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:46:40,852 | INFO | drivelegal.routes.location | GPS update received: lat=20.10340 lon=73.94170 accuracy=85.0
+2026-06-28 14:46:40,853 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:46:43,122 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94182 accuracy=212.0
+2026-06-28 14:46:43,123 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:46:46,936 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94182 accuracy=212.0
+2026-06-28 14:46:46,939 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:46:56,940 | INFO | drivelegal.routes.location | GPS update received: lat=20.10348 lon=73.94182 accuracy=212.0
+2026-06-28 14:46:56,940 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:04,637 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:04,639 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:06,684 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:06,684 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:16,940 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:16,940 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:26,942 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:26,943 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:36,946 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:36,946 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:46,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:46,938 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:47:56,941 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:47:56,942 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:48:06,946 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:48:06,947 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:48:16,939 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:48:16,942 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:48:26,944 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:48:26,944 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:48:36,941 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:48:36,941 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:48:46,952 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:48:46,953 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:48:56,939 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:48:56,939 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:49:06,939 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:49:06,940 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:49:51,938 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:49:51,940 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:50:51,947 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:50:51,949 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:51:51,943 | INFO | drivelegal.routes.location | GPS update received: lat=20.10344 lon=73.94171 accuracy=111.0
+2026-06-28 14:51:51,945 | INFO | drivelegal.routes.location | Geocoded -> Ozar, Maharashtra, India
+2026-06-28 14:52:04,596 | INFO | drivelegal | Shutting down DriveLegal.

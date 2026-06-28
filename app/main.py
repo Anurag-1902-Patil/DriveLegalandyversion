@@ -1,26 +1,30 @@
 """
 DriveLegal – FastAPI Application Entry Point
-Starts the server, registers routes, configures CORS and logging.
+Starts the server, registers routes, configures CORS, database engine, and logging.
 """
 
 import logging
 import os
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, BackgroundTasks, Body, HTTPException
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 
+# ── Import Routers ─────────────────────────────────────────────────────────
 from app.routes.chat import router as chat_router
 from app.routes.location import router as location_router
-from app.auth import request_otp, verify_otp  # ◄ Imported our new auth functions
+from app.auth import router as auth_router            # ◄ Cleaned up and imported from auth.py
+from app.routes.profile import router as profile_router  # ◄ Imported our profile router
+
 from rag.retriever import load_index
+from app.database import engine, Base
+import app.models as models
 
 # ── Logging ────────────────────────────────────────────────────────────────
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.INFO, 
     format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
     handlers=[
         logging.FileHandler("logs/app.log"),
@@ -30,17 +34,20 @@ logging.basicConfig(
 logger = logging.getLogger("drivelegal")
 
 
-# ── Lifespan: load Qdrant index once at startup ────────────────────────────
+# ── Lifespan: load Qdrant index and DB tables at startup ──────────────────
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    logger.info("Initializing database tables...")
+    Base.metadata.create_all(bind=engine)  # Automatically maps tables on startup
+    
     logger.info("Loading Qdrant index…")
-    load_index()          # initializes Qdrant client and embedder
+    load_index()  # Initializes Qdrant client and embedder
     logger.info("Qdrant index ready.")
     yield
     logger.info("Shutting down DriveLegal.")
 
 
-# ── App ────────────────────────────────────────────────────────────────────
+# ── App Initialization ─────────────────────────────────────────────────────
 app = FastAPI(
     title="DriveLegal API",
     description="AI-powered road safety chatbot – location-aware traffic law Q&A.",
@@ -50,42 +57,16 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],       # tighten in production
+    allow_origins=["*"],       # Tighten in production
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ── Register Routers ───────────────────────────────────────────────────────
 app.include_router(chat_router)
 app.include_router(location_router)
-
-
-# ── Authentication Endpoints ───────────────────────────────────────────────
-@app.post("/api/auth/send-otp", tags=["Authentication"])
-async def api_send_otp(background_tasks: BackgroundTasks, payload: dict = Body(...)):
-    """Accepts an email address and fires an OTP to the user in the background."""
-    email = payload.get("email")
-    if not email:
-        raise HTTPException(status_code=400, detail="Email address is required.")
-    
-    # We use background_tasks so the user doesn't wait for the email server to respond
-    background_tasks.add_task(request_otp, email)
-    return {"status": "success", "message": "Verification code dispatched successfully."}
-
-
-@app.post("/api/auth/verify-otp", tags=["Authentication"])
-async def api_verify_otp(payload: dict = Body(...)):
-    """Verifies the 6-digit OTP code and exchanges it for a secure session token."""
-    email = payload.get("email")
-    code = payload.get("code")
-    
-    if not email or not code:
-        raise HTTPException(status_code=400, detail="Both email and validation code are required.")
-    
-    result = verify_otp(email, code)
-    if result["status"] == "error":
-        raise HTTPException(status_code=400, detail=result["message"])
-        
-    return result
+app.include_router(auth_router)       # ◄ Registers /api/auth/send-otp and /api/auth/verify-otp
+app.include_router(profile_router)    # ◄ Registers /api/profile/verify-dl and /dashboard-data/{user_id}
 
 
 # ── Serve the HTML frontend at /ui ─────────────────────────────────────────

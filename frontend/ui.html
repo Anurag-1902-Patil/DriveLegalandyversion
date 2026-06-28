@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DriveLegal — Driver Safety Chatbot</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
@@ -69,9 +67,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* =========================================
-           AUTHENTICATION OVERLAY (NEW)
-           ========================================= */
+        /* Authentication Overlay */
         .auth-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -85,7 +81,6 @@
             visibility: hidden;
             pointer-events: none;
         }
-        /* Left Hero Side - Matte Grayscale */
         .auth-left {
             flex: 1;
             background: linear-gradient(145deg, #181818 0%, #2A2A2A 100%);
@@ -126,7 +121,6 @@
             line-height: 1.5;
         }
         
-        /* Right Login Side - Smooth White Theme */
         .auth-right {
             flex: 1;
             display: flex;
@@ -182,7 +176,6 @@
             text-align: center; font-size: 12px; color: #6B7280; margin-top: 20px; cursor: pointer; text-decoration: underline;
         }
         .auth-back:hover { color: #111827; }
-        /* ========================================= */
 
         /* Main Layout */
         .dashboard {
@@ -209,7 +202,6 @@
         .topbar-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--fg-muted); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; transition: all 0.2s; }
         .topbar-btn:hover { background: var(--accent-bg); color: var(--accent); border-color: var(--accent-light); }
         
-        /* Logout Button Styles */
         .logout-text-btn { font-size: 12px; font-weight: 600; color: var(--danger); cursor: pointer; border: 1px solid var(--danger-bg); padding: 6px 12px; border-radius: 6px; background: var(--danger-bg); transition: 0.2s;}
         .logout-text-btn:hover { background: var(--danger); color: white;}
 
@@ -234,6 +226,13 @@
         .stat-item .val.danger { color: var(--danger); }
         .stat-item .val.ok { color: var(--success); }
         .stat-item .label { font-size: 9px; color: var(--fg-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Setup / Verification Form */
+        .verification-form { margin: 12px 16px; padding: 16px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+        .verification-form h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--fg); }
+        .verification-form input { width: 100%; padding: 8px 10px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: var(--radius-xs); background: var(--bg); font-family: inherit; font-size: 12px; color: var(--fg); outline: none; }
+        .verification-form button { width: 100%; padding: 9px; background: var(--accent); color: white; border: none; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; }
+        .verification-form button:hover { background: #7A5F40; }
 
         /* License Badge */
         .license-badge { margin: 0 16px 8px; padding: 10px 14px; background: var(--success-bg); border: 1px solid #D4E0CC; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 10px; font-size: 11.5px; color: var(--success); }
@@ -263,7 +262,7 @@
         .location-selector select { flex: 1; background: none; border: none; outline: none; font-family: inherit; font-size: 12px; color: var(--fg); cursor: pointer; }
 
         /* Center Chat */
-        .panel-center { padding-top: 52px; height: 100vh; display: flex; flex-direction: column; background: var(--bg-warm); }
+        .panel-center { padding-top: 52px; height: 100vh; display: flex; flex-direction: column; background: var(--bg-warm); position: relative; }
         .chat-header { padding: 14px 24px; background: var(--card); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
         .chat-header-left { display: flex; align-items: center; gap: 10px; }
         .chat-header-left .bot-avatar { width: 34px; height: 34px; border-radius: 9px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; }
@@ -329,6 +328,7 @@
         .challan-result-total .cr-value { font-weight: 700; color: var(--danger); font-size: 15px; }
 
         /* Violation History */
+        .violation-container { display: flex; flex-direction: column; gap: 4px; }
         .violation-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); margin: 0 16px 4px; background: var(--card); border: 1px solid var(--border-light); transition: all 0.2s; }
         .violation-item:hover { box-shadow: var(--shadow-sm); }
         .violation-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
@@ -365,7 +365,6 @@
         .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--fg); color: var(--bg); padding: 10px 20px; border-radius: 10px; font-size: 12px; font-weight: 500; z-index: 99999; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; }
         .toast.show { transform: translateX(-50%) translateY(0); }
 
-        /* Subtle background pattern */
         .panel-center::before { content: ''; position: absolute; top: 52px; left: 280px; right: 300px; bottom: 0; background-image: radial-gradient(var(--border) 0.5px, transparent 0.5px); background-size: 24px 24px; opacity: 0.35; pointer-events: none; z-index: 0; }
         .chat-messages, .quick-replies, .chat-input-area { position: relative; z-index: 1; }
 
@@ -480,33 +479,49 @@
         <aside class="panel-left">
             <div class="section-label">Driver Profile</div>
 
-            <div class="profile-card">
-                <div class="profile-header">
-                    <div class="profile-avatar">AK</div>
-                    <div class="profile-info">
-                        <h3>Arjun Kumar</h3>
-                        <p>DL-04201987 · Private</p>
+            <div id="profileViewContainer" style="display: none;">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar" id="profAvatar">--</div>
+                        <div class="profile-info">
+                            <h3 id="profName">Loading...</h3>
+                            <p id="profMeta">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="val ok" id="statScore">100</div>
+                            <div class="label">Score</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="val" id="statYears">0</div>
+                            <div class="label">Years</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="val" id="statChallans">0</div>
+                            <div class="label">Challans</div>
+                        </div>
                     </div>
                 </div>
-                <div class="profile-stats">
-                    <div class="stat-item">
-                        <div class="val ok">84</div>
-                        <div class="label">Score</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="val">6</div>
-                        <div class="label">Years</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="val danger">2</div>
-                        <div class="label">Challans</div>
-                    </div>
+
+                <div class="license-badge" id="profBadge">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span id="profExpiry">License Valid</span>
                 </div>
             </div>
 
-            <div class="license-badge">
-                <i class="fa-solid fa-id-card"></i>
-                <span>License Valid till Mar 2029</span>
+            <div id="verificationFormContainer" style="display: none;" class="verification-form">
+                <h4><i class="fa-solid fa-id-card" style="margin-right:6px; color:var(--accent)"></i>Link License</h4>
+                <p style="font-size:11px; color:var(--fg-muted); margin-bottom:12px; line-height:1.4">Complete a one-time identity verification to activate your custom driving portal.</p>
+                <div class="challan-form-group">
+                    <label>DL Number</label>
+                    <input type="text" id="dlInputNumber" placeholder="e.g. MH12202612345" style="text-transform: uppercase;">
+                </div>
+                <div class="challan-form-group">
+                    <label>Date of Birth</label>
+                    <input type="text" id="dlInputDOB" placeholder="DD-MM-YYYY">
+                </div>
+                <button onclick="submitOneTimeVerification()">Verify Driver Profile</button>
             </div>
 
             <div class="section-label">Jurisdiction</div>
@@ -600,8 +615,7 @@
                 </div>
             </div>
 
-            <div class="chat-messages" id="chatMessages">
-                </div>
+            <div class="chat-messages" id="chatMessages"></div>
 
             <div class="typing-indicator" id="typingIndicator">
                 <div class="msg-avatar" style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px">
@@ -673,42 +687,16 @@
                 <div class="safety-score-ring">
                     <svg viewBox="0 0 72 72">
                         <circle class="ring-bg" cx="36" cy="36" r="30" />
-                        <circle class="ring-fill" cx="36" cy="36" r="30" />
+                        <circle class="ring-fill" id="scoreRingFill" cx="36" cy="36" r="30" style="stroke-dashoffset: 30;" />
                     </svg>
-                    <div class="score-text">84</div>
+                    <div class="score-text" id="scoreTextValue">84</div>
                 </div>
-                <h4>Good Standing</h4>
-                <p>2 minor violations in the last 12 months. Maintain current driving habits to improve your score.</p>
+                <h4 id="scoreStatusText">Good Standing</h4>
+                <p id="scoreDescription">Profile synced with local traffic registry database layers.</p>
             </div>
 
             <div class="section-label">Recent Violations</div>
-            <div class="violation-item">
-                <div class="violation-dot pending"></div>
-                <div class="violation-info">
-                    <h4>Overspeeding — NH-48</h4>
-                    <p>12 Jan 2025 · Gurgaon</p>
-                </div>
-                <div class="violation-amount">₹2,000</div>
-                <div class="violation-status pending">Due</div>
-            </div>
-            <div class="violation-item">
-                <div class="violation-dot paid"></div>
-                <div class="violation-info">
-                    <h4>No Helmet — MG Road</h4>
-                    <p>03 Nov 2024 · Delhi</p>
-                </div>
-                <div class="violation-amount">₹1,000</div>
-                <div class="violation-status paid">Paid</div>
-            </div>
-            <div class="violation-item">
-                <div class="violation-dot paid"></div>
-                <div class="violation-info">
-                    <h4>Red Light — ITO Crossing</h4>
-                    <p>28 Aug 2024 · Delhi</p>
-                </div>
-                <div class="violation-amount">₹1,000</div>
-                <div class="violation-status paid">Paid</div>
-            </div>
+            <div id="violationHistoryContainer" class="violation-container"></div>
             <div style="height:20px"></div>
 
             <div class="section-label">Live GPS Tracker</div>
@@ -763,22 +751,39 @@
     <div class="toast" id="toast"></div>
 
     <script>
-        const BACKEND = 'http://127.0.0.1:8000'; // Make sure this matches your running server URL exactly
+        const BACKEND = 'http://127.0.0.1:8000'; 
+        let cachedEmail = '';
         
-        // =========================================
-        // AUTHENTICATION LOGIC (NEW)
-        // =========================================
-        
-        // Check if user is already logged in on page load
+        function parseJwtPayload(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch(e) {
+                return null;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const token = localStorage.getItem('drivelegal_jwt');
             if (token) {
-                document.getElementById('authOverlay').classList.add('hidden');
+                const payload = parseJwtPayload(token);
+                if (payload && payload.user_id) {
+                    cachedEmail = payload.email || '';
+                    document.getElementById('authOverlay').classList.add('hidden');
+                    loadDashboardData(payload.user_id);
+                    loadChatHistory(payload.user_id); // Load history trail on success setup
+                } else {
+                    logoutUser();
+                }
             }
         });
 
         async function sendOTP() {
-            const emailInput = document.getElementById('authEmail').value;
+            const emailInput = document.getElementById('authEmail').value.trim();
             const btn = document.getElementById('btnSendOtp');
             
             if (!emailInput || !emailInput.includes('@')) {
@@ -795,15 +800,15 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: emailInput })
                 });
-
                 const data = await res.json();
                 
                 if (res.ok) {
+                    cachedEmail = emailInput;
                     showToast('Verification code sent!');
                     document.getElementById('authStep1').style.display = 'none';
                     document.getElementById('authStep2').style.display = 'block';
                 } else {
-                    showToast(data.detail || 'Failed to send OTP. Check backend logs.');
+                    showToast(data.detail || 'Failed to send OTP.');
                 }
             } catch (err) {
                 showToast('Network error connecting to backend.');
@@ -814,8 +819,7 @@
         }
 
         async function verifyOTP() {
-            const emailInput = document.getElementById('authEmail').value;
-            const codeInput = document.getElementById('authOtp').value;
+            const codeInput = document.getElementById('authOtp').value.trim();
             const btn = document.getElementById('btnVerifyOtp');
 
             if (!codeInput || codeInput.length < 6) {
@@ -830,16 +834,17 @@
                 const res = await fetch(`${BACKEND}/api/auth/verify-otp`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: emailInput, code: codeInput })
+                    body: JSON.stringify({ email: cachedEmail, code: codeInput })
                 });
-
                 const data = await res.json();
 
                 if (res.ok && data.token) {
-                    // Success! Save the token and hide the overlay
                     localStorage.setItem('drivelegal_jwt', data.token);
                     showToast('Login successful!');
                     document.getElementById('authOverlay').classList.add('hidden');
+                    
+                    loadDashboardData(data.user_id);
+                    loadChatHistory(data.user_id); // Render persistent historical strings
                 } else {
                     showToast(data.detail || 'Invalid verification code.');
                 }
@@ -851,6 +856,133 @@
             }
         }
 
+        async function loadDashboardData(userId) {
+            try {
+                const res = await fetch(`${BACKEND}/api/profile/dashboard-data/${userId}`);
+                if (!res.ok) return;
+                const data = await res.json();
+                
+                const profile = data.profile;
+                const violations = data.violations || [];
+                
+                if (profile.is_verified) {
+                    document.getElementById('verificationFormContainer').style.display = 'none';
+                    document.getElementById('profileViewContainer').style.display = 'block';
+                    
+                    document.getElementById('profName').textContent = profile.official_name;
+                    document.getElementById('profMeta').textContent = `${profile.dl_number} · Private`;
+                    document.getElementById('profExpiry').textContent = `License Valid till ${profile.validity_expiry}`;
+                    
+                    const initials = profile.official_name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+                    document.getElementById('profAvatar').textContent = initials || 'DL';
+                    
+                    const countChallans = violations.length;
+                    const safetyScore = Math.max(100 - (countChallans * 8), 60);
+                    
+                    document.getElementById('statChallans').textContent = countChallans;
+                    document.getElementById('statScore').textContent = safetyScore;
+                    document.getElementById('scoreTextValue').textContent = safetyScore;
+                    
+                    const offsetVal = 188.5 - (188.5 * safetyScore / 100);
+                    document.getElementById('scoreRingFill').style.strokeDashoffset = offsetVal;
+                    
+                    if (safetyScore >= 85) {
+                        document.getElementById('scoreStatusText').textContent = "Excellent standing";
+                        document.getElementById('statScore').className = "val ok";
+                    } else {
+                        document.getElementById('scoreStatusText').textContent = "Action Required";
+                        document.getElementById('statScore').className = "val danger";
+                    }
+                } else {
+                    document.getElementById('profileViewContainer').style.display = 'none';
+                    document.getElementById('verificationFormContainer').style.display = 'block';
+                }
+                
+                const historyBox = document.getElementById('violationHistoryContainer');
+                historyBox.innerHTML = '';
+                
+                if (violations.length === 0) {
+                    historyBox.innerHTML = '<p style="font-size:11px; color:var(--fg-muted); padding: 0 16px;">No violations on record.</p>';
+                } else {
+                    violations.forEach(v => {
+                        const statusClass = v.status.toLowerCase() === 'paid' ? 'paid' : 'pending';
+                        const badgeLabel = v.status.toLowerCase() === 'paid' ? 'Paid' : 'Due';
+                        
+                        const itemHtml = `
+                            <div class="violation-item">
+                                <div class="violation-dot ${statusClass}"></div>
+                                <div class="violation-info">
+                                    <h4>${v.offence}</h4>
+                                    <p>${v.timestamp || 'Recent'} · ${v.location || 'Local'}</p>
+                                </div>
+                                <div class="violation-amount">${v.fine_amount}</div>
+                                <div class="violation-status ${statusClass}">${badgeLabel}</div>
+                            </div>
+                        `;
+                        historyBox.innerHTML += itemHtml;
+                    });
+                }
+            } catch (err) {
+                console.error("Error loading dashboard metrics:", err);
+            }
+        }
+
+        async function loadChatHistory(userId) {
+            try {
+                const res = await fetch(`${BACKEND}/api/profile/chat-history/${userId}`);
+                if (!res.ok) return;
+                const data = await res.json();
+                
+                chatMessages.innerHTML = ''; // Wipe introductory messages if database hits exist
+                const history = data.history || [];
+                
+                if (history.length === 0) {
+                    // Seed standard welcoming intro if history is empty
+                    addMessage('bot', `Welcome to DriveLegal! I'm your location-specific driver safety assistant.\n\nI'm currently set to ${getLocationName()}. You can ask me about speed limits, seatbelt fines, or localized driving guidelines.`, null);
+                } else {
+                    history.forEach(msg => {
+                        // Render logs nodes back onto the viewport container dynamically
+                        appendRenderedMessage(msg.sender, msg.message, msg.fine_amount, msg.location_tag);
+                    });
+                }
+            } catch (err) {
+                console.error("Error loading message logs:", err);
+            }
+        }
+
+        async function submitOneTimeVerification() {
+            const dlNum = document.getElementById('dlInputNumber').value.trim();
+            const dobNum = document.getElementById('dlInputDOB').value.trim();
+            
+            if (!dlNum || !dobNum) {
+                showToast("Please fill in both fields.");
+                return;
+            }
+            
+            try {
+                const res = await fetch(`${BACKEND}/api/profile/verify-dl`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: cachedEmail, dl_number: dlNum, dob: dobNum })
+                });
+                const data = await res.json();
+                
+                if (res.ok) {
+                    showToast("Driving license successfully verified!");
+                    const token = localStorage.getItem('drivelegal_jwt');
+                    const payload = parseJwtPayload(token);
+                    if (payload) {
+                        loadDashboardData(payload.user_id);
+                        loadChatHistory(payload.user_id);
+                    }
+                } else {
+                    showToast(data.detail || "Verification processing failed.");
+                }
+            } catch(e) {
+                showToast("Error establishing network registration request.");
+            }
+        }
+
         function backToEmail() {
             document.getElementById('authStep2').style.display = 'none';
             document.getElementById('authStep1').style.display = 'block';
@@ -859,16 +991,17 @@
 
         function logoutUser() {
             localStorage.removeItem('drivelegal_jwt');
+            cachedEmail = '';
             document.getElementById('authStep2').style.display = 'none';
             document.getElementById('authStep1').style.display = 'block';
             document.getElementById('authEmail').value = '';
             document.getElementById('authOtp').value = '';
+            chatMessages.innerHTML = '';
             document.getElementById('authOverlay').classList.remove('hidden');
             showToast('Logged out successfully');
         }
-        // =========================================
 
-        // === Data: Penalty database per violation type ===
+        // Penalty database per violation type
         const penaltyData = {
             overspeeding: { base: 1000, repeat: 2000, label: 'Overspeeding' },
             no_seatbelt: { base: 1000, repeat: 2000, label: 'No Seatbelt' },
@@ -904,7 +1037,7 @@
             return sel.options[sel.selectedIndex].text;
         }
 
-        // === Chat Logic ===
+        // Chat Logic
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
         const typingIndicator = document.getElementById('typingIndicator');
@@ -914,43 +1047,30 @@
             return now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false });
         }
 
-        function addMessage(type, text, penalty, offline = false) {
+        function appendRenderedMessage(sender, text, penalty, locationTag) {
             const div = document.createElement('div');
-            div.className = `message ${type}`;
+            div.className = `message ${sender === 'user' ? 'user' : 'bot'}`;
 
-            const avatarIcon = type === 'bot' ? 'fa-shield-halved' : 'fa-user';
-            let penaltyHTML = '';
-            if (penalty) {
-                penaltyHTML = `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Estimated Fine: ${penalty}</div>`;
-            }
-
-            let offlineHTML = '';
-            if (offline) {
-                offlineHTML = `<div class="msg-location" style="background:#4f2d0d; color:#ff9800"><i class="fa-solid fa-bolt"></i> Offline Cache</div>`;
-            }
-
-            let locationHTML = '';
-            if (type === 'bot') {
-                locationHTML = `<div class="msg-location"><i class="fa-solid fa-location-dot"></i> ${getLocationName()}</div>`;
-            }
-
-            const formattedText = text.replace(/\n/g, '<br>');
+            const avatarIcon = sender === 'bot' ? 'fa-shield-halved' : 'fa-user';
+            let penaltyHTML = penalty ? `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Estimated Fine: ${penalty}</div>` : '';
+            let locationHTML = sender === 'bot' ? `<div class="msg-location"><i class="fa-solid fa-location-dot"></i> ${locationTag || getLocationName()}</div>` : '';
 
             div.innerHTML = `
-      <div class="msg-avatar"><i class="fa-solid ${avatarIcon}"></i></div>
-      <div>
-        <div class="msg-bubble">
-          ${locationHTML}
-          ${offlineHTML}
-          ${formattedText}
-          ${penaltyHTML}
-        </div>
-        <div class="msg-time">${getTimeString()}</div>
-      </div>
-    `;
-
+                <div class="msg-avatar"><i class="fa-solid ${avatarIcon}"></i></div>
+                <div>
+                    <div class="msg-bubble">
+                        ${locationHTML}
+                        ${text.replace(/\n/g, '<br>')}
+                        ${penaltyHTML}
+                    </div>
+                </div>
+            `;
             chatMessages.appendChild(div);
             chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addMessage(type, text, penalty) {
+            appendRenderedMessage(type, text, penalty, getLocationName());
         }
 
         function showTyping() {
@@ -970,43 +1090,36 @@
 
             try {
                 const loc = getLocationData();
-                // WE NOW INCLUDE THE AUTH TOKEN IF IT EXISTS
                 const token = localStorage.getItem('drivelegal_jwt');
                 
                 const response = await fetch(`${BACKEND}/chat`, {
                     method: 'POST',
                     headers: { 
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}` // Secure API call
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify({
                         message: text.trim(),
-                        location: {
-                            city: loc.city,
-                            state: loc.state,
-                            country: 'India'
-                        }
+                        location: { city: loc.city, state: loc.state, country: 'India' }
                     })
                 });
                 
-                if (!response.ok) throw new Error('Network response was not ok');
+                if (!response.ok) throw new Error('Network response failure');
                 const data = await response.json();
                 
                 hideTyping();
-                addMessage('bot', data.answer, data.fine_amount, data.offline_fallback);
+                addMessage('bot', data.answer, data.fine_amount);
                 
             } catch (error) {
                 hideTyping();
-                addMessage('bot', '⚠️ Could not connect to the backend. Please ensure the FastAPI server is running.', null, true);
+                addMessage('bot', '⚠️ Could not connect to the backend. Please ensure the FastAPI server is running.', null);
             }
         }
 
-        // Send button
         document.getElementById('sendBtn').addEventListener('click', () => {
             sendMessage(chatInput.value);
         });
 
-        // Enter key
         chatInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
@@ -1014,14 +1127,12 @@
             }
         });
 
-        // Quick reply buttons
         document.querySelectorAll('.quick-reply').forEach(btn => {
             btn.addEventListener('click', () => {
                 sendMessage(btn.dataset.query);
             });
         });
 
-        // Rule items — send to chat
         document.querySelectorAll('.rule-item').forEach(item => {
             item.addEventListener('click', () => {
                 const rule = item.dataset.rule;
@@ -1039,7 +1150,6 @@
             });
         });
 
-        // Clear chat
         function clearChat() {
             chatMessages.innerHTML = '';
             showToast('Chat history cleared');
@@ -1048,14 +1158,12 @@
             }, 400);
         }
 
-        // Location change handler
         document.getElementById('locationSelect').addEventListener('change', (e) => {
             const name = getLocationName();
             document.getElementById('topbarLocation').textContent = name;
-            addMessage('bot', `Location updated to ${name}. All rules and penalties I share will now be specific to this jurisdiction. What would you like to know?`, null);
+            addMessage('bot', `Location updated to ${name}. All rules and penalties I share will now be specific to this jurisdiction.`, null);
         });
 
-        // === Challan Calculator ===
         function calculateChallan() {
             const type = document.getElementById('violationType').value;
             const count = parseInt(document.getElementById('offenceCount').value) || 1;
@@ -1071,35 +1179,32 @@
 
             const baseFine = repeat === 'yes' ? data.repeat : data.base;
             const totalFine = baseFine * count;
-
-            // Additional surcharge for repeat offenders
             const surcharge = repeat === 'yes' ? Math.round(totalFine * 0.25) : 0;
             const grandTotal = totalFine + surcharge;
 
             const resultEl = document.getElementById('challanResult');
             resultEl.innerHTML = `
-      <div class="challan-result-row">
-        <span class="cr-label">Violation</span>
-        <span class="cr-value">${data.label}</span>
-      </div>
-      <div class="challan-result-row">
-        <span class="cr-label">Base Fine (per offence)</span>
-        <span class="cr-value">₹${baseFine.toLocaleString('en-IN')}</span>
-      </div>
-      <div class="challan-result-row">
-        <span class="cr-label">Number of Offences</span>
-        <span class="cr-value">&times; ${count}</span>
-      </div>
-      ${repeat === 'yes' ? `<div class="challan-result-row"><span class="cr-label">Repeat Offender Surcharge (25%)</span><span class="cr-value" style="color:var(--danger)">+₹${surcharge.toLocaleString('en-IN')}</span></div>` : ''}
-      <div class="challan-result-total">
-        <span class="cr-label">Total Estimated Penalty</span>
-        <span class="cr-value">₹${grandTotal.toLocaleString('en-IN')}</span>
-      </div>
-    `;
+                <div class="challan-result-row">
+                    <span class="cr-label">Violation</span>
+                    <span class="cr-value">${data.label}</span>
+                </div>
+                <div class="challan-result-row">
+                    <span class="cr-label">Base Fine (per offence)</span>
+                    <span class="cr-value">₹${baseFine.toLocaleString('en-IN')}</span>
+                </div>
+                <div class="challan-result-row">
+                    <span class="cr-label">Number of Offences</span>
+                    <span class="cr-value">&times; ${count}</span>
+                </div>
+                ${repeat === 'yes' ? `<div class="challan-result-row"><span class="cr-label">Repeat Offender Surcharge (25%)</span><span class="cr-value" style="color:var(--danger)">+₹${surcharge.toLocaleString('en-IN')}</span></div>` : ''}
+                <div class="challan-result-total">
+                    <span class="cr-label">Total Estimated Penalty</span>
+                    <span class="cr-value">₹${grandTotal.toLocaleString('en-IN')}</span>
+                </div>
+            `;
             resultEl.classList.add('show');
         }
 
-        // === Clock ===
         function updateClock() {
             const now = new Date();
             document.getElementById('topbarTime').textContent = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -1107,7 +1212,6 @@
         updateClock();
         setInterval(updateClock, 10000);
 
-        // === Toast ===
         function showToast(msg) {
             const toast = document.getElementById('toast');
             toast.textContent = msg;
@@ -1115,9 +1219,8 @@
             setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        // === GPS Tracker ===
+        // GPS Tracker Tracker
         const GPS_PUSH_INTERVAL_MS = 10000;
-
         let _gpsWatchId     = null;
         let _gpsPushTimer   = null;
         let _lastFix        = null;
@@ -1234,10 +1337,6 @@
         function toggleGPS() {
             if (_gpsActive) stopGPS(); else startGPS();
         }
-
-        setTimeout(() => {
-            addMessage('bot', `Welcome to DriveLegal! I'm your location-specific driver safety assistant.\n\nI'm currently set to ${getLocationName()}. You can ask me about speed limits, phone usage rules, helmet requirements, drink & drive penalties, seatbelt fines, parking regulations, and more.\n\nAll information is based on the Motor Vehicles (Amendment) Act, 2019 and local enforcement guidelines.`, null);
-        }, 500);
 
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute("data-theme");
