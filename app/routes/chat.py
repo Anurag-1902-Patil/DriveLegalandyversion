@@ -1,13 +1,17 @@
 """
 DriveLegal – /chat and /health routes
-POST /chat  → runs RAG pipeline + challan lookup → returns answer
+POST /chat  → runs RAG pipeline + challan lookup + logs to database → returns answer
 """
 
 import logging
-from fastapi import APIRouter, HTTPException, Depends,  Header
+from fastapi import APIRouter, HTTPException, Depends, Header
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from sqlalchemy.orm import Session
 from typing import Optional 
-from app.models import ChatRequest, ChatResponse, Source
+
+from app.database import get_db
+from app.models import ChatRequest, ChatResponse, Source, ChatMessageDB
+from app.auth import decode_access_token  # Helper function to decode the active user context
 from app.routes.location import get_store     # GPS in-memory store
 from rag.chain import get_answer
 from rag.challan import lookup_fine
@@ -20,14 +24,24 @@ security = HTTPBearer()
 @router.post("/chat", response_model=ChatResponse)
 async def chat(
     req: ChatRequest,
-    token: HTTPAuthorizationCredentials = Depends(security) # This validates the Bearer token
+    token: HTTPAuthorizationCredentials = Depends(security), # Validates the Bearer token
+    db: Session = Depends(get_db)                            # Database session injection
 ):
     """
-    Main endpoint.  Accepts a natural-language traffic law question
-    plus a location object and returns a grounded, location-specific answer.
+    Main endpoint. Accepts a natural-language traffic law question
+    plus a location object, returns a grounded answer, and logs history.
     """
     if not req.message.strip():
         raise HTTPException(status_code=422, detail="Message cannot be empty.")
+
+    # ── Decode User Authentication Context ────────────────────────────────────────
+    user_id = None
+    try:
+        token_payload = decode_access_token(token.credentials)
+        if token_payload:
+            user_id = token_payload.get("user_id")
+    except Exception as auth_err:
+        logger.warning(f"Failed to extract authenticated session context: {auth_err}")
 
     # ── Resolve effective location (GPS overrides manual dropdown) ───────────────
     gps_store = get_store()
@@ -84,6 +98,32 @@ async def chat(
         )
         for s in raw_sources
     ]
+
+    # ── 4. Persist Conversation Streams into local storage ─────────────────
+    if user_id:
+        try:
+            # Commit User message node
+            user_msg = ChatMessageDB(
+                user_id=user_id,
+                sender="user",
+                message=req.message.strip(),
+                location_tag=loc_str
+            )
+            # Commit System/Bot output node
+            bot_msg = ChatMessageDB(
+                user_id=user_id,
+                sender="bot",
+                message=answer,
+                fine_amount=fine_amount,
+                location_tag=loc_str
+            )
+            db.add(user_msg)
+            db.add(bot_msg)
+            db.commit()
+            logger.info(f"Chat transaction logged for user_id: {user_id}")
+        except Exception as db_err:
+            logger.error(f"Database tracking error inside conversation loop: {db_err}")
+            db.rollback()
 
     return ChatResponse(
         answer=answer,

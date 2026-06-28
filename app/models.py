@@ -1,11 +1,14 @@
 """
-DriveLegal – Pydantic Models
-Strict input/output schemas for the /chat and /location endpoints.
+DriveLegal – Pydantic Models & Database Schemas
+Strict input/output schemas for endpoints and SQLAlchemy model tracking definitions.
 """
 
 from typing import List, Optional
+from datetime import datetime
 from pydantic import BaseModel, Field
 
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, Text, DateTime
+from app.database import Base   
 
 # ── GPS / Location ─────────────────────────────────────────────────────────
 
@@ -68,3 +71,47 @@ class ChatResponse(BaseModel):
         "Fine amounts may vary. Please verify with the official RTO or traffic authority."
     )
     offline_fallback: bool = False         # True when Ollama/Mistral was unavailable
+
+
+# ── DATABASE SCHEMAS (SQLAlchemy Models) ──────────────────────────────────
+
+class UserDB(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, index=True, nullable=False)
+    hashed_password = Column(String, nullable=True) # Optional if using strictly OTP
+    
+    # DL Verification Flag & Profile Data
+    is_verified = Column(Boolean, default=False)
+    dl_number = Column(String, unique=True, index=True, nullable=True)
+    official_name = Column(String, nullable=True)
+    dob = Column(String, nullable=True)
+    validity_expiry = Column(String, nullable=True)
+
+
+class ViolationDB(Base):
+    __tablename__ = "violations"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    
+    # Violation details
+    offence = Column(String, nullable=False)
+    fine_amount = Column(Integer, default=0)
+    status = Column(String, default="Unpaid") # Unpaid, Paid
+    location = Column(String, nullable=True)
+    timestamp = Column(String, nullable=True)
+
+
+class ChatMessageDB(Base):
+    """Stores user queries and chatbot answers mapped uniquely back to user profiles."""
+    __tablename__ = "chat_messages"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    sender = Column(String, nullable=False)          # 'user' or 'bot'
+    message = Column(Text, nullable=False)
+    fine_amount = Column(String, nullable=True)      # Stores extracted fine context if relevant
+    location_tag = Column(String, nullable=True)     # e.g. "Pune, Maharashtra"
+    timestamp = Column(DateTime, default=datetime.utcnow)

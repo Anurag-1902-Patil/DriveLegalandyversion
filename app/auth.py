@@ -2,11 +2,22 @@ import datetime
 import random
 import smtplib
 import os
+import logging
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from typing import Optional # Added missing type hint token import here
 import jwt
+from fastapi import APIRouter, Depends, HTTPException, status, Body
+from sqlalchemy.orm import Session
+from pydantic import BaseModel, EmailStr
 
-# We fetch the configuration safely from your .env file
+from app.database import get_db
+from app.models import UserDB
+
+# Logger configuration
+logger = logging.getLogger("drivelegal.auth")
+
+# Fetch configurations safely from environmental variables
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", 465))
 SENDER_EMAIL = os.getenv("SENDER_EMAIL")
@@ -15,9 +26,22 @@ JWT_SECRET = os.getenv("JWT_SECRET", "fallback_secret_key_change_this")
 
 OTP_EXPIRY_MINUTES = 5
 
-# A simple, secure local memory dictionary to track active OTP codes
+# Initialize FastAPI Router for authentication
+router = APIRouter(prefix="/api/auth", tags=["Authentication"])
+
+# Local volatile memory tracking active OTP maps
 # Format: { "user@email.com": { "code": "123456", "expires_at": datetime } }
 otp_store = {}
+
+# ── Pydantic Request Schemas ──
+class EmailPayload(BaseModel):
+    email: EmailStr
+
+class VerifyPayload(BaseModel):
+    email: EmailStr
+    code: str
+
+# ── Core Utility Logic ──
 
 def generate_otp() -> str:
     """Generates a secure, random 6-digit numeric string."""
@@ -31,7 +55,6 @@ def send_otp_email(receiver_email: str, otp_code: str) -> bool:
         msg['To'] = receiver_email
         msg['Subject'] = "Your Secure Verification Code"
 
-        # A clean, professional layout matching a premium application style
         body = f"""
         <html>
             <body style="font-family: sans-serif; padding: 20px; color: #1e1e1e; max-width: 500px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px;">
@@ -46,25 +69,44 @@ def send_otp_email(receiver_email: str, otp_code: str) -> bool:
         """
         msg.attach(MIMEText(body, 'html'))
 
-        # Securely login and transmit
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
             server.login(SENDER_EMAIL, SENDER_PASSWORD)
             server.send_message(msg)
         return True
     except Exception as e:
-        print(f"SMTP Email Error: {e}")
+        logger.error(f"SMTP Email Error: {e}")
         return False
 
-def request_otp(email: str) -> dict:
-    """Generates an OTP, saves it locally, and dispatches the email."""
-    if not SENDER_EMAIL or not SENDER_PASSWORD:
-        return {"status": "error", "message": "Backend SMTP credentials are not configured in .env"}
+def decode_access_token(token: str) -> Optional[dict]:
+    """
+    Decodes an incoming JWT bearer token string.
+    Returns the parsed session payload dictionary if valid, or None if expired/corrupted.
+    """
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+        return payload
+    except jwt.ExpiredSignatureError:
+        logger.warning("Incoming authentication token validation rejected: Signature Expired.")
+        return None
+    except jwt.InvalidTokenError:
+        logger.warning("Incoming authentication token validation rejected: Token Structure Broken.")
+        return None
 
-    email = email.strip().lower()
+# ── FastAPI Routes ──
+
+@router.post("/send-otp")
+async def request_otp_endpoint(payload: EmailPayload):
+    """API Endpoint: Generates an OTP, saves it locally, and dispatches the email."""
+    if not SENDER_EMAIL or not SENDER_PASSWORD:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Backend SMTP credentials are not configured in .env"
+        )
+
+    email = payload.email.strip().lower()
     code = generate_otp()
     expiry = datetime.datetime.utcnow() + datetime.timedelta(minutes=OTP_EXPIRY_MINUTES)
     
-    # Save code to memory (overwrites any previous unexpired codes for this user)
     otp_store[email] = {
         "code": code,
         "expires_at": expiry
@@ -72,35 +114,59 @@ def request_otp(email: str) -> dict:
     
     email_sent = send_otp_email(email, code)
     if email_sent:
+        logger.info(f"OTP successfully transmitted to: {email}")
         return {"status": "success", "message": "OTP code successfully sent to email."}
     else:
-        return {"status": "error", "message": "Failed to send email. Check your backend logs or App Password."}
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Failed to send email. Check backend setup or credentials."
+        )
 
-def verify_otp(email: str, user_code: str) -> dict:
-    """Validates the user-submitted code and issues a secure JWT session token."""
-    email = email.strip().lower()
+@router.post("/verify-otp")
+async def verify_otp_endpoint(payload: VerifyPayload, db: Session = Depends(get_db)):
+    """API Endpoint: Validates code, registers user on demand, and returns secure JWT."""
+    email = payload.email.strip().lower()
+    user_code = payload.code.strip()
+    
     record = otp_store.get(email)
     
     if not record:
-        return {"status": "error", "message": "No verification request found for this email address."}
+        raise HTTPException(status_code=400, detail="No verification request found for this email address.")
     
-    # Check if the code has timed out
     if datetime.datetime.utcnow() > record["expires_at"]:
         del otp_store[email]
-        return {"status": "error", "message": "The verification code has expired. Please request a new one."}
+        raise HTTPException(status_code=401, detail="The verification code has expired. Please request a new one.")
         
-    # Check if the code matches
-    if record["code"] != user_code.strip():
-        return {"status": "error", "message": "Incorrect verification code."}
+    if record["code"] != user_code:
+        raise HTTPException(status_code=401, detail="Incorrect verification code.")
         
-    # Success: Clear the code from active memory so it can't be used twice
+    # Clear the verified OTP code out of local temporary storage
     del otp_store[email]
     
-    # Issue a secure session token valid for 7 days
+    # Check if user already exists in the SQLite persistent database
+    user = db.query(UserDB).filter(UserDB.email == email).first()
+
+    if not user:
+        # Create a persistent entry for first-time login
+        logger.info(f"New driver detected. Registering: {email}")
+        user = UserDB(email=email, is_verified=False)
+        db.add(user)
+        db.commit()
+        db.refresh(user) # Extracts the generated unique user.id integer
+    else:
+        logger.info(f"Returning user session loaded: {email}")
+        
+    # Issue secure payload with permanent database user_id attached
     session_payload = {
         "email": email,
+        "user_id": user.id,
         "exp": datetime.datetime.utcnow() + datetime.timedelta(days=7)
     }
     token = jwt.encode(session_payload, JWT_SECRET, algorithm="HS256")
     
-    return {"status": "success", "token": token}
+    return {
+        "status": "success", 
+        "token": token, 
+        "is_verified": user.is_verified,
+        "user_id": user.id
+    }
