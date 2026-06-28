@@ -9,8 +9,9 @@ __pycache__/
 # Environment variables - NEVER commit
 .env
 
-# FAISS index (use Git LFS or regenerate locally)
-
+# Qdrant vector database (too large for GitHub - regenerate with scripts/migrate_to_qdrant.py)
+data/qdrant_db/
+qdrant_db/
 
 # HuggingFace model cache
 *.bin

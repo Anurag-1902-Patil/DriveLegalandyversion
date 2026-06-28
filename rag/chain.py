@@ -81,10 +81,27 @@ def _normalize(text: str) -> str:
 
 
 def _offline_fallback(query: str) -> Dict[str, Any]:
-    """Keyword match against cache with normalization."""
-    cache = _load_cache()
+    """Fallback logic: Search Qdrant directly. Use cache only if Qdrant fails."""
     normalized_query = _normalize(query)
 
+    # First resort: search Qdrant directly in offline mode
+    try:
+        docs = retrieve(normalized_query, k=3)
+        if docs:
+            best_doc = docs[0]
+            return {
+                "answer": (
+                    f"{best_doc.page_content[:300]}... "
+                    f"\n\n(Note: AI is offline. This is the closest raw law section found.)"
+                ),
+                "sources": docs,
+                "offline_fallback": True,
+            }
+    except Exception as e:
+        logger.error(f"Qdrant fallback failed: {e}")
+
+    # Second resort: keyword match against cache
+    cache = _load_cache()
     best, best_score = None, 0
     for entry in cache:
         keywords = entry.get("keywords", [])
@@ -98,22 +115,6 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
             "sources": [],
             "offline_fallback": True,
         }
-
-    # Last resort — search Qdrant even in offline mode
-    try:
-        docs = retrieve(normalized_query, k=3)
-        if docs:
-            best_doc = docs[0]
-            return {
-                "answer": (
-                    f"{best_doc.page_content[:300]}... "
-                    f"(Source: {best_doc.metadata.get('source', 'Traffic Law Database')})"
-                ),
-                "sources": docs,
-                "offline_fallback": True,
-            }
-    except Exception:
-        pass
 
     return {
         "answer": (

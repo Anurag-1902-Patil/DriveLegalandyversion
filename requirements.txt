@@ -10,7 +10,7 @@ pydantic==2.7.0
 langchain==0.2.1
 langchain-community==0.2.1
 # No additional SDK required for Ollama (built into langchain-community)
-qdrant-client==2.11.4   # Qdrant vector database (local embedded mode)
+qdrant-client==1.18.0   # Qdrant vector database (local embedded mode)
 sentence-transformers==3.0.1  # HuggingFace embeddings for vectors
 
 # ── Frontend ───────────────────────────────────────────────────────────────
