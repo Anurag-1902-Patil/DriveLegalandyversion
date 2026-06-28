@@ -99,7 +99,7 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
             "offline_fallback": True,
         }
 
-    # Last resort — search FAISS even in offline mode
+    # Last resort — search Qdrant even in offline mode
     try:
         docs = retrieve(normalized_query, k=3)
         if docs:

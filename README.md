@@ -13,10 +13,13 @@ DriveLegal answers traffic law questions in natural language with **location-spe
 |---------|-------------|
 | 📍 Geo-aware answers | City → State → National fallback hierarchy |
 | 💰 Challan Calculator | Structured JSON lookup — never hallucinated |
-| 🧠 RAG Pipeline | FAISS + Mistral (Ollama) + LangChain for grounded responses |
+| 🧠 RAG Pipeline | Qdrant + Mistral (Ollama) + LangChain for grounded responses |
 | ⚡ Offline Fallback | 25 pre-cached Q&A pairs when Ollama is unavailable |
 | 💬 Chat UI | Streamlit frontend with location selector |
 | 🔒 Legal Disclaimer | Every response marked as indicative |
+| 👤 User Authentication| OTP-based email login with secure JWT sessions |
+| 🪪 DL Verification  | Live integration with Parivahan (via Surepass) for Driver License checks |
+| 🗄️ Database         | SQLite tracking for user profiles, challans, and chat history |
 
 ---
 
@@ -47,8 +50,11 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# No API keys are required for Ollama.
 ```
+Fill in the `.env` file with your SMTP credentials for OTP emails and Surepass token for DL Verification:
+- `SENDER_EMAIL` and `SENDER_PASSWORD` for email auth.
+- `SUREPASS_AUTH_TOKEN` for live Driver License checks.
+*(Note: No API keys are required for Ollama as it runs 100% locally.)*
 
 ### 4. Add raw data
 
@@ -59,7 +65,7 @@ Example sources: Motor Vehicles Act 1988, Maharashtra RTO website, Pune traffic 
 
 ```bash
 python scripts/preprocess.py    # Chunk and tag raw files
-python scripts/embed.py         # Build FAISS vector index
+python scripts/embed.py         # Build Qdrant vector index
 ```
 
 ### 6. Run the Software
@@ -96,18 +102,18 @@ drivelegal/
 │   ├── models.py            # Pydantic schemas
 │   └── routes/chat.py       # /chat endpoint
 ├── rag/
-│   ├── retriever.py         # FAISS index + retrieve()
+│   ├── retriever.py         # Qdrant index + retrieve()
 │   ├── chain.py             # LangChain RAG chain + offline fallback
 │   └── challan.py           # Fine calculator (JSON lookup)
 ├── data/
 │   ├── raw/                 # Raw law documents
 │   ├── processed/           # Chunked JSON with metadata
-│   ├── faiss_index/         # Saved FAISS vectors
+│   ├── qdrant_db/           # Saved Qdrant vectors
 │   ├── fines.json           # Structured fine database
 │   └── cache.json           # Offline Q&A cache (25 entries)
 ├── scripts/
 │   ├── preprocess.py        # Clean + chunk raw data
-│   ├── embed.py             # Build FAISS index
+│   ├── embed.py             # Build Qdrant index
 │   └── cache_rules.py       # Refresh offline cache
 ├── frontend/app.py          # Streamlit chat UI
 ├── tests/
@@ -121,6 +127,18 @@ drivelegal/
 ---
 
 ## 🔌 API Reference
+
+### `POST /api/auth/send-otp`
+Sends an OTP to the user's email.
+
+### `POST /api/auth/verify-otp`
+Verifies the OTP and returns a JWT token.
+
+### `POST /api/profile/verify-dl`
+Verifies Driver License against government records and populates challan history.
+
+### `GET /api/profile/dashboard-data/{user_id}`
+Returns user's profile and active challans.
 
 ### `POST /chat`
 

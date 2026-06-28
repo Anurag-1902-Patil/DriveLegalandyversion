@@ -21,6 +21,11 @@ requests==2.32.2
 python-dotenv==1.0.1
 slowapi==0.1.9          # rate limiting
 
+# ── Database & Auth ───────────────────────────────────────────────────────
+SQLAlchemy==2.0.30
+PyJWT==2.8.0
+email-validator==2.1.1
+
 # ── GPS / Offline Geocoding ───────────────────────────────────────────────────
 reverse_geocoder==1.5.1  # offline reverse geocoding (bundled CSV, no internet)
 

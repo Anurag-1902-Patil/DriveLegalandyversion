@@ -56,7 +56,7 @@ if errorlevel 1 (
     exit /b
 )
 
-echo [6/6] Building FAISS index (downloads ~80MB model first time)...
+echo [6/6] Building Qdrant index (downloads ~80MB model first time)...
 python scripts\embed.py
 if errorlevel 1 (
     echo [ERROR] Embedding failed.
