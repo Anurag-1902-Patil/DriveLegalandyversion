@@ -86,16 +86,16 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
 
     # First resort: search Qdrant directly in offline mode
     try:
-        docs = retrieve(normalized_query, k=3)
+        docs, top_score = retrieve(normalized_query, k=3)
         if docs:
-            best_doc = docs[0]
             return {
                 "answer": (
-                    f"{best_doc.page_content[:300]}... "
+                    f"{docs[0].page_content[:300]}... "
                     f"\n\n(Note: AI is offline. This is the closest raw law section found.)"
                 ),
                 "sources": docs,
                 "offline_fallback": True,
+                "top_retrieval_score": top_score,
             }
     except Exception as e:
         logger.error(f"Qdrant fallback failed: {e}")
@@ -114,6 +114,7 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
             "answer": best["answer"],
             "sources": [],
             "offline_fallback": True,
+            "top_retrieval_score": 0.0,
         }
 
     return {
@@ -123,6 +124,7 @@ def _offline_fallback(query: str) -> Dict[str, Any]:
         ),
         "sources": [],
         "offline_fallback": True,
+        "top_retrieval_score": 0.0,
     }
 
 
@@ -152,13 +154,14 @@ def get_answer(
         else ""
     )
     try:
-        docs = retrieve(query, k=5, city=city, state=state, country=country)
+        docs, top_score = retrieve(query, k=5, city=city, state=state, country=country)
 
         if not docs:
             return {
                 "answer": "I could not find specific data for your location. Please verify with the official RTO.",
                 "sources": [],
                 "offline_fallback": False,
+                "top_retrieval_score": top_score,
             }
 
         context = "\n\n".join(
@@ -178,6 +181,7 @@ def get_answer(
             "answer": response.content.strip(),
             "sources": docs,
             "offline_fallback": False,
+            "top_retrieval_score": top_score,
         }
 
     except Exception as exc:

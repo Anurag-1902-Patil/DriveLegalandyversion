@@ -10,7 +10,10 @@ from sqlalchemy.orm import Session
 from typing import Optional 
 
 from app.database import get_db
-from app.models import ChatRequest, ChatResponse, Source, ChatMessageDB
+from app.models import (
+    ChatRequest, ChatResponse, Source, ChatMessageDB,
+    ConfidenceLevel, ConfidenceDetail,
+)
 from app.auth import decode_access_token  # Helper function to decode the active user context
 from app.routes.location import get_store     # GPS in-memory store
 from rag.chain import get_answer
@@ -81,14 +84,37 @@ async def chat(
         logger.error(f"RAG pipeline error: {exc}")
         raise HTTPException(status_code=503, detail="AI service temporarily unavailable.")
 
-    # ── 2. Challan lookup (structured JSON, not LLM) ───────────────────────
+    # ── 2. Challan lookup (structured JSON, not LLM) ─────────────────────
     fine_amount = lookup_fine(
         query=req.message,
         city=effective_city,
         state=effective_state,
     )
 
-    # ── 3. Build source objects ────────────────────────────────────────────
+    # ── 3. Compute confidence tier ────────────────────────────────────
+    top_score  = result.get("top_retrieval_score", 0.0)
+    fine_found = fine_amount is not None
+    is_offline = offline
+
+    if is_offline:
+        level = ConfidenceLevel.LOW
+    elif fine_found and top_score >= 0.55:
+        level = ConfidenceLevel.HIGH
+    else:
+        level = ConfidenceLevel.MEDIUM
+
+    confidence = ConfidenceDetail(
+        level=level,
+        retrieval_score=round(top_score, 3),
+        fine_from_structured_data=fine_found,
+        is_offline_fallback=is_offline,
+    )
+    logger.info(
+        f"Confidence | level={level.value} | score={top_score:.3f} "
+        f"| fine_found={fine_found} | offline={is_offline}"
+    )
+
+    # ── 4. Build source objects ────────────────────────────────────────────
     sources = [
         Source(
             law_section=s.metadata.get("law_section"),
@@ -99,7 +125,7 @@ async def chat(
         for s in raw_sources
     ]
 
-    # ── 4. Persist Conversation Streams into local storage ─────────────────
+    # ── 5. Persist Conversation Streams into local storage ─────────────────
     if user_id:
         try:
             # Commit User message node
@@ -130,4 +156,5 @@ async def chat(
         fine_amount=fine_amount,
         sources=sources,
         offline_fallback=offline,
+        confidence=confidence,
     )

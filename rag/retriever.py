@@ -13,7 +13,7 @@ Changes from FAISS:
 
 import logging
 import os
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 from langchain.schema import Document
 from qdrant_client import QdrantClient
@@ -85,25 +85,27 @@ def retrieve(
     city: str = "",
     state: str = "",
     country: str = "India",
-) -> List[Document]:
+) -> Tuple[List[Document], float]:
     """
-    Return top-k relevant law chunks, filtered by location (Qdrant native filtering).
-    
+    Return top-k relevant law chunks filtered by location (Qdrant native filtering),
+    together with the cosine similarity score of the best-matching result.
+
     Fallback cascade:
     1. Try filtering by city
     2. If < k results, try state
     3. If < k results, try country
     4. If < k results, return unfiltered results
-    
+
     Args:
         query: User question or search term
         k: Number of results to return (default: 5)
         city: City name (optional)
         state: State name (optional)
         country: Country (default: "India")
-    
+
     Returns:
-        List of LangChain Document objects with text and metadata
+        Tuple of (List[Document], float) where the float is the top-1 cosine
+        similarity score from Qdrant (0.0 if no results were found).
     """
     if _client is None or _embedder is None:
         raise RuntimeError(
@@ -120,6 +122,7 @@ def retrieve(
     scopes = [city, state, country, ""]
     accumulated_results = []
     seen_ids = set()
+    top_score: float = 0.0   # cosine similarity of the best hit across all cascade levels
     
     for scope in scopes:
         # Build filter for this scope
@@ -141,6 +144,10 @@ def retrieve(
             f"(accumulated: {len(accumulated_results)})"
         )
         
+        # Capture the top similarity score from the very first result across all levels
+        if query_response.points and top_score == 0.0:
+            top_score = float(query_response.points[0].score)
+        
         # Convert results to Document objects, deduplicating by ID
         for scored_point in query_response.points:
             if scored_point.id not in seen_ids:
@@ -161,6 +168,9 @@ def retrieve(
             logger.debug(f"Stopping cascade at scope {scope_label}")
             break
     
-    logger.info(f"retrieve() returning {len(accumulated_results)} docs for query: {query[:50]}")
-    # Return exactly k results (or fewer if fewer available)
-    return accumulated_results[:k]
+    logger.info(
+        f"retrieve() returning {len(accumulated_results)} docs for query: {query[:50]}"
+        f" | top_score={top_score:.3f}"
+    )
+    # Return exactly k results (or fewer if fewer available) alongside the top similarity score
+    return accumulated_results[:k], top_score

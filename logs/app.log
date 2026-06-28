@@ -3416,3 +3416,11 @@ __root__
 2026-06-29 00:59:06,893 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: compare the consequences of drunk driving and over
 2026-06-29 00:59:42,295 | INFO | drivelegal.challan | Fine found | scope=delhi | violation=speeding | vehicle=car
 2026-06-29 00:59:42,313 | INFO | drivelegal.routes.chat | Chat transaction logged for user_id: 2
+2026-06-29 01:39:28,405 | INFO | drivelegal | Initializing database tables...
+2026-06-29 01:39:28,405 | INFO | drivelegal | Loading Qdrant index…
+2026-06-29 01:39:28,405 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-06-29 01:39:28,405 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: cpu
+2026-06-29 01:39:28,405 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-29 01:39:31,311 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-06-29 01:39:32,887 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 30633 points
+2026-06-29 01:39:32,887 | INFO | drivelegal | Qdrant index ready.
