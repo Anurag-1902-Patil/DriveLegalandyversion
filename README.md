@@ -139,8 +139,6 @@ sequenceDiagram
 5. The route marks the user verified, saves DL/profile fields, clears existing violations for the user, inserts selected violations, and returns profile details.
 6. The UI reloads dashboard and chat history.
 
-TODO: confirm whether `SUREPASS_API_BASE_URL` and `SUREPASS_AUTH_TOKEN` are meant to drive a real Surepass/Parivahan verification call, because the current route reads those variables but never calls an HTTP client.
-
 ### Corpus ingestion and indexing workflow
 
 1. Add source files to `data/raw` using supported extensions: `.txt`, `.md`, `.pdf`, `.csv`.
@@ -185,8 +183,6 @@ TODO: confirm whether `SUREPASS_API_BASE_URL` and `SUREPASS_AUTH_TOKEN` are mean
 | Testing | httpx | `httpx==0.27.0` | Supports FastAPI `TestClient`. |
 | DevOps/scripts | Windows batch files | `setup.bat`, `start.bat`, `scripts/setup_gps.bat` | Local Windows setup/start helpers. |
 | DevOps/deploy hint | `runtime.txt` | `python-3.11` | Python runtime hint for platforms that read `runtime.txt`. |
-
-No `package.json`, Dockerfile, Docker Compose file, or CI/CD configuration was found.
 
 ## 6. How the Tech Stack Works Together
 
@@ -528,12 +524,6 @@ Run tests after installing dependencies:
 ```powershell
 python -m pytest tests -q
 ```
-
-Verification note from this checkout: tests could not be executed with the checked-in `venv` because its launcher points to a missing Python path, and the available system/bundled Python runtimes did not have `pytest` installed. Static inspection also found likely test drift around `/chat` authentication and retriever return values.
-
-Docker:
-
-No Dockerfile or Docker Compose configuration exists in this repository. TODO: confirm whether Docker support should be added.
 
 ## 10. Configuration
 
