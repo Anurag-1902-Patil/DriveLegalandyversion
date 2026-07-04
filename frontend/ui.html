@@ -510,6 +510,48 @@
             letter-spacing: 0.5px;
         }
 
+        /* Gamification Badges */
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .badge-pill {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 600;
+            background: var(--accent-bg);
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .badge-pill.gold {
+            background: #FFF4E5;
+            color: #B07D10;
+            border: 1px solid #FFE4B5;
+        }
+
+        .badge-pill.danger {
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid #F1Aeb5;
+        }
+        
+        [data-theme="dark"] .badge-pill.gold {
+            background: #332B1A;
+            color: #FFC043;
+            border-color: #554420;
+        }
+
         /* Setup / Verification Form */
         .verification-form {
             margin: 12px 16px;
@@ -1334,6 +1376,51 @@
             line-height: 1.4;
         }
 
+        /* Leaderboard Styling */
+        .leaderboard-card {
+            margin: 12px 16px;
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .leaderboard-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            padding: 6px 8px;
+            border-radius: var(--radius-xs);
+            background: var(--bg);
+        }
+
+        .leaderboard-item.user-row {
+            background: var(--accent-bg);
+            border: 1px solid var(--accent-light);
+            font-weight: 600;
+        }
+
+        .rank-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rank-num {
+            font-weight: 700;
+            color: var(--accent);
+            width: 14px;
+        }
+
         /* Typing indicator */
         .typing-indicator {
             display: none;
@@ -1782,14 +1869,17 @@
                             <div class="label">Score</div>
                         </div>
                         <div class="stat-item">
-                            <div class="val" id="statYears">0</div>
-                            <div class="label">Years</div>
+                            <div class="val" id="statStreak">0 <i class="fa-solid fa-fire" style="font-size:10px;color:#e67e22"></i></div>
+                            <div class="label">Streak</div>
                         </div>
                         <div class="stat-item">
                             <div class="val" id="statChallans">0</div>
                             <div class="label">Challans</div>
                         </div>
                     </div>
+
+                    <div class="badge-list" id="profBadges">
+                        </div>
                 </div>
 
                 <div class="license-badge" id="profBadge">
@@ -1943,6 +2033,30 @@
         </main>
 
         <aside class="panel-right">
+            <div class="section-label">Driving Safety Score</div>
+            <div class="safety-card">
+                <div class="safety-score-ring">
+                    <svg viewBox="0 0 72 72">
+                        <circle class="ring-bg" cx="36" cy="36" r="30" />
+                        <circle class="ring-fill" id="scoreRingFill" cx="36" cy="36" r="30"
+                            style="stroke-dashoffset: 30;" />
+                    </svg>
+                    <div class="score-text" id="scoreTextValue">84</div>
+                </div>
+                <h4 id="scoreStatusText">Good Standing</h4>
+                <p id="scoreDescription">Profile synced with local traffic registry database layers.</p>
+            </div>
+
+            <div class="section-label">Local Leaderboard</div>
+            <div class="leaderboard-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <h3 style="font-size: 13px; font-weight: 600;"><i class="fa-solid fa-trophy" style="color:var(--accent); margin-right:6px;"></i> Top Safe Drivers</h3>
+                    <span style="font-size:10px; color:var(--fg-muted);" id="leaderboardCity">Pune</span>
+                </div>
+                <div class="leaderboard-list" id="leaderboardList">
+                    </div>
+            </div>
+
             <div class="section-label">Challan Calculator</div>
             <div class="challan-card">
                 <h3><i class="fa-solid fa-calculator"></i> Estimate Penalty</h3>
@@ -1977,20 +2091,6 @@
                 </div>
                 <button class="challan-calc-btn" onclick="calculateChallan()">Calculate Penalty</button>
                 <div class="challan-result" id="challanResult"></div>
-            </div>
-
-            <div class="section-label">Driving Safety Score</div>
-            <div class="safety-card">
-                <div class="safety-score-ring">
-                    <svg viewBox="0 0 72 72">
-                        <circle class="ring-bg" cx="36" cy="36" r="30" />
-                        <circle class="ring-fill" id="scoreRingFill" cx="36" cy="36" r="30"
-                            style="stroke-dashoffset: 30;" />
-                    </svg>
-                    <div class="score-text" id="scoreTextValue">84</div>
-                </div>
-                <h4 id="scoreStatusText">Good Standing</h4>
-                <p id="scoreDescription">Profile synced with local traffic registry database layers.</p>
             </div>
 
             <div class="section-label">Recent Violations</div>
@@ -2055,6 +2155,7 @@
     <script>
         const BACKEND = 'http://127.0.0.1:8000';
         let cachedEmail = '';
+        let currentUserProfileData = null; // Cache profile for leaderboard logic
 
         function parseJwtPayload(token) {
             try {
@@ -2077,11 +2178,12 @@
                     cachedEmail = payload.email || '';
                     document.getElementById('authOverlay').classList.add('hidden');
                     loadDashboardData(payload.user_id);
-                    loadChatHistory(payload.user_id); // Load history trail on success setup
+                    loadChatHistory(payload.user_id);
                 } else {
                     logoutUser();
                 }
             }
+            renderLeaderboard(); // Init base leaderboard
         });
 
         async function sendOTP() {
@@ -2146,7 +2248,7 @@
                     document.getElementById('authOverlay').classList.add('hidden');
 
                     loadDashboardData(data.user_id);
-                    loadChatHistory(data.user_id); // Render persistent historical strings
+                    loadChatHistory(data.user_id); 
                 } else {
                     showToast(data.detail || 'Invalid verification code.');
                 }
@@ -2158,6 +2260,37 @@
             }
         }
 
+        function renderLeaderboard(userProfile) {
+            const list = document.getElementById('leaderboardList');
+            if(!list) return;
+            const city = document.getElementById('topbarLocation').textContent.split(',')[0];
+            const cityEl = document.getElementById('leaderboardCity');
+            if(cityEl) cityEl.textContent = city;
+
+            let score = userProfile && userProfile.safety_score !== undefined ? userProfile.safety_score : 85;
+            let name = userProfile && userProfile.official_name ? userProfile.official_name.split(' ')[0] : "You";
+
+            const mockData = [
+                { rank: 1, name: "Rahul D.", score: 100 },
+                { rank: 2, name: name, score: score, isUser: true },
+                { rank: 3, name: "Priya S.", score: score > 90 ? score - 2 : 88 },
+                { rank: 4, name: "Amit K.", score: score > 90 ? score - 5 : 82 }
+            ];
+
+            mockData.sort((a,b) => b.score - a.score);
+            mockData.forEach((d, i) => d.rank = i + 1);
+
+            list.innerHTML = mockData.map(d => `
+                <div class="leaderboard-item ${d.isUser ? 'user-row' : ''}">
+                    <div class="rank-name">
+                        <span class="rank-num">#${d.rank}</span>
+                        <span>${d.name} ${d.isUser ? '(You)' : ''}</span>
+                    </div>
+                    <div style="font-weight:600; color:var(--success);">${d.score} <i class="fa-solid fa-shield-heart" style="font-size:9px;"></i></div>
+                </div>
+            `).join('');
+        }
+
         async function loadDashboardData(userId) {
             try {
                 const res = await fetch(`${BACKEND}/api/profile/dashboard-data/${userId}`);
@@ -2166,6 +2299,8 @@
 
                 const profile = data.profile;
                 const violations = data.violations || [];
+
+                currentUserProfileData = profile; 
 
                 if (profile.is_verified) {
                     document.getElementById('verificationFormContainer').style.display = 'none';
@@ -2178,12 +2313,13 @@
                     const initials = profile.official_name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
                     document.getElementById('profAvatar').textContent = initials || 'DL';
 
-                    const countChallans = violations.length;
-                    const safetyScore = Math.max(100 - (countChallans * 8), 60);
+                    const safetyScore = profile.safety_score !== undefined ? profile.safety_score : Math.max(100 - (violations.length * 8), 60);
+                    const safeStreak = profile.safe_days_streak !== undefined ? profile.safe_days_streak : 0;
 
-                    document.getElementById('statChallans').textContent = countChallans;
+                    document.getElementById('statChallans').textContent = violations.length;
                     document.getElementById('statScore').textContent = safetyScore;
                     document.getElementById('scoreTextValue').textContent = safetyScore;
+                    document.getElementById('statStreak').innerHTML = `${safeStreak} <i class="fa-solid fa-fire" style="font-size:11px;color:#e67e22"></i>`;
 
                     const offsetVal = 188.5 - (188.5 * safetyScore / 100);
                     document.getElementById('scoreRingFill').style.strokeDashoffset = offsetVal;
@@ -2195,10 +2331,41 @@
                         document.getElementById('scoreStatusText').textContent = "Action Required";
                         document.getElementById('statScore').className = "val danger";
                     }
+
+                    const badgesContainer = document.getElementById('profBadges');
+                    if (badgesContainer) {
+                        badgesContainer.innerHTML = '';
+                        if (profile.badges && profile.badges.length > 0) {
+                            profile.badges.forEach(b => {
+                                const badgeName = b.trim();
+                                if(!badgeName) return;
+                                
+                                let badgeClass = 'badge-pill';
+                                let icon = 'fa-medal';
+                                
+                                if (badgeName.toLowerCase().includes('golden')) { 
+                                    badgeClass += ' gold'; icon = 'fa-crown'; 
+                                } else if (badgeName.toLowerCase().includes('risk') || badgeName.toLowerCase().includes('warning')) { 
+                                    badgeClass += ' danger'; icon = 'fa-triangle-exclamation'; 
+                                } else if (badgeName.toLowerCase().includes('veteran')) { 
+                                    icon = 'fa-road'; 
+                                } else if (badgeName.toLowerCase().includes('steps')) { 
+                                    icon = 'fa-shoe-prints'; 
+                                }
+
+                                badgesContainer.innerHTML += `<span class="${badgeClass}"><i class="fa-solid ${icon}"></i> ${badgeName}</span>`;
+                            });
+                        } else {
+                            badgesContainer.innerHTML = `<span class="badge-pill" style="opacity:0.6">No Badges Yet</span>`;
+                        }
+                    }
+
                 } else {
                     document.getElementById('profileViewContainer').style.display = 'none';
                     document.getElementById('verificationFormContainer').style.display = 'block';
                 }
+
+                renderLeaderboard(profile);
 
                 const historyBox = document.getElementById('violationHistoryContainer');
                 historyBox.innerHTML = '';
@@ -2235,15 +2402,13 @@
                 if (!res.ok) return;
                 const data = await res.json();
 
-                chatMessages.innerHTML = ''; // Wipe introductory messages if database hits exist
+                chatMessages.innerHTML = ''; 
                 const history = data.history || [];
 
                 if (history.length === 0) {
-                    // Seed standard welcoming intro if history is empty
                     addMessage('bot', `Welcome to DriveLegal! I'm your location-specific driver safety assistant.\n\nI'm currently set to ${getLocationName()}. You can ask me about speed limits, seatbelt fines, or localized driving guidelines.`, null);
                 } else {
                     history.forEach(msg => {
-                        // Render logs nodes back onto the viewport container dynamically
                         appendRenderedMessage(msg.sender, msg.message, msg.fine_amount, msg.location_tag);
                     });
                 }
@@ -2294,6 +2459,7 @@
         function logoutUser() {
             localStorage.removeItem('drivelegal_jwt');
             cachedEmail = '';
+            currentUserProfileData = null;
             document.getElementById('authStep2').style.display = 'none';
             document.getElementById('authStep1').style.display = 'block';
             document.getElementById('authEmail').value = '';
@@ -2303,7 +2469,6 @@
             showToast('Logged out successfully');
         }
 
-        // Penalty database per violation type
         const penaltyData = {
             overspeeding: { base: 1000, repeat: 2000, label: 'Overspeeding' },
             no_seatbelt: { base: 1000, repeat: 2000, label: 'No Seatbelt' },
@@ -2339,7 +2504,6 @@
             return sel.options[sel.selectedIndex].text;
         }
 
-        // Chat Logic
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
         const typingIndicator = document.getElementById('typingIndicator');
@@ -2482,6 +2646,7 @@
             const name = getLocationName();
             document.getElementById('topbarLocation').textContent = name;
             addMessage('bot', `Location updated to ${name}. All rules and penalties I share will now be specific to this jurisdiction.`, null);
+            renderLeaderboard(currentUserProfileData);
         });
 
         function calculateChallan() {
@@ -2539,7 +2704,6 @@
             setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        // GPS Tracker Tracker
         const GPS_PUSH_INTERVAL_MS = 10000;
         let _gpsWatchId = null;
         let _gpsPushTimer = null;
@@ -2597,6 +2761,7 @@
             sel.insertBefore(opt, sel.firstChild);
             sel.value = gpsVal;
             locMap[gpsVal] = { city, state };
+            renderLeaderboard(currentUserProfileData);
         }
 
         function onGPSFix(position) {
@@ -2652,6 +2817,7 @@
             delete locMap['__gps__'];
             document.getElementById('topbarLocation').textContent = getLocationName();
             showToast('GPS tracking stopped');
+            renderLeaderboard(currentUserProfileData);
         }
 
         function toggleGPS() {
@@ -2668,12 +2834,10 @@
         const savedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
         document.documentElement.setAttribute("data-theme", savedTheme);
 
-        // ── Voice Input ─────────────────────────────────────────────────────────
         function initVoiceInput() {
             const VoiceRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const voiceBtn = document.getElementById('voiceBtn');
 
-            // Graceful degradation if the Web Speech API is unavailable
             if (!VoiceRecognition) {
                 voiceBtn.classList.add('unsupported');
                 voiceBtn.title = 'Voice input requires Chrome or Edge.';
@@ -2682,14 +2846,14 @@
             }
 
             const recognition = new VoiceRecognition();
-            recognition.lang = 'en-IN';         // Indian English for better accuracy on Indian law terms
-            recognition.interimResults = true;   // Show live transcription as the user speaks
+            recognition.lang = 'en-IN';         
+            recognition.interimResults = true;   
             recognition.maxAlternatives = 1;
-            recognition.continuous = false;      // Stop automatically after a pause
+            recognition.continuous = false;      
             let isListening = false;
 
             function startListening() {
-                chatInput.value = '';            // Clear any previous text before a new voice session
+                chatInput.value = '';            
                 recognition.start();
                 isListening = true;
                 voiceBtn.classList.add('listening');
@@ -2704,18 +2868,15 @@
                 voiceBtn.title = 'Voice input';
             }
 
-            // Show interim (live) transcript in the input box as user speaks
             recognition.onresult = (event) => {
                 const transcript = Array.from(event.results)
                     .map(r => r[0].transcript)
                     .join('');
                 chatInput.value = transcript;
 
-                // When the final result arrives, stop the listening state
-                // but do NOT auto-send — the user reviews and presses Send manually
                 if (event.results[event.results.length - 1].isFinal) {
                     stopListening();
-                    chatInput.focus();           // Focus the input so the user can edit or press Enter
+                    chatInput.focus();           
                     showToast('\u2705 Voice captured — review and press Send');
                 }
             };
@@ -2730,10 +2891,8 @@
                 showToast(msgs[event.error] || 'Voice error: ' + event.error);
             };
 
-            // Ensure UI state is always consistent with recognition lifecycle
             recognition.onend = () => { if (isListening) stopListening(); };
 
-            // Toggle: click once to start, click again to cancel
             voiceBtn.addEventListener('click', () => {
                 if (isListening) {
                     stopListening();

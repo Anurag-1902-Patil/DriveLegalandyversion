@@ -31,6 +31,9 @@ SAMPLE_PROFILES = {
     "ANURAG": {
         "official_name": "Anurag Sandeep Patil",
         "validity_expiry": "19-Feb-2032",
+        "safety_score": 95,
+        "safe_days_streak": 42,
+        "badges": "Golden Emblem,Highway Veteran,First Steps",
         "violations": [
             {"offence": "Wrong Parking — Appa Balwant Chowk", "amount": 500, "status": "Paid", "location": "Pune", "date": "14 May 2026"},
             {"offence": "No PUC Certificate — Swargate Crossing", "amount": 1000, "status": "Paid", "location": "Pune", "date": "02 Feb 2026"}
@@ -39,6 +42,9 @@ SAMPLE_PROFILES = {
     "TEAMKALKI": {
         "official_name": "Team Kalki Test Pilot",
         "validity_expiry": "12-Dec-2030",
+        "safety_score": 62,
+        "safe_days_streak": 2,
+        "badges": "First Steps,Risk Warning",
         "violations": [
             {"offence": "Overspeeding — Mumbai Pune Expressway", "amount": 2000, "status": "Unpaid", "location": "Lonavala", "date": "24 Jun 2026"},
             {"offence": "Talking on Phone — FC Road", "amount": 5000, "status": "Unpaid", "location": "Pune", "date": "10 Mar 2026"},
@@ -69,6 +75,9 @@ async def verify_driver_license(payload: DLVerificationPayload, db: Session = De
     # Initialize defaults to prevent crashes during fallback operations
     official_name = "Arjun Kumar"
     validity_expiry = "28-Mar-2029"
+    safety_score = 100
+    safe_days_streak = 0
+    badges = "First Steps"
     chosen_violations = [
         {"offence": "Overspeeding — NH-48", "amount": 2000, "status": "Unpaid", "location": "Gurgaon", "date": "12 Jan 2025"}
     ]
@@ -84,6 +93,9 @@ async def verify_driver_license(payload: DLVerificationPayload, db: Session = De
         selected_seed = SAMPLE_PROFILES[matched_key]
         official_name = selected_seed["official_name"]
         validity_expiry = selected_seed["validity_expiry"]
+        safety_score = selected_seed["safety_score"]
+        safe_days_streak = selected_seed["safe_days_streak"]
+        badges = selected_seed["badges"]
         chosen_violations = selected_seed["violations"]
 
     # 2. COMMIT DETAILS TO PERSISTENT SQLITE DATABASE
@@ -92,6 +104,9 @@ async def verify_driver_license(payload: DLVerificationPayload, db: Session = De
     user.official_name = official_name
     user.dob = dob
     user.validity_expiry = validity_expiry
+    user.safety_score = safety_score
+    user.safe_days_streak = safe_days_streak
+    user.badges = badges
     
     # 3. AUTOMATIC CHALLAN HYDRATION LOOP
     db.query(ViolationDB).filter(ViolationDB.user_id == user.id).delete()
@@ -141,7 +156,10 @@ async def get_user_dashboard(user_id: int, db: Session = Depends(get_db)):
             "dl_number": user.dl_number or "Not Linked",
             "validity_expiry": user.validity_expiry or "N/A",
             "is_verified": user.is_verified,
-            "email": user.email
+            "email": user.email,
+            "safety_score": user.safety_score,
+            "safe_days_streak": user.safe_days_streak,
+            "badges": user.badges.split(",") if user.badges else []
         },
         "violations": [
             {
