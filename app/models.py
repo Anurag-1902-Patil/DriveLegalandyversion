@@ -108,6 +108,11 @@ class UserDB(Base):
     dob = Column(String, nullable=True)
     validity_expiry = Column(String, nullable=True)
 
+    # --- NEW GAMIFICATION FIELDS ---
+    safety_score = Column(Integer, default=100)
+    safe_days_streak = Column(Integer, default=0)
+    badges = Column(String, default="") # We will store badges as a comma-separated string, e.g., "Golden Emblem,First Steps"
+
 
 class ViolationDB(Base):
     __tablename__ = "violations"

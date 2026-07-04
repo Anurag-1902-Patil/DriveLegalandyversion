@@ -7,22 +7,26 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import Optional # Added missing type hint token import here
 import jwt
-from fastapi import APIRouter, Depends, HTTPException, status, Body
+from dotenv import load_dotenv
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, EmailStr
 
 from app.database import get_db
 from app.models import UserDB
 
+load_dotenv()
+
 # Logger configuration
 logger = logging.getLogger("drivelegal.auth")
 
 # Fetch configurations safely from environmental variables
-SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", 465))
-SENDER_EMAIL = os.getenv("SENDER_EMAIL")
-SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
-JWT_SECRET = os.getenv("JWT_SECRET", "fallback_secret_key_change_this")
+SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com").strip()
+SMTP_PORT = int(os.getenv("SMTP_PORT", "465").strip())
+SENDER_EMAIL = (os.getenv("SENDER_EMAIL") or "").strip()
+SMTP_USERNAME = (os.getenv("SMTP_USERNAME") or SENDER_EMAIL).strip()
+SENDER_PASSWORD = (os.getenv("SENDER_PASSWORD") or "").replace(" ", "").strip()
+JWT_SECRET = os.getenv("JWT_SECRET", "fallback_secret_key_change_this").strip()
 
 OTP_EXPIRY_MINUTES = 5
 
@@ -48,7 +52,7 @@ def generate_otp() -> str:
     return f"{random.randint(100000, 999999)}"
 
 def send_otp_email(receiver_email: str, otp_code: str) -> bool:
-    """Connects to Google's SMTP server using SSL to deliver the code."""
+    """Connects to the configured SMTP server using SSL to deliver the code."""
     try:
         msg = MIMEMultipart()
         msg['From'] = SENDER_EMAIL
@@ -69,10 +73,19 @@ def send_otp_email(receiver_email: str, otp_code: str) -> bool:
         """
         msg.attach(MIMEText(body, 'html'))
 
-        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
-            server.login(SENDER_EMAIL, SENDER_PASSWORD)
+        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, timeout=20) as server:
+            server.login(SMTP_USERNAME, SENDER_PASSWORD)
             server.send_message(msg)
         return True
+    except smtplib.SMTPAuthenticationError as e:
+        logger.error(
+            "SMTP authentication failed for %s via %s:%s. Gmail requires a valid app password for this account. Error: %s",
+            SMTP_USERNAME,
+            SMTP_SERVER,
+            SMTP_PORT,
+            e,
+        )
+        return False
     except Exception as e:
         logger.error(f"SMTP Email Error: {e}")
         return False
@@ -97,10 +110,10 @@ def decode_access_token(token: str) -> Optional[dict]:
 @router.post("/send-otp")
 async def request_otp_endpoint(payload: EmailPayload):
     """API Endpoint: Generates an OTP, saves it locally, and dispatches the email."""
-    if not SENDER_EMAIL or not SENDER_PASSWORD:
+    if not SENDER_EMAIL or not SMTP_USERNAME or not SENDER_PASSWORD:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Backend SMTP credentials are not configured in .env"
+            detail="Backend SMTP credentials are not configured in .env."
         )
 
     email = payload.email.strip().lower()
@@ -116,11 +129,14 @@ async def request_otp_endpoint(payload: EmailPayload):
     if email_sent:
         logger.info(f"OTP successfully transmitted to: {email}")
         return {"status": "success", "message": "OTP code successfully sent to email."}
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Failed to send email. Check backend setup or credentials."
-        )
+
+    del otp_store[email]
+    
+    logger.error("OTP delivery failed for %s.", email)
+    raise HTTPException(
+        status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        detail="Failed to send OTP email. Check the sender Gmail app password and restart the backend."
+    )
 
 @router.post("/verify-otp")
 async def verify_otp_endpoint(payload: VerifyPayload, db: Session = Depends(get_db)):
