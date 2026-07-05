@@ -117,6 +117,16 @@ def test_returns_none_for_unknown_violation():
     assert result is None
 
 
+def test_lookup_fine_details_includes_currency_code_and_usd_hint():
+    with patch("rag.challan._load_fines", return_value=SAMPLE_FINES):
+        from rag import challan
+        result = challan.lookup_fine_details("red light fine", city="pune", state="maharashtra", country="Germany")
+    assert result is not None
+    assert result["currency_code"] == "INR"
+    assert result["display_amount"] == "₹1,000"
+    assert result["usd_equivalent"] is not None
+
+
 def test_returns_none_when_fines_file_missing():
     with patch("rag.challan._load_fines", return_value={}):
         from rag import challan

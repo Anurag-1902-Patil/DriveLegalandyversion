@@ -17,7 +17,7 @@ from app.models import (
 from app.auth import decode_access_token  # Helper function to decode the active user context
 from app.routes.location import get_store     # GPS in-memory store
 from rag.chain import get_answer
-from rag.challan import lookup_fine
+from rag.challan import lookup_fine, lookup_fine_details
 
 logger = logging.getLogger("drivelegal.routes.chat")
 router = APIRouter(tags=["Chat"])
@@ -85,15 +85,31 @@ async def chat(
         raise HTTPException(status_code=503, detail="AI service temporarily unavailable.")
 
     # ── 2. Challan lookup (structured JSON, not LLM) ─────────────────────
-    fine_amount = lookup_fine(
+    raw_fine = lookup_fine(
         query=req.message,
         city=effective_city,
         state=effective_state,
+        country=effective_country,
     )
+    fine_details = None
+    if raw_fine:
+        fine_details = lookup_fine_details(
+            query=req.message,
+            city=effective_city,
+            state=effective_state,
+            country=effective_country,
+            amount_override=raw_fine,
+        )
+
+    fine_amount = fine_details.get("display_amount") if fine_details else None
+    currency_code = fine_details.get("currency_code") if fine_details else None
+    currency_symbol = fine_details.get("currency_symbol") if fine_details else None
+    usd_equivalent = fine_details.get("usd_equivalent") if fine_details else None
+    usd_equivalent_display = fine_details.get("usd_equivalent_display") if fine_details else None
 
     # ── 3. Compute confidence tier ────────────────────────────────────
     top_score  = result.get("top_retrieval_score", 0.0)
-    fine_found = fine_amount is not None
+    fine_found = fine_details is not None
     is_offline = offline
 
     if is_offline:
@@ -154,6 +170,10 @@ async def chat(
     return ChatResponse(
         answer=answer,
         fine_amount=fine_amount,
+        currency_code=currency_code,
+        currency_symbol=currency_symbol,
+        usd_equivalent=usd_equivalent,
+        usd_equivalent_display=usd_equivalent_display,
         sources=sources,
         offline_fallback=offline,
         confidence=confidence,

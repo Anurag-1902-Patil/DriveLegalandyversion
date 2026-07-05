@@ -72,6 +72,9 @@ def test_chat_returns_expected_structure(mock_fine, mock_answer):
     assert "disclaimer" in data
     assert "sources" in data
     assert isinstance(data["sources"], list)
+    assert data["fine_amount"] == "₹1,000"
+    assert data["currency_code"] == "INR"
+    assert data["usd_equivalent_display"] == "≈ $12.00"
 
 
 @patch("app.routes.chat.get_answer")
