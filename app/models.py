@@ -83,6 +83,10 @@ class ConfidenceDetail(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     fine_amount: Optional[str] = None            # e.g. "₹1,000 – ₹2,000"
+    currency_code: Optional[str] = None
+    currency_symbol: Optional[str] = None
+    usd_equivalent: Optional[float] = None
+    usd_equivalent_display: Optional[str] = None
     sources: List[Source] = []
     disclaimer: str = (
         "This information is indicative and for awareness only. "

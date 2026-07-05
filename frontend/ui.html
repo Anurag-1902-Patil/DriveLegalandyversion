@@ -2409,7 +2409,12 @@
                     addMessage('bot', `Welcome to DriveLegal! I'm your location-specific driver safety assistant.\n\nI'm currently set to ${getLocationName()}. You can ask me about speed limits, seatbelt fines, or localized driving guidelines.`, null);
                 } else {
                     history.forEach(msg => {
-                        appendRenderedMessage(msg.sender, msg.message, msg.fine_amount, msg.location_tag);
+                        const currencyMeta = msg.fine_amount ? {
+                            currency_code: msg.currency_code,
+                            currency_symbol: msg.currency_symbol,
+                            usd_equivalent_display: msg.usd_equivalent_display,
+                        } : null;
+                        appendRenderedMessage(msg.sender, msg.message, msg.fine_amount, msg.location_tag, undefined, currencyMeta);
                     });
                 }
             } catch (err) {
@@ -2529,12 +2534,19 @@
                 + `<i class="fa-solid ${cfg.icon}"></i> ${cfg.label}${scoreHint}${fineHint}</span>`;
         }
 
-        function appendRenderedMessage(sender, text, penalty, locationTag, confidence) {
+        function appendRenderedMessage(sender, text, penalty, locationTag, confidence, currencyMeta) {
             const div = document.createElement('div');
             div.className = `message ${sender === 'user' ? 'user' : 'bot'}`;
 
             const avatarIcon = sender === 'bot' ? 'fa-shield-halved' : 'fa-user';
             let penaltyHTML = penalty ? `<div class="msg-penalty"><i class="fa-solid fa-triangle-exclamation"></i> Estimated Fine: ${penalty}</div>` : '';
+            let currencyHTML = '';
+            if (sender === 'bot' && currencyMeta) {
+                const { currency_code, currency_symbol, usd_equivalent_display } = currencyMeta;
+                const currencyLabel = currency_code ? `${currency_symbol || currency_code}` : '';
+                const usdHint = usd_equivalent_display ? ` · ${usd_equivalent_display}` : '';
+                currencyHTML = `<div class="msg-currency"><i class="fa-solid fa-coins"></i> ${currencyLabel}${usdHint}</div>`;
+            }
             let locationHTML = sender === 'bot' ? `<div class="msg-location"><i class="fa-solid fa-location-dot"></i> ${locationTag || getLocationName()}</div>` : '';
             let confHTML = (sender === 'bot') ? confidenceBadgeHTML(confidence) : '';
 
@@ -2545,6 +2557,7 @@
                         ${locationHTML}
                         ${text.replace(/\n/g, '<br>')}
                         ${penaltyHTML}
+                        ${currencyHTML}
                         ${confHTML}
                     </div>
                 </div>
@@ -2553,8 +2566,8 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        function addMessage(type, text, penalty, confidence) {
-            appendRenderedMessage(type, text, penalty, getLocationName(), confidence);
+        function addMessage(type, text, penalty, confidence, currencyMeta) {
+            appendRenderedMessage(type, text, penalty, getLocationName(), confidence, currencyMeta);
         }
 
         function showTyping() {
@@ -2592,7 +2605,12 @@
                 const data = await response.json();
 
                 hideTyping();
-                addMessage('bot', data.answer, data.fine_amount, data.confidence);
+                const currencyMeta = data.fine_amount ? {
+                    currency_code: data.currency_code,
+                    currency_symbol: data.currency_symbol,
+                    usd_equivalent_display: data.usd_equivalent_display,
+                } : null;
+                addMessage('bot', data.answer, data.fine_amount, data.confidence, currencyMeta);
 
             } catch (error) {
                 hideTyping();
