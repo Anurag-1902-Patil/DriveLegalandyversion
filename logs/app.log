@@ -5563,3 +5563,136 @@ __root__
 2026-07-05 22:14:46,519 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
 2026-07-05 22:14:57,394 | INFO | drivelegal.routes.location | GPS update received: lat=18.44993 lon=73.82385 accuracy=88.0
 2026-07-05 22:14:57,395 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:37:48,356 | INFO | drivelegal | Initializing database tables...
+2026-07-11 23:37:48,360 | INFO | drivelegal | Loading Qdrant index…
+2026-07-11 23:37:48,362 | INFO | drivelegal.retriever | Loading embedding model: all-MiniLM-L6-v2
+2026-07-11 23:37:48,591 | INFO | sentence_transformers.SentenceTransformer | Use pytorch device_name: cuda
+2026-07-11 23:37:48,591 | INFO | sentence_transformers.SentenceTransformer | Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-07-11 23:37:52,343 | INFO | drivelegal.retriever | Initializing Qdrant at data\qdrant_db
+2026-07-11 23:37:59,316 | INFO | drivelegal.retriever | Qdrant collection 'drivelegal_chunks' loaded with 30633 points
+2026-07-11 23:37:59,316 | INFO | drivelegal | Qdrant index ready.
+2026-07-11 23:38:10,441 | WARNING | drivelegal.auth | Incoming authentication token validation rejected: Token Structure Broken.
+2026-07-11 23:38:10,443 | INFO | drivelegal.routes.chat | No GPS fix; using manual location: New Delhi, Delhi
+2026-07-11 23:38:10,443 | INFO | drivelegal.routes.chat | Query | location=New Delhi, Delhi, India | message='What are the helmet rules?'
+2026-07-11 23:38:13,898 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: What are the helmet rules? | top_score=0.528
+2026-07-11 23:38:34,668 | INFO | drivelegal.challan | Fine found | scope=delhi | violation=no_helmet | vehicle=default
+2026-07-11 23:38:34,670 | INFO | drivelegal.challan | Fine found | scope=new delhi | violation=no_helmet | vehicle=default
+2026-07-11 23:38:34,670 | INFO | drivelegal.routes.chat | Confidence | level=medium | score=0.528 | fine_found=True | offline=False
+2026-07-11 23:38:45,614 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:45,624 | INFO | drivelegal.geocoder | reverse_geocoder library loaded (offline mode).
+2026-07-11 23:38:46,487 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:47,559 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:47,563 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:48,595 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:48,595 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:49,520 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:49,521 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:50,528 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:50,529 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:51,538 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:51,539 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:52,532 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:52,532 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:53,084 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:53,085 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:38:53,528 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:38:53,528 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:00,564 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:00,564 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:01,570 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:01,571 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:02,557 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:02,557 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:03,098 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:03,099 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:03,618 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:03,619 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:04,592 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:04,593 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:05,618 | INFO | drivelegal.routes.location | GPS update received: lat=18.55140 lon=73.82190 accuracy=200000.0
+2026-07-11 23:39:05,619 | INFO | drivelegal.routes.location | Geocoded -> Khadki, Maharashtra, India
+2026-07-11 23:39:08,298 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:39:08,299 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:39:13,108 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:39:13,110 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:39:23,698 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:39:23,698 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:39:33,808 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:39:33,808 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:39:43,922 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:39:43,923 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:39:53,999 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:39:54,000 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:01,288 | WARNING | drivelegal.auth | Incoming authentication token validation rejected: Token Structure Broken.
+2026-07-11 23:40:01,288 | INFO | drivelegal.routes.chat | Using GPS-resolved location: Kharakvasla, Maharashtra, India
+2026-07-11 23:40:01,288 | INFO | drivelegal.routes.chat | Query | location=Kharakvasla, Maharashtra, India | message='Can the police seize my vehicle if I repeatedly break traffic rules?'
+2026-07-11 23:40:03,301 | INFO | drivelegal.retriever | retrieve() returning 15 docs for query: Can the police seize my vehicle if I repeatedly br | top_score=0.537
+2026-07-11 23:40:20,216 | INFO | drivelegal.routes.chat | Confidence | level=medium | score=0.537 | fine_found=False | offline=False
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=18.44995 lon=73.82381 accuracy=114.0
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82383 accuracy=90.0
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82382 accuracy=93.0
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82382 accuracy=93.0
+2026-07-11 23:40:20,219 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:24,070 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82383 accuracy=90.0
+2026-07-11 23:40:24,070 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:31,314 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=90.0
+2026-07-11 23:40:31,315 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:34,118 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=90.0
+2026-07-11 23:40:34,118 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:43,110 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-07-11 23:40:43,110 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:45,081 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82384 accuracy=91.0
+2026-07-11 23:40:45,082 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:54,868 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=93.0
+2026-07-11 23:40:54,868 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:40:55,169 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=93.0
+2026-07-11 23:40:55,171 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:05,083 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82383 accuracy=93.0
+2026-07-11 23:41:05,086 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:06,558 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82382 accuracy=99.0
+2026-07-11 23:41:06,562 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:15,414 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82382 accuracy=99.0
+2026-07-11 23:41:15,414 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:25,610 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82382 accuracy=99.0
+2026-07-11 23:41:25,610 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:35,664 | INFO | drivelegal.routes.location | GPS update received: lat=18.44992 lon=73.82382 accuracy=99.0
+2026-07-11 23:41:35,665 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:41,936 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82382 accuracy=98.0
+2026-07-11 23:41:41,936 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:45,665 | INFO | drivelegal.routes.location | GPS update received: lat=18.44987 lon=73.82382 accuracy=98.0
+2026-07-11 23:41:45,666 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:53,858 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82382 accuracy=93.0
+2026-07-11 23:41:53,859 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:41:55,674 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82382 accuracy=93.0
+2026-07-11 23:41:55,675 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:05,676 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82382 accuracy=93.0
+2026-07-11 23:42:05,676 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:05,829 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82382 accuracy=93.0
+2026-07-11 23:42:05,829 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:15,716 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82382 accuracy=93.0
+2026-07-11 23:42:15,717 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:26,208 | INFO | drivelegal.routes.location | GPS update received: lat=18.44990 lon=73.82382 accuracy=93.0
+2026-07-11 23:42:26,210 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:29,370 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:42:29,370 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:36,683 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:42:36,683 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:46,803 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:42:46,803 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:42:57,116 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:42:57,116 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:43:07,066 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:43:07,066 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:43:17,207 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:43:17,208 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:43:27,349 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:43:27,353 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:43:37,717 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:43:37,717 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:43:47,806 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:43:47,806 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India
+2026-07-11 23:43:57,949 | INFO | drivelegal.routes.location | GPS update received: lat=18.44988 lon=73.82383 accuracy=93.0
+2026-07-11 23:43:57,949 | INFO | drivelegal.routes.location | Geocoded -> Kharakvasla, Maharashtra, India

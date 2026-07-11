@@ -26,10 +26,15 @@ SAMPLE_FINES = {
         "no_helmet": {"bike": "₹1,000", "default": "₹1,000"},
         "parking":   {"default": "₹500 – ₹2,000 (tow charges extra)"},
     },
+"eu": {
+        "red_light": {"default": "€200"}
+    },
+    "vienna convention on road traffic": {
+        "red_light": {"default": "€150"}
+    }
 }
 
-
-def patched_lookup(query, city="", state=""):
+def patched_lookup(query, city="", state="", country=""):
     """Runs lookup_fine against the sample fines fixture."""
     with patch("rag.challan.FINES_PATH", "data/fines.json"), \
          patch("builtins.open", mock_open(read_data=json.dumps(SAMPLE_FINES))), \
@@ -39,7 +44,7 @@ def patched_lookup(query, city="", state=""):
         import importlib
         import rag.challan as m
         importlib.reload(m)
-        return m.lookup_fine(query, city=city, state=state)
+        return m.lookup_fine(query, city=city, state=state, country=country)
 
 
 # ── Violation detection ────────────────────────────────────────────────────
@@ -108,6 +113,20 @@ def test_national_fallback():
         result = challan.lookup_fine("drunk driving penalty", city="", state="")
     assert result is not None
     assert "₹10,000" in result
+
+
+def test_regional_bloc_fallback_for_eu_country():
+    with patch("rag.challan._load_fines", return_value=SAMPLE_FINES):
+        from rag import challan
+        result = challan.lookup_fine("red light fine", city="", state="", country="Germany")
+    assert result == "€200"
+
+
+def test_international_convention_fallback():
+    with patch("rag.challan._load_fines", return_value=SAMPLE_FINES):
+        from rag import challan
+        result = challan.lookup_fine("red light fine", city="", state="", country="")
+    assert result == "€150"
 
 
 def test_returns_none_for_unknown_violation():

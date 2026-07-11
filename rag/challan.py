@@ -10,6 +10,8 @@ import os
 import re
 from typing import Optional
 
+from rag.jurisdiction import get_fine_lookup_scopes
+
 logger = logging.getLogger("drivelegal.challan")
 
 FINES_PATH = os.path.join("data", "fines.json")
@@ -146,7 +148,7 @@ def lookup_fine_details(
     query: str,
     city: str = "",
     state: str = "",
-    country: str = "",
+    country: str = "India",
     amount_override: Optional[str] = None,
 ) -> Optional[dict]:
     """
@@ -163,7 +165,7 @@ def lookup_fine_details(
     if not violation:
         return None
 
-    for scope in [city.lower(), state.lower(), "national"]:
+    for scope in get_fine_lookup_scopes(city, state, country):
         region_data = fines.get(scope, {})
         violation_data = region_data.get(violation, {})
         amount = amount_override or violation_data.get(vehicle) or violation_data.get("default")
@@ -182,7 +184,7 @@ def lookup_fine_details(
     return None
 
 
-def lookup_fine(query: str, city: str = "", state: str = "", country: str = "") -> Optional[str]:
+def lookup_fine(query: str, city: str = "", state: str = "", country: str = "India") -> Optional[str]:
     """
     Returns a formatted fine range string like '₹1,000 – ₹2,000'
     or None if not found.
@@ -199,8 +201,8 @@ def lookup_fine(query: str, city: str = "", state: str = "", country: str = "") 
     if not violation:
         return None
 
-    # Cascade: city → state → national
-    for scope in [city.lower(), state.lower(), "national"]:
+    # Cascade: city → state/province → country → regional bloc → international convention
+    for scope in get_fine_lookup_scopes(city, state, country):
         region_data = fines.get(scope, {})
         violation_data = region_data.get(violation, {})
         amount = violation_data.get(vehicle) or violation_data.get("default")
