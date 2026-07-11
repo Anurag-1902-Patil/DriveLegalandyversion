@@ -47,10 +47,10 @@ def test_retrieve_returns_docs(mock_embedder, mock_client):
     ]
     mock_client.query_points.return_value = response
 
-    results = retrieve("helmet fine", k=5, city="Pune", state="Maharashtra")
+    docs, _ = retrieve("helmet fine", k=5, city="Pune", state="Maharashtra")
 
-    assert len(results) >= 1
-    assert all(isinstance(d, Document) for d in results)
+    assert len(docs) >= 1
+    assert all(isinstance(d, Document) for d in docs)
 
 
 @patch("rag.retriever._client")
@@ -68,8 +68,8 @@ def test_retrieve_deduplicates_results(mock_embedder, mock_client):
     response.points = [shared_point]
     mock_client.query_points.return_value = response
 
-    results = retrieve("fine", k=5, city="Pune", state="Maharashtra")
-    ids = [r.page_content for r in results]
+    docs, _ = retrieve("fine", k=5, city="Pune", state="Maharashtra")
+    ids = [r.page_content for r in docs]
     assert len(ids) == len(set(ids)), "Duplicate documents returned"
 
 
@@ -86,8 +86,35 @@ def test_retrieve_respects_k_limit(mock_embedder, mock_client):
     response.points = [_make_scored_point(i, f"Rule {i}", "National") for i in range(20)]
     mock_client.query_points.return_value = response
 
-    results = retrieve("speed limit", k=3)
-    assert len(results) <= 3
+    docs, _ = retrieve("speed limit", k=3)
+    assert len(docs) <= 3
+
+
+@patch("rag.retriever._build_region_filter")
+@patch("rag.retriever._client")
+@patch("rag.retriever._embedder")
+def test_retrieve_uses_full_jurisdiction_fallback_order(mock_embedder, mock_client, mock_build_filter):
+    import numpy as np
+    from rag.retriever import retrieve
+
+    mock_embedder.encode.return_value = np.zeros(384, dtype="float32")
+    response = MagicMock()
+    response.points = []
+    mock_client.query_points.return_value = response
+    mock_build_filter.side_effect = lambda region: region
+
+    retrieve("fine", k=1, city="Pune", state="Maharashtra", country="India")
+
+    expected_scopes = [
+        "Pune",
+        "Maharashtra",
+        "India",
+        "National",
+        "Vienna Convention on Road Traffic",
+        "",
+    ]
+    actual_scopes = [call.args[0] for call in mock_build_filter.call_args_list]
+    assert actual_scopes == expected_scopes
 
 
 def test_retrieve_raises_without_loaded_index():
@@ -113,7 +140,7 @@ def test_get_answer_success(mock_llm_cls, mock_retrieve):
     """get_answer() returns answer dict with expected keys on happy path."""
     from rag.chain import get_answer
 
-    mock_retrieve.return_value = [make_doc("Red light fine is ₹1,000", "Pune")]
+    mock_retrieve.return_value = ([make_doc("Red light fine is ₹1,000", "Pune")], 0.8)
     mock_llm = MagicMock()
     mock_llm.invoke.return_value = MagicMock(content="The fine for jumping a red light is ₹1,000.")
     mock_llm_cls.return_value = mock_llm
@@ -132,7 +159,7 @@ def test_get_answer_with_gps_context(mock_llm_cls, mock_retrieve):
     """get_answer() includes gps_context in the prompt without crashing."""
     from rag.chain import get_answer
 
-    mock_retrieve.return_value = [make_doc("Speed limit rule", "National")]
+    mock_retrieve.return_value = ([make_doc("Speed limit rule", "National")], 0.8)
     mock_llm = MagicMock()
     mock_llm.invoke.return_value = MagicMock(content="Speed limit is 50 km/h in cities.")
     mock_llm_cls.return_value = mock_llm
@@ -155,7 +182,7 @@ def test_get_answer_empty_docs_returns_not_found(mock_retrieve):
     """get_answer() returns a not-found message when retrieval returns nothing."""
     from rag.chain import get_answer
 
-    mock_retrieve.return_value = []
+    mock_retrieve.return_value = ([], 0.0)
 
     result = get_answer("unknown query xyz", city="", state="", country="India")
 
@@ -169,7 +196,7 @@ def test_get_answer_llm_error_uses_offline_cache(mock_llm_cls, mock_retrieve):
     """When Ollama/Mistral is unavailable, get_answer() returns offline_fallback=True."""
     from rag.chain import get_answer
 
-    mock_retrieve.return_value = [make_doc("some text", "National")]
+    mock_retrieve.return_value = ([make_doc("some text", "National")], 0.0)
     mock_llm = MagicMock()
     mock_llm.invoke.side_effect = Exception("Ollama timeout")
     mock_llm_cls.return_value = mock_llm
