@@ -1,0 +1,254 @@
+UN MODEL LEGISLATION ON ROAD SAFETY
+Prepared by the United Nations Secretary-General pursuant to
+General Assembly resolution 74/299 (2020) — Road Safety 2021–2030
+Based on the Global Plan for the Decade of Action for Road Safety 2021–2030
+[Adapted for legal-awareness purposes. Source: UN Road Safety Trust Fund / UNECE]
+
+========================================================================
+PREAMBLE
+========================================================================
+This model legislation is intended to assist Member States and Contracting
+Parties to the Vienna Convention on Road Traffic (1968) in enacting or
+updating their domestic road safety laws. The provisions below represent
+the international consensus on minimum standards derived from evidence-based
+best practices and the WHO Global Status Report on Road Safety.
+
+Member States are encouraged to adopt these provisions or provisions
+that provide at least equivalent protection as part of their national
+legislation.
+
+========================================================================
+PART I — SPEED
+========================================================================
+
+Section 1 — General Speed Standards
+1.1 Speed limits shall be set based on safe system principles, taking
+    into account road design, traffic composition, and the consequence of
+    crashes for all road users, including pedestrians and cyclists.
+
+1.2 Default speed limits recommended for adoption:
+    (a) Built-up area (urban zone):     ≤ 50 km/h; 30 km/h near schools,
+        hospitals, and residential zones;
+    (b) Rural road (single carriageway): ≤ 80–90 km/h;
+    (c) Dual carriageway (non-motorway): ≤ 100 km/h;
+    (d) Motorway / expressway:           ≤ 120–130 km/h.
+
+1.3 Member States should empower local authorities to set lower limits on
+    specific roads, including 20–30 km/h zones in areas with significant
+    pedestrian activity.
+
+1.4 Automated speed enforcement (speed cameras, average-speed systems) is
+    recognized as a highly effective countermeasure. The model legislation
+    recommends that evidence from automated enforcement be admissible as
+    prima facie evidence of a speed violation.
+
+Section 2 — Penalties for Speeding
+2.1 Penalties for speeding should be proportionate to the excess speed and
+    should include, as a minimum:
+    (a) Fixed or variable monetary fine;
+    (b) Licence penalty points for the holder;
+    (c) Licence suspension for serious excess (recommended: >30 km/h
+        above the limit or recidivist offending);
+    (d) Vehicle impoundment at the discretion of the authority.
+
+2.2 Repeat offenders (three or more speed offences within 24 months) should
+    face mandatory licence suspension of not less than 30 days.
+
+========================================================================
+PART II — ALCOHOL AND DRUG-IMPAIRED DRIVING
+========================================================================
+
+Section 3 — Blood Alcohol Concentration (BAC) Limits
+3.1 General drivers: maximum BAC of 0.05 g/dl (50 mg/100 ml of blood).
+3.2 Novice and professional drivers: maximum BAC of 0.02 g/dl or zero
+    tolerance in accordance with domestic law.
+3.3 Motorcycle riders and commercial vehicle operators: same stricter limit
+    applicable to novice drivers.
+3.4 Random breath testing (RBT) by authorized police officers is recommended
+    as mandatory authority. No reasonable suspicion need be established before
+    breath-testing a driver.
+
+Section 4 — Drug-Impaired Driving
+4.1 Driving under the influence of psychoactive substances (including cannabis,
+    opioids, benzodiazepines, amphetamines, and cocaine) that impair driving
+    ability is prohibited.
+4.2 Member States should establish per se limits for controlled substances
+    in blood, saliva, or urine, and authorize roadside testing.
+
+Section 5 — Penalties for Impaired Driving
+5.1 First offence (BAC 0.05–0.08 g/dl): Fixed fine + minimum 90-day
+    licence suspension.
+5.2 First offence (BAC > 0.08 g/dl): Heavy fine + minimum 6-month
+    licence suspension + vehicle impoundment.
+5.3 Repeat offence: Criminal prosecution + mandatory imprisonment not
+    less than 48 hours + licence disqualification.
+5.4 Causing death or grievous harm while impaired: Enhanced penalty with
+    mandatory custodial sentence.
+5.5 Alcohol interlock devices for reinstatement of licence after
+    disqualification are recommended for high-risk offenders.
+
+========================================================================
+PART III — SEAT BELTS AND CHILD RESTRAINTS
+========================================================================
+
+Section 6 — Seat Belt Use
+6.1 All occupants of a motor vehicle equipped with seat belts shall
+    wear the seat belt at all times while the vehicle is in motion,
+    unless exempted under domestic legislation (e.g., medical waiver).
+6.2 The driver is responsible for ensuring that all passengers under 16
+    years of age wear appropriate restraints.
+6.3 Exceptions may be granted for vehicles used for reversed transport
+    of passengers, emergency medical personnel while attending a patient,
+    and similarly prescribed situations.
+6.4 Penalty: Fixed fine; repeat offence may attract licence penalty points.
+
+Section 7 — Child Restraint Systems
+7.1 Children below the height of 135 cm (or the minimum height determined
+    by domestic legislation) shall be seated in an approved child restraint
+    system (forward-facing seat, rear-facing seat, or booster seat as
+    appropriate for age and weight).
+7.2 Child restraint systems shall comply with UNECE Regulation No. 44 or
+    Regulation No. 129 (i-Size) or equivalent national standard.
+7.3 Children shall not travel in the front seat of a vehicle unless the
+    air-bag on that side is deactivated and the appropriate child seat is
+    fitted.
+7.4 Penalty: Fixed fine payable by the driver.
+
+========================================================================
+PART IV — MOTORCYCLE HELMETS
+========================================================================
+
+Section 8 — Helmet Requirements
+8.1 Every rider and pillion passenger on a powered two-wheeled or
+    three-wheeled vehicle shall wear a protective helmet at all times
+    while the vehicle is in motion.
+8.2 Helmets shall comply with standards equivalent to UNECE Regulation
+    No. 22 or equivalent national/regional standard.
+8.3 Fastening straps shall be secured at all times.
+8.4 Penalty: Fixed fine; domestic legislation may also provide for
+    licence penalty points or vehicle impoundment.
+8.5 Member States are encouraged to apply the same requirement to
+    electric two-wheelers capable of speeds exceeding 25 km/h.
+
+========================================================================
+PART V — MOBILE PHONE / DISTRACTED DRIVING
+========================================================================
+
+Section 9 — Handheld Device Prohibition
+9.1 Drivers shall not hold or use a handheld mobile phone or any handheld
+    electronic communication device while driving.
+9.2 Use of a hands-free device is permitted provided it does not require
+    the driver to take both hands off the wheel and does not impair driving.
+9.3 The prohibition applies while the vehicle is stationary at a traffic
+    light or in slow-moving congestion.
+9.4 Penalty: Fixed fine + mandatory licence penalty points; repeat
+    offence within 24 months: licence suspension of at least 30 days.
+
+Section 10 — Broader Distracted Driving
+10.1 Domestic legislation should prohibit driving while significantly
+     distracted by any activity, including eating, reading, or operating
+     in-vehicle entertainment systems.
+
+========================================================================
+PART VI — INFRASTRUCTURE AND VEHICLE SAFETY
+========================================================================
+
+Section 11 — Road Infrastructure Safety
+11.1 Member States should adopt road infrastructure safety inspection and
+     assessment frameworks, based on the UNECE Convention on Road Traffic
+     and WHO recommendations.
+11.2 All new or substantially reconstructed roads in the national network
+     should undergo a Road Safety Audit conducted by a certified independent
+     expert before opening to traffic.
+11.3 High-risk road sections (black spots) should be identified and remediated
+     on a priority basis with allocated budgets.
+
+Section 12 — Vehicle Safety Standards
+12.1 Member States should require that new motor vehicles comply with a
+     minimum set of safety technologies, including:
+     (a) Electronic stability control (ESC) for all passenger cars;
+     (b) Anti-lock braking system (ABS) for all powered two-wheelers above
+         150 cc;
+     (c) Seat belt reminders for all front and rear seats;
+     (d) Pedestrian detection / automatic emergency braking (AEB) for
+         all new passenger cars (target: mandatory by 2025–2030).
+12.2 Type-approval based on UNECE vehicle regulations is recommended as
+     the baseline technical standard.
+
+========================================================================
+PART VII — ENFORCEMENT AND CROSS-BORDER MATTERS
+========================================================================
+
+Section 13 — General Enforcement Principles
+13.1 Traffic enforcement authorities shall deploy evidence-based strategies
+     targeting the fatal five: speeding, drink-driving, non-use of seat
+     belts, non-use of helmets, and distracted driving.
+13.2 Fines and penalties collected shall be ring-fenced, to the extent
+     possible, for road safety improvement programmes.
+13.3 Administrative licence suspension (immediate, before judicial review)
+     is recommended for serious offences such as high BAC, very high speed,
+     and abandonment of scene after a fatal accident.
+
+Section 14 — Cross-Border Enforcement
+14.1 Member States are encouraged to enter into bilateral or multilateral
+     agreements providing for mutual recognition and enforcement of road
+     traffic offence decisions issued in another signatory state.
+14.2 Where a foreign-registered vehicle's owner is identified through
+     vehicle registration data exchange (comparable to EU Directive 2015/413),
+     the offence notice may be sent to the registered address in the owner's
+     home country.
+14.3 Member States should establish national contact points for vehicle
+     registration data exchange to facilitate cross-border enforcement.
+
+========================================================================
+PART VIII — POST-CRASH RESPONSE
+========================================================================
+
+Section 15 — Emergency Response
+15.1 Member States shall maintain adequate pre-hospital trauma care systems
+     capable of reaching any point on the road network within defined
+     response-time targets.
+15.2 Drivers involved in a collision shall stop, render first aid or summon
+     assistance, and notify law enforcement where injury or fatality occurred.
+15.3 Obstruction of the post-crash scene or failure to stop after an injury
+     collision shall be a criminal offence.
+
+Section 16 — Data Collection
+16.1 Member States should maintain a national road crash database that records
+     crash location, severity, contributing factors, and vehicle and road
+     characteristics, and that is compatible with WHO Minimum Data Set
+     standards.
+
+========================================================================
+KEY PRINCIPLES APPLICABLE TO ALL UN MEMBER STATES
+(Summary for DriveLegal users)
+========================================================================
+
+1. SPEED LIMITS: Obey posted limits. Default urban limit is 50 km/h (or lower
+   near schools/hospitals). Exceeding limits by 30+ km/h typically triggers
+   licence suspension in most jurisdictions.
+
+2. BLOOD ALCOHOL: Do not drive if you have consumed alcohol above 0.05 g/dl.
+   Many countries apply stricter limits (0.02 or zero) for new and professional
+   drivers and motorcyclists. Random breath testing is legal in most countries.
+
+3. SEAT BELTS: Mandatory for all occupants in all seats wherever fitted.
+   The driver is responsible for passengers under 16.
+
+4. HELMETS: Mandatory for all riders and pillion passengers on powered
+   two-wheelers. Helmet must be properly fastened.
+
+5. MOBILE PHONES: Do not hold or use a mobile phone while driving, including
+   at traffic lights. Use hands-free only.
+
+6. CHILD SEATS: Children under 135 cm tall must use an approved child
+   restraint. Do not place a rear-facing child seat in the front where an
+   active airbag is fitted.
+
+7. ACCIDENTS: You must stop, assist, and report to police if anyone is injured.
+   Fleeing the scene is a criminal offence everywhere.
+
+8. VEHICLE CONDITION: Tyres, brakes, lights, and registration must be
+   compliant with the host country's standards at all times.
+
+[End of UN Model Road Safety Legislation — DriveLegal corpus extract]

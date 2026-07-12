@@ -20,7 +20,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Filter, FieldCondition, MatchValue
 from sentence_transformers import SentenceTransformer
 
-from rag.jurisdiction import get_retriever_scopes
+from rag.jurisdiction import get_retriever_scopes, TREATY_LABELS
 
 logger = logging.getLogger("drivelegal.retriever")
 
@@ -32,6 +32,9 @@ EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 # Global instances
 _client: Optional[QdrantClient] = None
 _embedder: Optional[SentenceTransformer] = None
+
+# Scopes that must never trigger early-stop (treaty chunks are always collected)
+_TREATY_SCOPES: frozenset[str] = frozenset(TREATY_LABELS)
 
 
 def load_index() -> None:
@@ -70,7 +73,7 @@ def _build_region_filter(region: str) -> Optional[Filter]:
     """
     if not region:
         return None
-    
+
     return Filter(
         must=[
             FieldCondition(
@@ -79,6 +82,18 @@ def _build_region_filter(region: str) -> Optional[Filter]:
             )
         ]
     )
+
+
+def _sort_treaty_first(docs: List[Document]) -> List[Document]:
+    """Re-order documents so treaty-tier chunks appear at the front.
+
+    Treaty chunks are placed first so they occupy the beginning of the LLM
+    context window, increasing the probability the model cites them as the
+    baseline before moving on to national/state-level rules.
+    """
+    treaty = [d for d in docs if d.metadata.get("corpus_tier") == "treaty"]
+    others = [d for d in docs if d.metadata.get("corpus_tier") != "treaty"]
+    return treaty + others
 
 
 def retrieve(
@@ -130,7 +145,8 @@ def retrieve(
         # Build filter for this scope
         region_filter = _build_region_filter(scope)
         scope_label = f"'{scope}'" if scope else "NO FILTER"
-        
+        is_treaty_scope = scope in _TREATY_SCOPES
+
         # Search with filter using query_points() (correct method for vector search)
         query_response = _client.query_points(
             collection_name=COLLECTION_NAME,
@@ -140,16 +156,16 @@ def retrieve(
             with_payload=True,
             with_vectors=False,
         )
-        
+
         logger.debug(
             f"Scope {scope_label}: found {len(query_response.points)} results "
             f"(accumulated: {len(accumulated_results)})"
         )
-        
+
         # Capture the top similarity score from the very first result across all levels
         if query_response.points and top_score == 0.0:
             top_score = float(query_response.points[0].score)
-        
+
         # Convert results to Document objects, deduplicating by ID
         for scored_point in query_response.points:
             if scored_point.id not in seen_ids:
@@ -158,21 +174,23 @@ def retrieve(
                     page_content=payload["text"],
                     metadata={
                         "law_section": payload.get("law_section", ""),
-                        "category": payload.get("category", ""),
-                        "region": payload.get("region", ""),
+                        "category":    payload.get("category", ""),
+                        "region":      payload.get("region", ""),
+                        "corpus_tier": payload.get("corpus_tier", ""),  # NEW
                     },
                 )
                 accumulated_results.append(doc)
                 seen_ids.add(scored_point.id)
-        
-        # If we have enough results, stop searching
-        if len(accumulated_results) >= k:
+
+        # Treaty scopes always run to completion — never break early.
+        # Non-treaty scopes stop once we have enough results.
+        if not is_treaty_scope and len(accumulated_results) >= k:
             logger.debug(f"Stopping cascade at scope {scope_label}")
             break
-    
+
     logger.info(
         f"retrieve() returning {len(accumulated_results)} docs for query: {query[:50]}"
         f" | top_score={top_score:.3f}"
     )
-    # Return exactly k results (or fewer if fewer available) alongside the top similarity score
-    return accumulated_results[:k], top_score
+    # Sort treaty chunks to the front, then return exactly k results
+    return _sort_treaty_first(accumulated_results)[:k], top_score

@@ -15,19 +15,28 @@ from rag.retriever import retrieve
 logger = logging.getLogger("drivelegal.chain")
 CACHE_PATH = os.path.join("data", "cache.json")
 
-SYSTEM_TEMPLATE = """You are DriveLegal, an AI road safety assistant for India.
+SYSTEM_TEMPLATE = """You are DriveLegal, an AI road safety and traffic law assistant.
 {gps_context_line}Use ONLY the context provided below to answer the question.
 If the context does not contain enough information, say:
-  "I could not find specific data for your location. Please verify with the official RTO."
+  "I could not find specific data for your location. Please verify with the official traffic authority."
 Never invent fine amounts or law sections.
-Always mention if a rule is national (Motor Vehicles Act 1988) vs state-specific.
+When the context includes international treaty rules (Vienna Convention on Road
+Traffic 1968, UN Model Road Safety Legislation, EU Directive 2015/413), cite them
+FIRST as the baseline applicable to all signatory nations, then add any country-
+specific or regional rules that differ or supplement the baseline.
+Always clarify the tier of each rule you cite:
+  • TREATY — international baseline (Vienna Convention, UN Model, EU Directive)
+  • NATIONAL — country-level law
+  • STATE/CITY — sub-national or local rule
+If a fine is mentioned, state it with the disclaimer that amounts are indicative
+and subject to local enforcement.
 
 Context:
 {context}
 
 Question: {question}
 
-Answer clearly and concisely in 2-4 sentences. If a fine is mentioned, state it with the disclaimer that amounts are indicative."""
+Answer clearly and concisely in 2-5 sentences."""
 
 QA_PROMPT = PromptTemplate(
     input_variables=["context", "question", "gps_context_line"],
@@ -158,14 +167,20 @@ def get_answer(
 
         if not docs:
             return {
-                "answer": "I could not find specific data for your location. Please verify with the official RTO.",
+                "answer": "I could not find specific data for your location. Please verify with the official traffic authority.",
                 "sources": [],
                 "offline_fallback": False,
                 "top_retrieval_score": top_score,
             }
 
+        # Tag each context block with its tier so the LLM can cite the source layer
         context = "\n\n".join(
-            f"[{d.metadata.get('region', 'India')} | {d.metadata.get('law_section', '')}]\n{d.page_content}"
+            "[{tier} | {region} | {section}]\n{text}".format(
+                tier=(d.metadata.get("corpus_tier") or "regional").upper(),
+                region=d.metadata.get("region", "?"),
+                section=d.metadata.get("law_section", ""),
+                text=d.page_content,
+            )
             for d in docs
         )
 

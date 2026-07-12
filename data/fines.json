@@ -1,6 +1,44 @@
 {
-  "_note": "All amounts in INR. Ranges reflect first/repeat offence. Verify with official RTO before citing.",
-  "_last_updated": "2024-01",
+  "_note": "All Indian amounts in INR. Treaty-tier entries are qualitative ranges (no currency) — verify locally. Ranges reflect first/repeat offence unless stated. Verify with official authority before citing.",
+  "_last_updated": "2024-06",
+
+  "Vienna Convention on Road Traffic": {
+    "_note": "Indicative ranges derived from signatory-state median enforcement. No currency — verify with local authority.",
+    "speeding":       { "default": "Moderate–severe fine + licence penalty points; suspension if >30 km/h over limit" },
+    "drunk_driving":  { "default": "Heavy fine + immediate licence suspension (BAC > 0.05 g/dl in most signatories; 0.02 or zero for novice/commercial)" },
+    "no_seatbelt":    { "default": "Fixed penalty (typically EUR 50–300 equivalent); driver liable for passengers under 16" },
+    "no_helmet":      { "bike": "Fixed penalty; helmet must meet national safety standard and be fastened" },
+    "mobile_phone":   { "default": "Fixed penalty + licence points in most signatory states; hands-free only permitted" },
+    "red_light":      { "default": "Fixed penalty + licence points" },
+    "wrong_way":      { "default": "Severe fine; may include licence suspension" },
+    "no_license":     { "default": "Offence in all signatory states; domestic or international driving permit required" },
+    "parking":        { "default": "Fine; vehicle may be towed at driver's expense" }
+  },
+
+  "UN Model Road Safety Legislation": {
+    "_note": "Based on UN Secretary-General Model Legislation 2019. Qualitative ranges — verify with local authority.",
+    "speeding":       { "default": "Fine + licence points; suspension for excess >30 km/h or repeat offending within 24 months" },
+    "drunk_driving":  { "default": "BAC 0.05–0.08: fine + 90-day suspension (first); BAC >0.08 or repeat: criminal prosecution + imprisonment" },
+    "no_seatbelt":    { "default": "Fixed fine; driver responsible for passengers under 16" },
+    "no_helmet":      { "bike": "Fixed fine; helmet must meet UNECE Regulation 22 or equivalent" },
+    "mobile_phone":   { "default": "Fixed fine + mandatory licence points; 30-day suspension for repeat within 24 months" },
+    "red_light":      { "default": "Fixed fine + licence points" },
+    "no_license":     { "default": "Offence; vehicle may be impounded" },
+    "drunk_driving":  { "default": "Heavy fine + immediate licence suspension" }
+  },
+
+  "EU Directive 2015/413": {
+    "_note": "Eight offences enforceable cross-border within the EU via vehicle registration data exchange. Fine amounts per national law of the Member State where offence occurred.",
+    "speeding":       { "default": "Fine per host-country tariff + licence points; e.g. Germany >30 km/h EUR 280+, France EUR 135+" },
+    "no_seatbelt":    { "default": "Fixed fine; e.g. Spain EUR 200, France EUR 135, Italy EUR 83–333" },
+    "red_light":      { "default": "Fixed fine + licence points; e.g. Italy EUR 167–665, Germany EUR 90–235" },
+    "drunk_driving":  { "default": "Fine + immediate suspension; e.g. France EUR 135 (BAC 0.05–0.08) + licence suspension for higher BAC" },
+    "no_helmet":      { "bike": "Fixed fine; amount varies by Member State" },
+    "wrong_way":      { "default": "Fine for use of forbidden lane (bus lane, emergency lane, etc.)" },
+    "mobile_phone":   { "default": "Fixed fine; e.g. Netherlands EUR 380, Belgium EUR 174+, Germany EUR 100" },
+    "no_license":     { "default": "Offence enforceable cross-border; vehicle may be impounded" }
+  },
+
 
   "national": {
     "red_light":         { "default": "₹1,000 – ₹5,000",  "bike": "₹1,000",   "car": "₹5,000", "currency_code": "INR" },

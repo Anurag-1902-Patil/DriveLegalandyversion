@@ -18,6 +18,7 @@ from app.auth import decode_access_token  # Helper function to decode the active
 from app.routes.location import get_store     # GPS in-memory store
 from rag.chain import get_answer
 from rag.challan import lookup_fine, lookup_fine_details
+from rag.jurisdiction import detect_destination_country
 
 logger = logging.getLogger("drivelegal.routes.chat")
 router = APIRouter(tags=["Chat"])
@@ -65,7 +66,17 @@ async def chat(
         gps_context       = ""
         logger.info("No GPS fix; using manual location: %s, %s", effective_city, effective_state)
 
+    # ── Override with destination country if mentioned in query ───────────────
+    dest_country = detect_destination_country(req.message)
+    if dest_country:
+        effective_country = dest_country
+        effective_city = ""
+        effective_state = ""
+        gps_context = f"{dest_country} (Destination detected from query)"
+        logger.info(f"Query override: destination country '{dest_country}' detected.")
+
     loc_str = f"{effective_city}, {effective_state}, {effective_country}"
+
     logger.info(f"Query | location={loc_str} | message={req.message!r}")
 
     # ── 1. RAG answer ──────────────────────────────────────────────────────
@@ -136,6 +147,7 @@ async def chat(
             law_section=s.metadata.get("law_section"),
             category=s.metadata.get("category"),
             region=s.metadata.get("region"),
+            corpus_tier=s.metadata.get("corpus_tier"),   # NEW: "treaty" | "national" | "state" | "city"
             text_snippet=s.page_content[:200],
         )
         for s in raw_sources

@@ -60,6 +60,7 @@ class Source(BaseModel):
     law_section: Optional[str] = None
     category: Optional[str] = None
     region: Optional[str] = None
+    corpus_tier: Optional[str] = None   # "treaty" | "national" | "state" | "city" | "regional"
     text_snippet: Optional[str] = None
 
 
