@@ -1,0 +1,278 @@
+EU DIRECTIVE 2015/413/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL
+of 11 March 2015
+facilitating cross-border exchange of information on road-safety-related
+traffic offences
+(recast)
+Official Journal of the European Union L 68, 13.3.2015, pp. 9–25
+[Reproduced for legal-awareness purposes under EU open-data policy.
+The binding text is the one published in the OJ. This plain-text version
+is provided for RAG ingestion and is not a substitute for the original.]
+
+========================================================================
+PREAMBLE — RECITALS (Selected)
+========================================================================
+
+(1) Action by the Union in the field of road safety aims to reduce the
+    number of deaths, injuries and material damage. An important element of
+    the Union's road safety policy is the consistent enforcement of sanctions
+    for road traffic offences committed in the Union which significantly
+    endanger road safety, irrespective of the Member State of registration
+    of the vehicle.
+
+(2) Despite the progress made, too many road fatalities still occur in the
+    Union, and enforcement action needs to be strengthened.
+
+(3) The lack of effective cross-border enforcement of sanctions for road
+    traffic offences results in situations where non-resident drivers of
+    vehicles registered in other Member States escape sanctions for such
+    offences. In order to remedy this situation, a more effective cross-border
+    information exchange between Member States should be established.
+
+(4) This Directive establishes a procedure to facilitate the cross-border
+    enforcement of sanctions for road-safety-related traffic offences. That
+    procedure is based on the exchange of vehicle registration data (VRD),
+    which enables the Member State in which the offence was committed
+    (Member State of the offence) to identify the registered keeper of the
+    vehicle used to commit the offence.
+
+(5) In order to ensure consistency, this Directive covers the eight main
+    road-safety-related offences: speeding; failing to use a seat belt;
+    failing to stop at a red traffic light; drink-driving; driving under the
+    influence of drugs; failing to wear a safety helmet; use of a forbidden
+    lane; unlawful use of a mobile telephone or other communication devices
+    while driving.
+
+========================================================================
+CHAPTER I — GENERAL PROVISIONS
+========================================================================
+
+Article 1 — Subject Matter
+This Directive lays down rules to facilitate the exchange of information
+between Member States with a view to enforcing sanctions where road-safety-
+related traffic offences are committed with a vehicle registered in a Member
+State other than the Member State where the offence took place.
+
+Article 2 — Scope
+This Directive applies to the following road-safety-related traffic offences:
+(a) speeding;
+(b) failing to use a seat belt;
+(c) failing to stop at a red traffic light;
+(d) drink-driving (driving under the influence of alcohol);
+(e) driving under the influence of drugs;
+(f) failing to wear a safety helmet (for motorcyclists/moped riders);
+(g) use of a forbidden lane (e.g., bus lanes, emergency lanes);
+(h) unlawful use of a mobile telephone or other communication device
+    while driving.
+
+Article 3 — Definitions
+For the purposes of this Directive:
+(1) "vehicle" means any motor vehicle, including motorcycles, normally
+    intended for use on roads;
+(2) "Member State of the offence" means the Member State where the offence
+    was committed;
+(3) "Member State of registration" means the Member State where the vehicle
+    involved in the offence is registered;
+(4) "national contact point" means the competent authority designated by
+    each Member State to handle requests for VRD exchange;
+(5) "vehicle registration data" (VRD) means the data set referred to in
+    Annex I, which enables identification of the registered keeper or owner
+    of a vehicle;
+(6) "registered keeper" means the person in whose name the vehicle is
+    registered, as recorded in the vehicle registration database.
+
+========================================================================
+CHAPTER II — EXCHANGE OF VEHICLE REGISTRATION DATA
+========================================================================
+
+Article 4 — Procedure for the Exchange of Information
+1. For the investigation of the road-safety-related traffic offences listed
+   in Article 2, Member States shall allow other Member States' national
+   contact points access to national vehicle registration data, with the
+   power to conduct automated searching thereof, using a full vehicle
+   registration number.
+2. Such searches shall be conducted in accordance with the procedures
+   described in Council Decision 2008/616/JHA and its Annex, which implement
+   the Prüm Convention data-sharing arrangements.
+3. The data elements to be exchanged are specified in Annex I to this
+   Directive and include:
+   (a) data relating to the vehicle: registration number, make, model,
+       vehicle category;
+   (b) data relating to the registered keeper or owner: surname, first name,
+       address, date of birth (for natural persons); name/title and registered
+       address (for legal persons).
+
+Article 5 — Follow-Up Procedure
+1. The Member State of the offence shall use the data obtained pursuant to
+   Article 4 to send an information letter to the registered keeper or owner
+   of the vehicle.
+2. The information letter shall include at least:
+   (a) the nature of the road-safety-related traffic offence;
+   (b) the place, date and time of the offence;
+   (c) the title of the legislation infringed and the penalty applicable;
+   (d) the time limit for payment of any financial penalty, if applicable;
+   (e) information about the legal proceedings initiated, including any
+       right to challenge;
+   (f) the name, address and other contact details of the body responsible
+       for the proceedings.
+3. The information letter shall be written in the official language of the
+   Member State of registration or, if several languages are official in that
+   state, in one of those languages; or, where practicable, in the official
+   language of the Member State of the offence.
+4. The Member State of the offence shall send the information letter in
+   accordance with its national law. Where it decides to initiate proceedings,
+   it may conduct those proceedings in accordance with its national and Union
+   law.
+
+Article 6 — Data Protection
+1. The data processed pursuant to this Directive shall be processed only for
+   the purpose of facilitating the exchange of information on the road-safety-
+   related traffic offences listed in Article 2.
+2. The provisions of Directive 95/46/EC (now replaced by Regulation (EU)
+   2016/679 — GDPR) and national data-protection legislation apply to the
+   processing of personal data under this Directive.
+3. Member States shall ensure that data subjects (the registered keepers)
+   can exercise their rights of access, rectification, and erasure as provided
+   by applicable data-protection law.
+
+Article 7 — Designated National Contact Points
+Each Member State shall designate a national contact point to receive and
+process requests for VRD exchange. Member States shall communicate the
+details of their national contact point to the Commission.
+
+========================================================================
+CHAPTER III — REPORTING
+========================================================================
+
+Article 8 — Reporting Obligations
+Member States shall send a report to the Commission every two years on
+the application of this Directive, covering:
+(a) the number of automated searches conducted in its territory as Member
+    State of the offence;
+(b) the number of requests received as Member State of registration;
+(c) the number of information letters sent to non-resident offenders;
+(d) the types of offences for which information was exchanged.
+
+Article 9 — Commission Review
+The Commission shall submit a report to the European Parliament and the
+Council on the application of this Directive, based on the reports from
+Member States, no later than three years after transposition.
+
+========================================================================
+CHAPTER IV — FINAL PROVISIONS
+========================================================================
+
+Article 10 — Transposition
+Member States shall bring into force the laws, regulations, and
+administrative provisions necessary to comply with this Directive by
+6 May 2015 (for Member States already bound by Directive 2011/82/EU)
+or by 6 May 2017 (for other Member States).
+
+Article 11 — Entry into Force
+This Directive entered into force on 13 March 2015 (date of publication
+in the Official Journal of the European Union).
+
+========================================================================
+ANNEX I — VEHICLE REGISTRATION DATA ELEMENTS
+========================================================================
+The following data elements shall be made available for exchange:
+A. Data relating to the vehicle:
+   — Registration number
+   — Vehicle make (brand)
+   — Vehicle model (commercial type)
+   — Vehicle category / class
+   — Country of registration
+
+B. Data relating to the keeper/owner:
+   — Surname (family name)
+   — First name(s)
+   — Complete address of residence/registered office
+   — Date of birth (natural persons)
+   — Company name and registered office address (legal persons)
+
+========================================================================
+KEY PRACTICAL EFFECTS FOR DRIVERS IN THE EU
+(Summary for DriveLegal users)
+========================================================================
+
+1. EIGHT COVERED OFFENCES: If you commit any of the following in another
+   EU Member State, the host country can identify you through your home
+   country's vehicle registration database and send you an enforcement notice:
+   • Speeding
+   • Not wearing a seat belt
+   • Running a red light
+   • Drink-driving (DUI)
+   • Drug-impaired driving
+   • Not wearing a motorcycle helmet
+   • Driving in a forbidden lane (bus lane, emergency lane)
+   • Using a handheld mobile phone while driving
+
+2. CROSS-BORDER NOTICE: You will receive an information letter at your
+   registered home address, in your home language where possible, detailing
+   the offence, the fine, and how to pay or contest it.
+
+3. NO IMMUNITY FOR TOURISTS: Non-resident drivers cannot evade fines simply
+   because they are from another EU country. Fines are enforceable across
+   borders under this Directive.
+
+4. DATA PROTECTION: Your personal data may only be used for the specific
+   offence investigation. It is protected by GDPR.
+
+5. PAYMENT AND CONTESTING: You have the right to pay the fine, contest
+   the offence in the Member State of the offence, or (in some cases) have
+   the fine enforced in your home country. The information letter will specify
+   the options.
+
+6. COUNTRY-SPECIFIC FINE AMOUNTS: The fine amount is determined by the law
+   of the Member State where the offence occurred — not by your home country.
+   Examples (approximate, subject to change):
+   • Speeding >30 km/h over limit in Germany: €280+ (Bußgeld) + 2 points
+   • Drink-driving (BAC > 0.05) in France: €135 fixed penalty + licence suspension
+   • No seat belt in Spain: €200 fixed penalty
+   • Handheld phone in Netherlands: €380 fixed penalty
+   • Running red light in Italy: €167–€665 + 6 licence points
+   Always verify the current fine schedule with the official authority of the
+   relevant Member State.
+
+7. EU COUNTRIES COVERED (as of 2024):
+   Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark,
+   Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia,
+   Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania,
+   Slovakia, Slovenia, Spain, Sweden.
+   (Norway, Iceland, and Liechtenstein participate under EEA arrangements.)
+
+========================================================================
+EU TRAFFIC LAW OVERVIEW — MEMBER STATE SPEED LIMITS
+(indicative — always verify current domestic law)
+========================================================================
+
+Germany: Built-up 50 km/h; Rural 100 km/h; Motorway — advisory 130 km/h
+         (no general limit on Autobahn, but temporary limits posted).
+France:  Built-up 50 km/h; Rural 80 km/h; Dual carriageway 110 km/h;
+         Motorway 130 km/h.
+Italy:   Built-up 50 km/h; Rural 90 km/h; Dual carriageway 110 km/h;
+         Motorway 130 km/h.
+Spain:   Built-up 50 km/h; Rural 90 km/h; Dual carriageway 100 km/h;
+         Motorway 120 km/h.
+Netherlands: Built-up 50 km/h; Rural 80–100 km/h; Motorway 100–130 km/h.
+Poland:  Built-up 50 km/h (day) / 60 km/h (night); Rural 90 km/h;
+         Expressway 120 km/h; Motorway 140 km/h.
+Belgium: Built-up 50 km/h; Rural 90 km/h; Motorway 120 km/h.
+Sweden:  Built-up 50 km/h; Rural 80 km/h; Dual carriageway/Motorway
+         110–120 km/h.
+
+EU BLOOD-ALCOHOL LIMITS (indicative — most Member States):
+General drivers: 0.05 g/dl (50 mg/100 ml). Sweden, Poland: 0.02 g/dl.
+Czech Republic, Hungary, Romania, Slovakia: 0.00 g/dl (zero tolerance).
+Professional/commercial drivers: 0.02 g/dl across the EU.
+
+EU SEAT BELT ENFORCEMENT:
+Mandatory for all passengers in all seats. Driver responsible for children
+under 14. Child restraint required for children under 135 cm (or per
+domestic regulation).
+
+EU MOBILE PHONE:
+Handheld use prohibited in all Member States. Fine ranges from €100
+(Estonia) to €400+ (Netherlands, Belgium). Additional licence points apply
+in most countries.
+
+[End of EU Directive 2015/413 — DriveLegal corpus extract]

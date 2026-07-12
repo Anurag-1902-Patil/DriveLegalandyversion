@@ -43,6 +43,22 @@ REGION_HINTS = {
     "kolkata": "Kolkata", "west bengal": "West Bengal",
     "india": "National", "motor vehicles act": "National",
     "mva": "National", "morth": "National", "national": "National",
+    # ── International Treaty Tier ─────────────────────────────────────────
+    "vienna convention": "Vienna Convention on Road Traffic",
+    "vienna_convention_1968": "Vienna Convention on Road Traffic",
+    "united nations model": "UN Model Road Safety Legislation",
+    "un model": "UN Model Road Safety Legislation",
+    "un_model_road_safety": "UN Model Road Safety Legislation",
+    "un secretary-general": "UN Model Road Safety Legislation",
+    "decade of action for road safety": "UN Model Road Safety Legislation",
+    "eu directive 2015": "EU Directive 2015/413",
+    "eu_directive_2015_413": "EU Directive 2015/413",
+    "directive 2015/413": "EU Directive 2015/413",
+    "cross-border enforcement": "EU Directive 2015/413",
+    "cross-border exchange": "EU Directive 2015/413",
+    "vehicle registration data": "EU Directive 2015/413",
+    "contracting part": "Vienna Convention on Road Traffic",  # covers "Contracting Party/ies"
+    "signatory": "Vienna Convention on Road Traffic",
 }
 
 CATEGORY_HINTS = {
@@ -57,12 +73,55 @@ CATEGORY_HINTS = {
     "overtaking": "Road Behaviour", "lane": "Road Behaviour", "pedestrian": "Road Behaviour",
     "accident": "Accident Procedures", "hit and run": "Accident Procedures",
     "challan": "Enforcement", "fine": "Enforcement", "penalty": "Enforcement",
+    # ── Treaty-specific category hints ──────────────────────────────────
+    "right-hand traffic": "Road Behaviour", "priority road": "Road Behaviour",
+    "right of way": "Road Behaviour", "yield": "Road Behaviour",
+    "motorway": "Road Behaviour", "carriageway": "Road Behaviour",
+    "cross-border": "Enforcement", "mutual recognition": "Enforcement",
+    "blood alcohol": "Impaired Driving", "bac": "Impaired Driving",
+    "breath test": "Impaired Driving", "drug-impaired": "Impaired Driving",
+    "child restraint": "Safety Equipment", "booster seat": "Safety Equipment",
+    "international driving permit": "Documentation", "idp": "Documentation",
+    "domestic driving permit": "Documentation",
+    "vehicle registration data": "Documentation",
+    "contracting party": "International Treaty", "signatory": "International Treaty",
+    "member state": "International Treaty", "directive": "International Treaty",
+    "speed limiter": "Vehicle Standards", "anti-lock": "Vehicle Standards",
+    "electronic stability": "Vehicle Standards", "automatic emergency": "Vehicle Standards",
 }
 
 LAW_PATTERNS = [
     r"section\s+(\d+[A-Za-z]*)", r"sec\.\s*(\d+[A-Za-z]*)",
     r"rule\s+(\d+[A-Za-z]*)", r"article\s+(\d+[A-Za-z]*)",
+    r"annex\s+(\d+[A-Za-z]*)", r"part\s+(I{1,3}V?|VI{0,3}|\d+[A-Za-z]*)",
 ]
+
+# ── Treaty corpus tier helpers ─────────────────────────────────────────────
+TREATY_REGION_NAMES = {
+    "Vienna Convention on Road Traffic",
+    "UN Model Road Safety Legislation",
+    "EU Directive 2015/413",
+}
+
+
+def infer_corpus_tier(region: str) -> str:
+    """Return 'treaty', 'national', 'state', or 'city' based on region tag."""
+    if region in TREATY_REGION_NAMES:
+        return "treaty"
+    if region == "National":
+        return "national"
+    # Heuristic: known Indian state names → 'state'; everything else → 'city'
+    known_states = {
+        "Andhra Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat",
+        "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
+        "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+        "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+        "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+        "J&K", "Delhi",
+    }
+    if region in known_states:
+        return "state"
+    return "city"
 
 
 def infer_region(text, filename):
@@ -160,6 +219,7 @@ def chunk_documents(documents):
     chunks = []
     for doc in documents:
         for i, piece in enumerate(splitter.split_text(doc["content"])):
+            region = infer_region(piece, doc["filename"])
             chunks.append({
                 "id": str(uuid.uuid4()),
                 "text": piece,
@@ -167,9 +227,10 @@ def chunk_documents(documents):
                     "source":      doc["filename"],
                     "filetype":    doc["filetype"],
                     "chunk_index": i,
-                    "region":      infer_region(piece, doc["filename"]),
+                    "region":      region,
                     "category":    infer_category(piece),
                     "law_section": extract_law_section(piece),
+                    "corpus_tier": infer_corpus_tier(region),  # NEW
                 },
             })
     return chunks

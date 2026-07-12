@@ -98,6 +98,7 @@ def migrate_to_qdrant(chunks: List[dict], embeddings: List[List[float]]) -> None
                 "law_section": chunk["metadata"].get("law_section", ""),
                 "category": chunk["metadata"].get("category", ""),
                 "region": chunk["metadata"].get("region", ""),
+                "corpus_tier": chunk["metadata"].get("corpus_tier", ""),  # NEW: "treaty" | "national" | "state" | "city"
             },
         )
         points.append(point)
