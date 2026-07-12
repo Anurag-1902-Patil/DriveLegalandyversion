@@ -20,6 +20,8 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Filter, FieldCondition, MatchValue
 from sentence_transformers import SentenceTransformer
 
+from rag.jurisdiction import get_retriever_scopes
+
 logger = logging.getLogger("drivelegal.retriever")
 
 # ── Configuration ──────────────────────────────────────────────────────────
@@ -118,8 +120,8 @@ def retrieve(
         normalize_embeddings=True,
     ).tolist()
     
-    # Implement fallback cascade: city -> state -> country -> no filter
-    scopes = [city, state, country, ""]
+    # Implement fallback cascade: city -> state/province -> country -> regional bloc -> international convention -> no filter
+    scopes = get_retriever_scopes(city, state, country)
     accumulated_results = []
     seen_ids = set()
     top_score: float = 0.0   # cosine similarity of the best hit across all cascade levels
